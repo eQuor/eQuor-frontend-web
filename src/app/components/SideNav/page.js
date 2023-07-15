@@ -1,4 +1,7 @@
 import React from "react";
+import Image from "next/image";
+import propic from "../../../../public/pro 3.png"
+import sidebarimg from "../../../../public/sidebardown.png"
 
 import { RiDashboardFill } from "react-icons/ri";
 import { PiUserListBold,PiNotificationBold } from "react-icons/pi";
@@ -14,10 +17,11 @@ function SideNav() {
     { title: "Audit log",icon: <AiOutlineBars/>},
   ];
   return (
-    <div className="bg-[#2B2B2B] h-screen w-96 m-2 rounded-md">
+    <div className="bg-[#2B2B2B] w-96 m-2 rounded-md">
       <div className="mt-4">
         {/* add profile icon */}
         <div className=" pt-5 pb-3 pl-5">
+          <Image src={propic} alt="profile pic"className="ml-5 mb-4"/>
           <h1 className=" uppercase text-white text-2xl font-bold">
             Madusha Tharindi
           </h1>
@@ -39,6 +43,7 @@ function SideNav() {
           </>
         ))
         }</ul>
+        <Image className="m-5" src={sidebarimg} alt="sidebardown" width={282} height={236}/>
     </div>
   );
 }
