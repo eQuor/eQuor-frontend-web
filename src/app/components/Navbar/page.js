@@ -15,9 +15,7 @@ import Image from "next/image";
 import "tailwindcss/tailwind.css";
 import logo from "../../../../public/eQuor.svg";
 import { Butterfly_Kids } from "next/font/google";
-import { IonIcon } from "@ionic/react";
-import "@ionic/react/css/core.css";
-import { menu, close } from "ionicons/icons";
+// import { RiDashboardFill } from "react-icons/ri";
 import { useState } from "react";
 
 const Navbar = () => {
@@ -61,7 +59,7 @@ const Navbar = () => {
           onClick={() => setOpen(!open)}
           className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden text-white"
         >
-          <IonIcon icon={open ? close : menu} />
+          {/* <RiDashboardFill icon={open ? close : menu} /> */}
         </div>
         {/* <ul className="md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#0066FF] md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in"> */}
         <ul
