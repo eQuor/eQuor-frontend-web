@@ -5,6 +5,7 @@ import logo from "../../../../public/eQuor.svg";
 import { Butterfly_Kids } from "next/font/google";
 // import { RiDashboardFill } from "react-icons/ri";
 import { HiMenu } from "react-icons/hi";
+import { CgClose } from "react-icons/cg";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -49,9 +50,8 @@ const Navbar = () => {
           onClick={() => setOpen(!open)}
           className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden text-white"
         >
-          {/* <RiDashboardFill icon={open ? close : menu} /> */}
+          {open ? <CgClose/> : <HiMenu/>}
         </div>
-        {/* <ul className="md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#0066FF] md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in"> */}
         <ul
           className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#0066FF] md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
             open ? "top-20" : "top-[-300px]"
