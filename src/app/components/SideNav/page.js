@@ -18,7 +18,7 @@ function SideNav() {
   ];
   return (
     <>
-      <div className='bg-[#2B2B2B] h-[700px] w-80 rounded-md relative ml-2'>
+      <div className='bg-[#2B2B2B] h-[100%] w-80 rounded-md relative ml-2'>
         <div>
           {/* add profile icon */}
           <div className=' pt-5 pb-3 pl-5'>
