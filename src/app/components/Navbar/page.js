@@ -1,15 +1,3 @@
-// import React from 'react'
-
-// const Navbar = () => {
-//   return (
-//     <nav>
-//     <h1>Hello</h1>
-//     </nav>
-//   )
-// }
-
-// export default Navbar
-
 "use client";
 import Image from "next/image";
 import "tailwindcss/tailwind.css";
@@ -17,6 +5,7 @@ import logo from "../../../../public/eQuor.svg";
 import { Butterfly_Kids } from "next/font/google";
 // import { RiDashboardFill } from "react-icons/ri";
 import { useState } from "react";
+import Link from "next/link";
 
 const Navbar = () => {
   const links = [
@@ -67,19 +56,18 @@ const Navbar = () => {
             open ? "top-20" : "top-[-300px]"
           }`}
         >
-          {links.map((link) => {
-            const { id, url, text } = link;
-            return (
-              <li key={id} className="md:ml-8 text-xl md:my-0 my-3">
-                <a
+          {links.map((link, index) => (
+            <>
+              <li key={index} className="md:ml-8 text-xl md:my-0 my-3">
+                <Link
                   href="#"
                   className="text-white font-small hover:text-black duration-500"
                 >
-                  {text}
-                </a>
+                  {link.text}
+                </Link>
               </li>
-            );
-          })}
+            </>
+          ))}
           <button
             className="bg-black text-white  font-medium py-2 px-6 rounded md:ml-8 hover:bg-gray-900 
     duration-500"
