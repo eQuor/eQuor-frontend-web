@@ -60,7 +60,7 @@ const Navbar = () => {
           {links.map((link, index) => (
             <>
               <li key={index} className="md:ml-8 text-xl md:my-0 my-3">
-                <Link
+                <Link key={index}
                   href="#"
                   className="text-white font-small hover:text-black duration-500"
                 >
