@@ -3,26 +3,40 @@
 @import 'tailwindcss/utilities';
 
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-*{
-  margin: 0;
-  padding: 0;
+* {
+  margin: 0px;
+  padding: 0px;
   box-sizing: border-box;
 }
 
-body {
-  color: black;
-  background: white;
+header {
+  background-color: red;
+  height: 10vh;
+}
+
+aside {
+  background-color: green;
+  width: 15vw;
+  height: 100%;
+}
+
+section {
+  background-color: blueviolet;
+  height: 100%;
+  width: 85vw;
+
+  display: grid;
+  grid-template-columns: repeat(12, auto);
+  grid-template-rows: repeat(7, 80px);
+  gap: 10px 10px;
+}
+
+footer {
+  background-color: yellow;
+  height: 100px;
+}
+
+.main-container {
+  display: flex;
+  height: 90vh;
 }
