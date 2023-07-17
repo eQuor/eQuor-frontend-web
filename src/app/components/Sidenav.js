@@ -1,7 +1,8 @@
+"use client";
 import React from "react";
 import Image from "next/image";
-import propic from "../../../../public/pro 3.png";
-import sidebarimg from "../../../../public/sidebardown.png";
+import propic from "../../../public/pro 3.png";
+import sidebarimg from "../../../public/sidebardown.png";
 
 import { RiDashboardFill } from "react-icons/ri";
 import { PiUserListBold, PiNotificationBold } from "react-icons/pi";

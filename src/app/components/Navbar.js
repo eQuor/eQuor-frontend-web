@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import "tailwindcss/tailwind.css";
-import logo from "../../../../public/eQuor.svg";
+import logo from "../../../public/eQuor.svg";
 import { HiMenu } from "react-icons/hi";
 import { CgClose } from "react-icons/cg";
 import { useState } from "react";
