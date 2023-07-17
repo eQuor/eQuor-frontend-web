@@ -6,7 +6,7 @@ export default function Home() {
     <main>
       <div className="relative">
         <Navbar />
-        <div className="absolute top-20">
+        <div className="absolute top-[72px]">
           <SideNav />
         </div>
       </div>
