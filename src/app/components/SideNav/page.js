@@ -18,7 +18,7 @@ function SideNav() {
   ];
   return (
     <>
-    <div className="bg-[#2B2B2B] h- w-80 rounded-md relative ml-2">
+    <div className="bg-[#2B2B2B] h-[700px] w-80 rounded-md relative ml-2">
       <div>
         {/* add profile icon */}
         <div className=" pt-5 pb-3 pl-5">
@@ -30,10 +30,10 @@ function SideNav() {
         </div>
       </div>
       <div className="bg-white h-[6px] mx-3"></div>
-      <ul className=" mt-7">{
+      <ul className=" mt-2">{
         Menues.map((menu,index)=>(
           <>
-          <li key={index} className="text-white text-lg flex items-center gap-x-4 cursor-pointer p-4 hover:bg-[#0066ff] rounded-md mt-4 mx-3">
+          <li key={index} className="text-white text-lg flex items-center gap-x-4 cursor-pointer p-3 hover:bg-[#0066ff] rounded-md mt-1 mx-3">
           <span className="text-xl block float-left">
           {menu.icon ? menu.icon : <RiDashboardFill />}
           </span>
@@ -44,7 +44,7 @@ function SideNav() {
           </>
         ))
         }</ul>
-        <Image className="absolute bottom-6 left-10 w-52" src={sidebarimg} alt="sidebardown"/>
+        <Image className="absolute bottom-3 left-10 w-52" src={sidebarimg} alt="sidebardown"/>
     </div>
     </>
   );

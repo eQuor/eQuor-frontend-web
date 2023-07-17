@@ -42,7 +42,7 @@ const Navbar = () => {
     <div className="shadow-md w-full fixed top-0 left-0">
       <div className="md:flex items-center justify-between  bg-[#0066FF] py-4 md:px-10 px-7 h-16">
         {/* <div className="flex items-center justify-between p-0 pl-2"> */}
-        <Image src={logo} alt="eQuor" width={100} height={40} />
+        <Image src={logo} alt="eQuor" className="w-[100px] h-[40px]" priority/>
         {/* </div> */}
         <div
           onClick={() => setOpen(!open)}
@@ -56,7 +56,7 @@ const Navbar = () => {
           }`}
         >
           {links.map((link) => (
-            <>
+            
               <li key={link.id} className="md:ml-8 text-xl md:my-0 my-3">
                 <Link key={link.id}
                   href="#"
@@ -66,7 +66,7 @@ const Navbar = () => {
                 </Link>
                 
               </li>
-            </>
+            
           ))}
           <button
             className="bg-black text-white  font-medium py-2 px-6 rounded md:ml-8 hover:bg-gray-900 
