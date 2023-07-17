@@ -2,8 +2,6 @@
 import Image from "next/image";
 import "tailwindcss/tailwind.css";
 import logo from "../../../../public/eQuor.svg";
-import { Butterfly_Kids } from "next/font/google";
-// import { RiDashboardFill } from "react-icons/ri";
 import { HiMenu } from "react-icons/hi";
 import { CgClose } from "react-icons/cg";
 import { useState } from "react";
@@ -57,15 +55,16 @@ const Navbar = () => {
             open ? "top-20" : "top-[-300px]"
           }`}
         >
-          {links.map((link, index) => (
+          {links.map((link) => (
             <>
-              <li key={index} className="md:ml-8 text-xl md:my-0 my-3">
-                <Link key={index}
+              <li key={link.id} className="md:ml-8 text-xl md:my-0 my-3">
+                <Link key={link.id}
                   href="#"
                   className="text-white font-small hover:text-black duration-500"
                 >
                   {link.text}
                 </Link>
+                
               </li>
             </>
           ))}

@@ -17,6 +17,7 @@ function SideNav() {
     { title: "Audit log",icon: <AiOutlineBars/>},
   ];
   return (
+    <>
     <div className="bg-[#2B2B2B] h- w-80 rounded-md relative ml-2">
       <div>
         {/* add profile icon */}
@@ -43,8 +44,9 @@ function SideNav() {
           </>
         ))
         }</ul>
-        <Image className="absolute bottom-6 left-10" src={sidebarimg} alt="sidebardown" width={150} height={150}/>
+        <Image className="absolute bottom-6 left-10 w-52" src={sidebarimg} alt="sidebardown"/>
     </div>
+    </>
   );
 }
 
