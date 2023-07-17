@@ -39,16 +39,16 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="shadow-md w-full fixed top-0 left-0">
-      <div className="md:flex items-center justify-between  bg-[#0066FF] py-4 md:px-10 px-7 h-16">
+    <div className='shadow-md w-full fixed top-0 left-0'>
+      <div className='md:flex items-center justify-between  bg-[#0066FF] py-4 md:px-10 px-7 h-16'>
         {/* <div className="flex items-center justify-between p-0 pl-2"> */}
-        <Image src={logo} alt="eQuor" className="w-[100px] h-[40px]" priority/>
+        <Image src={logo} alt='eQuor' className='w-[100px] h-[40px]' priority />
         {/* </div> */}
         <div
           onClick={() => setOpen(!open)}
-          className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden text-white"
+          className='text-3xl absolute right-8 top-6 cursor-pointer md:hidden text-white'
         >
-          {open ? <CgClose/> : <HiMenu/>}
+          {open ? <CgClose /> : <HiMenu />}
         </div>
         <ul
           className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-[#0066FF] md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
@@ -56,21 +56,19 @@ const Navbar = () => {
           }`}
         >
           {links.map((link) => (
-            
-              <li key={link.id} className="md:ml-8 text-xl md:my-0 my-3">
-                <Link key={link.id}
-                  href="#"
-                  className="text-white font-small hover:text-black duration-500"
-                >
-                  {link.text}
-                </Link>
-                
-              </li>
-            
+            <li key={link.id} className='md:ml-8 text-xl md:my-0 my-3'>
+              <Link
+                key={link.id}
+                href='#'
+                className='text-white font-small hover:text-black duration-500'
+              >
+                {link.text}
+              </Link>
+            </li>
           ))}
           <button
-            className="bg-black text-white  font-medium py-2 px-6 rounded md:ml-8 hover:bg-gray-900 
-    duration-500"
+            className='bg-black text-white  font-medium py-2 px-6 rounded md:ml-8 hover:bg-gray-900 
+    duration-500'
           >
             Login
           </button>
