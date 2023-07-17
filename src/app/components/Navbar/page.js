@@ -4,6 +4,7 @@ import "tailwindcss/tailwind.css";
 import logo from "../../../../public/eQuor.svg";
 import { Butterfly_Kids } from "next/font/google";
 // import { RiDashboardFill } from "react-icons/ri";
+import { HiMenu } from "react-icons/hi";
 import { useState } from "react";
 import Link from "next/link";
 
