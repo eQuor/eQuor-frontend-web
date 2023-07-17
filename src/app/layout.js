@@ -1,5 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
+import Navbar from "./components/Navbar/page";
+import SideNav from "./components/SideNav/page";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,15 +13,18 @@ export const metadata = {
 export default function GuestLayout({ children }) {
   return (
     <main>
-      <header></header>
+      <header>
+        <Navbar />
+      </header>
       <div class='main-container'>
-        <aside></aside>
+        <aside>
+          <SideNav />
+        </aside>
         <section>
           {/* only edit this section */}
           {children}
         </section>
       </div>
-      <footer></footer>
     </main>
   );
 }
