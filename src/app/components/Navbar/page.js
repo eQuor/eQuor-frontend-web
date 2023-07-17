@@ -12,8 +12,6 @@
 
 "use client";
 import Image from "next/image";
-//import React, { useState } from 'react'
-import Button from "./Button";
 import "tailwindcss/tailwind.css";
 import logo from "./eQuor.svg";
 import { links } from "./Data";
@@ -85,7 +83,12 @@ const Navbar = () => {
               </li>
             );
           })}
-          <Button>Login</Button>
+          <button
+            className="bg-black text-white  font-medium py-2 px-6 rounded md:ml-8 hover:bg-gray-900 
+    duration-500"
+          >
+            Login
+          </button>
         </ul>
       </div>
     </div>
