@@ -5,8 +5,10 @@ export default function Home() {
   return (
     <main>
       <div className="relative">
-        <Navbar className="" />
-        <SideNav className="absolute top-11 bg-red-800" />
+        <Navbar />
+        <div className="absolute top-20">
+          <SideNav />
+        </div>
       </div>
     </main>
   );
