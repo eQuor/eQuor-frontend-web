@@ -13,8 +13,7 @@
 "use client";
 import Image from "next/image";
 import "tailwindcss/tailwind.css";
-import logo from "./eQuor.svg";
-import { links } from "./Data";
+import logo from "../../../../public/eQuor.svg";
 import { Butterfly_Kids } from "next/font/google";
 import { IonIcon } from "@ionic/react";
 import "@ionic/react/css/core.css";
