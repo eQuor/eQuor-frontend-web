@@ -1,3 +1,4 @@
+
 import SideNav from './components/SideNav/page'
 
 export default function Home() {
