@@ -39,8 +39,8 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className='shadow-md w-full fixed top-0 left-0'>
-      <div className='md:flex items-center justify-between  bg-[#0066FF] py-4 md:px-10 px-7 h-16'>
+    <div className='shadow-md w-full top-0 left-0'>
+      <div className='md:flex items-center justify-between  bg-[#0066FF] py-4 md:px-10 px-7 h-[100%]'>
         {/* <div className="flex items-center justify-between p-0 pl-2"> */}
         <Image src={logo} alt='eQuor' className='w-[100px] h-[40px]' priority />
         {/* </div> */}
