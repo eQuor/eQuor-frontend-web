@@ -29,12 +29,12 @@ header {
 aside {
   background-color: cyan;
   grid-area: sidebar;
-  margin-left: 10px;
+  margin: 0 0 10px 10px;
  
 }
 section {
   background-color: red;
   grid-area: main;
-  
+  margin: 0 10px 10px 0;
 }
 

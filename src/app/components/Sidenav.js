@@ -24,7 +24,7 @@ function SideNav() {
           {/* add profile icon */}
           <div className=' pt-5 pb-3 pl-5'>
             <Image src={propic} alt='profile pic' className='ml-5 mb-4' />
-            <h1 className=' uppercase text-white text-xl font-bold'>
+            <h1 className=' uppercase text-white text-xl font-bold min-w-[260px]'>
               Madusha Tharindi
             </h1>
             <h3 className=' uppercase text-gray-500 text-sm'>admin</h3>
@@ -49,7 +49,7 @@ function SideNav() {
         <div className=" flex justify-center items-center relative top-4">
           
         <Image
-          className='left-10 h-40 w-[225px]'
+          className='left-10 min-h-[160px] min-w-[225px] w-[225px] h-40'
           src={sidebarimg}
           alt='sidebardown'
         />
