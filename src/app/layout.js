@@ -12,18 +12,10 @@ export const metadata = {
 export default function GuestLayout({ children }) {
   // {Don't change this area}
   return (
-    <main>
-      <header>
-        <Navbar />
-      </header>
-      <div class="main-container">
-        <aside>
-          <SideNav />
-        </aside>
-        <section>
-          {children}
-        </section>
-      </div>
+    <main class="layout">
+      <header><Navbar/></header>
+      <aside><SideNav/></aside>
+      <section>{children}</section>
     </main>
   );
 }

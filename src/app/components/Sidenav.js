@@ -19,7 +19,7 @@ function SideNav() {
   ];
   return (
     <>
-      <div className='bg-[#2B2B2B] h-[100%] w-80 rounded-md relative ml-2'>
+      <div className='bg-[#2B2B2B] h-[100%] w-[100%] rounded-md'>
         <div>
           {/* add profile icon */}
           <div className=' pt-5 pb-3 pl-5'>
@@ -46,11 +46,14 @@ function SideNav() {
             </>
           ))}
         </ul>
+        <div className=" flex justify-center items-center relative top-4">
+          
         <Image
-          className='absolute bottom-3 left-10 w-52'
+          className='left-10 h-40 w-[225px]'
           src={sidebarimg}
           alt='sidebardown'
         />
+        </div>
       </div>
     </>
   );
