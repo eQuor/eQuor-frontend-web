@@ -1,4 +1,5 @@
 'use client'
+import Navbar from '@components/Navbar'
 import Sidebar from '@components/Sidebar'
 import '@styles/globals.css'
 import { useState } from 'react'
@@ -12,8 +13,9 @@ const RootLayout = ({ children }) => {
     <html lang="en">
       {isUserLoggedIn ? (
         <body>
-          <main className="layout-with-sidebar layout relative">
-            <header className=" h-12 shadow-2xl">lsafhv</header>
+          <main className="layout-with-sidebar layout relative z-0">
+            {/* <header className=" h-12 shadow-2xl">lsafhv</header> */}
+            <Navbar />
             <aside
               className={`bg-white h-[100%] p-3 pt-8 ${
                 open ? 'w-[300px]' : 'w-[100%]'
@@ -34,7 +36,7 @@ const RootLayout = ({ children }) => {
         </body>
       ) : (
         <body>
-          <main className="layout-without-sidebar layout relative">
+          <main className="layout-without-sidebar layout relative z-0">
             <header className=" h-12 shadow-2xl">lsafhv</header>
 
             <section>{children}</section>
