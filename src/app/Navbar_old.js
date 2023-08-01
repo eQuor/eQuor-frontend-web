@@ -1,14 +1,3 @@
-// import React from 'react'
-
-// const Navbar = () => {
-//   return (
-//     <nav>
-//     <h1>Hello</h1>
-//     </nav>
-//   )
-// }
-
-// export default Navbar
 
 "use client";
 import Image from "next/image";
@@ -66,4 +55,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar_old;
