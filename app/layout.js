@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { BsArrowLeftShort } from 'react-icons/bs'
 
 const RootLayout = ({ children }) => {
-  const isUserLoggedIn = false
+  const isUserLoggedIn = true
 
   const [open, setOpen] = useState(false)
   return (
