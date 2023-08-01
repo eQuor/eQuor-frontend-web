@@ -5,6 +5,12 @@ import '@styles/globals.css'
 import { useState } from 'react'
 import { BsArrowLeftShort } from 'react-icons/bs'
 
+
+export const metadata = {
+  title: 'eQuor',
+  description: 'Keep you in know',
+}
+
 const RootLayout = ({ children }) => {
   const isUserLoggedIn = true
 
@@ -13,9 +19,10 @@ const RootLayout = ({ children }) => {
     <html lang="en">
       {isUserLoggedIn ? (
         <body>
+          <Navbar />
           <main className="layout-with-sidebar layout relative z-0">
             {/* <header className=" h-12 shadow-2xl">lsafhv</header> */}
-            <Navbar />
+
             <aside
               className={`bg-white h-[100%] p-3 pt-8 ${
                 open ? 'w-[300px]' : 'w-[100%]'
@@ -36,8 +43,9 @@ const RootLayout = ({ children }) => {
         </body>
       ) : (
         <body>
+          <Navbar />
           <main className="layout-without-sidebar layout relative z-0">
-            <header className=" h-12 shadow-2xl">lsafhv</header>
+            {/* <header className=" h-12 shadow-2xl">lsafhv</header> */}
 
             <section>{children}</section>
           </main>
