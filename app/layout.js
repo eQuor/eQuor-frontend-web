@@ -1,11 +1,12 @@
 'use client'
 import Sidebar from '@components/Sidebar'
+import Sidebartest from '@components/Sidebartest'
 import '@styles/globals.css'
 import { useState } from 'react'
 import { BsArrowLeftShort } from 'react-icons/bs'
 
 const RootLayout = ({ children }) => {
-  const isUserLoggedIn = false
+  const isUserLoggedIn = true
 
   const [open, setOpen] = useState(false)
   return (
@@ -27,7 +28,7 @@ const RootLayout = ({ children }) => {
                   setOpen(!open)
                 }}
               />
-              <Sidebar open={open} />
+              <Sidebartest open={open} />
             </aside>
             <section>{children}</section>
           </main>
