@@ -13,8 +13,6 @@ function Sidebar({ open }) {
   ];
   return (
     <div>
-      {/* <AiOutlineLineChart className=" text-3xl ml-3 text-[#012970]"/>
-        <span htmlFor="" className={`font-sans uppercase ${!open && " hidden"} text-xs duration-300 font-semibold text-[#899BBD] p-2`}>modules</span> */}
       <ul className="pt-2">
         {Menus.map((menu, index) => (
           <>
