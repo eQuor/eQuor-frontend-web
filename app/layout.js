@@ -1,5 +1,5 @@
 "use client";
-// import Sidebar from '@components/Sidebar'
+import Sidebar from "@components/Sidebar";
 import "@styles/globals.css";
 import { useState } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
@@ -10,25 +10,23 @@ const RootLayout = ({ children }) => {
     <html lang="en">
       <body>
         <main className="layout relative">
-          <header className=" h-12">lsafhv</header>
+          <header className=" h-12 shadow-2xl">lsafhv</header>
           <aside
-            className={`bg-blue-700 h-[100%] p-5 pt-8 ${
+            className={`bg-white h-[100%] p-3 pt-8 ${
               open ? "w-[300px]" : "w-[100%]"
             } duration-300 absolute`}
           >
             <BsArrowLeftShort
-              className={`text-3xl absolute -right-3 top-9 border rounded-full border-black ${
+              className={`text-3xl absolute -right-3 top-9 border rounded-full border-[#8198c0] bg-[#DCE8FF] ${
                 !open && "rotate-180"
               }`}
               onClick={() => {
                 setOpen(!open);
               }}
             />
+            <Sidebar open={open}/>
           </aside>
-          <section >
-          {/* className={`${!open ? "w-[100%]" : "w-[80%]"}`} */}
-            {children}
-          </section>
+          <section>{children}</section>
         </main>
       </body>
     </html>

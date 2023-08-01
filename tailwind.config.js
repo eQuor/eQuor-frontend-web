@@ -7,9 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors :{
-        "light-purple":"#99C2FF"
-      }
+      fontFamily: {
+        sans: ['Open Sans', 'sans-serif'],
+      },
     },
   },
   plugins: [],
