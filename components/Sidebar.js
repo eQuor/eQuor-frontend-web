@@ -20,11 +20,11 @@ function Sidebar({ open }) {
               key={index}
               className={`text-[#012970] font-sans flex items-center gap-x-4 cursor-pointer p-2 hover:bg-[#DCE8FF] rounded-md mt-6 `}
             >
-              <span className="text-2xl block float-left">
+              <span key={index} className="text-2xl block float-left">
                 {menu.icon ? menu.icon : <RiDashboardFill />}
               </span>
               <span
-                className={`text-base font-semibold  flex-1 duration-200 ${
+                className={`text-base font-semibold flex-1 duration-200 ${
                   !open && "hidden"
                 }`}
               >

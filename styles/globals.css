@@ -25,7 +25,7 @@ main{
 
 
 header {
-  background-color: white;
+  background-color: yellow;
   grid-area: nav;
   box-shadow: 0 10px 10px black;
   
@@ -40,7 +40,7 @@ aside {
 }
 
 section {
-  background-color: white;
+  background-color: red;
   grid-area: main;
   
 
