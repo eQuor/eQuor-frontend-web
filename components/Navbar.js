@@ -2,7 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { FaBell } from 'react-icons/fa'
 import { IoMdArrowDropdown } from 'react-icons/io'
 
@@ -10,7 +10,22 @@ const Navbar = () => {
   //const isUserLoggedIn = false
 
   const [isUserLoggedIn, setState] = useState(false)
-  const [toggleDropDown, SetToggleDropdown] = useState(false)
+  const [toggleDropDown, setToggleDropdown] = useState(false)
+  const dropdownRef = useRef()
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setToggleDropdown(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   return (
     <nav className=" fixed flex-between top-0 left-0 z-50 bg-white w-full py-1.5 shadow-md">
@@ -50,16 +65,16 @@ const Navbar = () => {
             </span>
             <div
               className="mt-2 ml-0 mr-3"
-              onClick={() => SetToggleDropdown((prev) => !prev)}
+              onClick={() => setToggleDropdown((prev) => !prev)}
             >
               <IoMdArrowDropdown />
             </div>
             {toggleDropDown && (
-              <div className="dropdown">
+              <div ref={dropdownRef} className="dropdown">
                 <button
                   type="button"
                   onClick={() => {
-                    SetToggleDropdown(false)
+                    setToggleDropdown(false)
                     signOut()
                   }}
                   className="mt-5 w-full log-in"
@@ -88,14 +103,20 @@ const Navbar = () => {
               height={37}
               className="rounded-full mr-4"
               alt="profile"
-              onClick={() => SetToggleDropdown((prev) => !prev)}
+              onClick={() => setToggleDropdown((prev) => !prev)}
             ></Image>
+            <div
+              className="mt-2 ml-0 mr-3"
+              onClick={() => setToggleDropdown((prev) => !prev)}
+            >
+              <IoMdArrowDropdown />
+            </div>
             {toggleDropDown && (
-              <div className="dropdown">
+              <div ref={dropdownRef} className="dropdown">
                 <button
                   type="button"
                   onClick={() => {
-                    SetToggleDropdown(false)
+                    setToggleDropdown(false)
                     signOut()
                   }}
                   className="mt-5 w-full log-in"
