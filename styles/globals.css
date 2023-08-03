@@ -52,7 +52,7 @@ aside {
 }
 
 section {
-  background-color: red;
+  background-color: #F0F4FB;
   grid-area: main;
   
 
@@ -61,4 +61,32 @@ section {
   grid-template-rows: repeat(7, 80px);
  
 }
+
+
+/* Style classes for Navbar */
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.flex-between {
+  @apply flex justify-between items-center;
+}
+
+.dropdown {
+  @apply absolute right-0 top-full mt-3  px-4 pb-4 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end shadow-md;
+}
+
+.dropdown_link {
+  @apply text-sm  text-gray-700 hover:text-gray-500 font-medium;
+}
+
+/* Button */
+
+.log-in{
+
+
+  @apply rounded-lg border border-none bg-light-blue py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm flex items-center justify-center;
+}
+
+
 
