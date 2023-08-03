@@ -10,11 +10,12 @@ module.exports = {
       fontFamily: {
         sans: ['Open Sans', 'sans-serif'],
       },
-      colors:{
-        "dark-blue" : "#012970",
-        "light-blue": "#4154F1",
-        "pop-green" : "#8BD870",
-        "error-red" : "#F7DDDC"
+      colors: {
+        'dark-blue': '#012970',
+        'light-blue': '#4154F1',
+        'pop-green': '#8BD870',
+        'error-red': '#F7DDDC',
+        'link-ash': '#989797',
       },
     },
   },
