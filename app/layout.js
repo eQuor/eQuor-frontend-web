@@ -1,5 +1,5 @@
 'use client'
-import Sidebar from '@components/Sidebar'
+// import Sidebar from '@components/Sidebar'
 import Sidebartest from '@components/Sidebartest'
 import '@styles/globals.css'
 import { useState } from 'react'
