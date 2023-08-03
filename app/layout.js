@@ -19,12 +19,14 @@ const RootLayout = ({ children }) => {
     <html lang="en">
       {isUserLoggedIn ? (
         <body>
-          <Navbar />
+          {/* <Navbar /> */}
           <main className="layout-with-sidebar layout relative z-0">
-            {/* <header className=" h-12 shadow-2xl">lsafhv</header> */}
+            <header>
+              <Navbar />
+            </header>
 
             <aside
-              className={`bg-white h-[100%] p-3 pt-8 ${
+              className={`bg-white h-[100%] p-3 pt-8 -z-2 ${
                 open ? 'w-[300px]' : 'w-[100%]'
               } duration-300 absolute`}
             >

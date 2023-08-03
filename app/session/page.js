@@ -9,7 +9,7 @@ const page = () => {
   const subject = 'SCS1101 Database Management'
   return (
     <>
-      <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5">
+      <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
         <span className="text-light-blue font-semibold text-lg">{subject}</span>
 
         <p className="text-link-ash font-semibold text-sm">
@@ -43,10 +43,11 @@ const page = () => {
                 </tbody>
               </table>
             </div>
-            
           </div>
           <div className="col-start-1 col-end-13 row-start-4 row-end-5  px-4 pt-0">
             <span className="text-dark-blue font-semibold text-2xl">Past</span>
+            <Sessioncard />
+            <Sessioncard />
             <Sessioncard />
           </div>
         </>
