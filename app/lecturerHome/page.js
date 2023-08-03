@@ -1,4 +1,5 @@
 "use client";
+import Card from "@components/Card";
 import Search from "@components/Search";
 import React from "react";
 
@@ -18,6 +19,8 @@ const page = () => {
       </div>
 
       <Search/>
+
+        <Card/>
 
       
     </>
