@@ -23,7 +23,7 @@ const RootLayout = ({ children }) => {
          
           <main className="layout-with-sidebar layout relative z-0">
             
-
+          <header><Navbar/></header>
             <aside
               className={`bg-white h-[100%] p-3 pt-8 ${
                 open ? 'w-[300px]' : 'w-[100%]'
