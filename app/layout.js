@@ -1,5 +1,4 @@
 'use client'
-// import Sidebar from '@components/Sidebar'
 import Sidebartest from '@components/Sidebartest'
 import Navbar from '@components/Navbar'
 import '@styles/globals.css'
@@ -21,9 +20,9 @@ const RootLayout = ({ children }) => {
     <html lang="en">
       {isUserLoggedIn ? (
         <body>
-          <Navbar />
+         
           <main className="layout-with-sidebar layout relative z-0">
-            {/* <header className=" h-12 shadow-2xl">lsafhv</header> */}
+            
 
             <aside
               className={`bg-white h-[100%] p-3 pt-8 ${
@@ -45,9 +44,8 @@ const RootLayout = ({ children }) => {
         </body>
       ) : (
         <body>
-          <Navbar />
           <main className="layout-without-sidebar layout relative z-0">
-            {/* <header className=" h-12 shadow-2xl">lsafhv</header> */}
+          <header><Navbar/></header>
 
             <section>{children}</section>
           </main>
