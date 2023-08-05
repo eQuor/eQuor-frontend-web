@@ -18,11 +18,19 @@ const page = () => {
         </p>
       </div>
 
-      <Search/>
+      <div className=" col-start-1 col-end-8 ml-8">
+        <Search />
+      </div>
 
-        <Card/>
-
-      
+      <div className=" col-start-1 col-end-13 ml-10 flex flex-wrap">
+        <div className=" ml-1 flex gap-6"> 
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          
+        </div>
+      </div>
     </>
   );
 };
