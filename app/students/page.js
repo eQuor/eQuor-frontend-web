@@ -57,12 +57,14 @@ function page() {
         <br></br>
         <span className="font-Open Sans text-xs text-gray-500 pl-8">Home / Student </span>
         <br></br>
-        <button className="absolute right-96 bg-blue-600 text-white text-sm p-5 rounded-lg pl-8" style={{ fontSize: '20px' }}>Add New Student</button>
+        <button className="col-start-10 col-end-12 row-start-1 row-end-1 absolute right-96 bg-blue-600 text-white text-sm p-5 rounded-lg pl-8" style={{ fontSize: '20px' }}>Add New Student</button>
         <br></br>
         <h1 className="font-Open Sans text-4xl text-blue-900 pl-8">Current Students</h1>
         <br></br>
         <br></br>
+        <div className='col-start-1 col-end-13 row-start-1 row-end-7'>
         <DataTable columns={columns} data={data} />
+        </div>
       </div>
       
   

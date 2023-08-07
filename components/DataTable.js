@@ -28,7 +28,7 @@ const DataTable = ({ columns, data }) => {
   placeholder="Search here"
   className="p-2 pl-8 mb-4 w-full border border-gray-300 rounded" 
 />
-   <div className=" p-4 bg-blue-100"> <table
+   <div className=" p-4 bg-white "> <table
       {...getTableProps()}
       className=" p-4 border-collapse border border-gray-200 "
     >
