@@ -22,13 +22,12 @@ const page = () => {
         <Search />
       </div>
 
-      <div className=" col-start-1 col-end-13 ml-10 flex flex-wrap">
-        <div className=" ml-1 flex gap-6"> 
+      <div className=" col-start-1 col-end-13 ml-10 flex ">
+        <div className=" ml-1 flex gap-6 flex-wrap"> 
           <Card />
           <Card />
           <Card />
           <Card />
-          
         </div>
       </div>
     </>
