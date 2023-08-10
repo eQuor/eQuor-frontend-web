@@ -1,5 +1,5 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react'
+import Link from 'next/link'
 
 const Home = () => {
   return (
@@ -7,12 +7,8 @@ const Home = () => {
     //   <button className="bg-blue-700 min-w-[50px]">test</button>
     // </div>
 
-    <div>
-      Welcome to the home page
-  
-    </div>
-    
-  );
-};
+    <div>Welcome to the home page</div>
+  )
+}
 
-export default Home;
+export default Home
