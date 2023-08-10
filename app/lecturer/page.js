@@ -1,5 +1,5 @@
 "use client";
-import Card from "@components/card";
+import Card from "@components/Card";
 import Search from "@components/Search";
 import React from "react";
 
