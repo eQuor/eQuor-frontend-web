@@ -48,11 +48,7 @@ header {
 aside {
   background-color: white;
   grid-area: sidebar;
-<<<<<<< HEAD
-  box-shadow: 2px 0 2px rgba(0, 0, 0, 0.3);
-=======
   box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.3);
->>>>>>> 124cfde3446fa1ae00f4e7201db1093d770232a9
 
   
  
@@ -69,15 +65,9 @@ section {
   grid-template-rows: repeat(12, 80px);
  
 }
-<<<<<<< HEAD
-section::-webkit-scrollbar{
-  width: 0px;
-}
-=======
 /* section::-webkit-scrollbar{
   width:0px;
 } */
->>>>>>> 124cfde3446fa1ae00f4e7201db1093d770232a9
 
 
 /* Style classes for Navbar */
