@@ -4,8 +4,6 @@ import Sidebar from '@components/Sidebar'
 import '@styles/globals.css'
 import { useState } from 'react'
 import { BsArrowLeftShort } from 'react-icons/bs'
-import { useRouter } from 'next/router'
-
 
 export const metadata = {
   title: 'eQuor',

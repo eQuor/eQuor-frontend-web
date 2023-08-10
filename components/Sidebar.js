@@ -18,6 +18,8 @@ function Sidebar({ open }) {
         {Menus.map((menu) => (
           <li
             key={menu.id}
+
+            
             className={`text-[#012970] font-sans flex items-center gap-x-4 cursor-pointer p-2 hover:bg-[#DCE8FF] rounded-md mt-6`}
           >
             <span className="text-2xl block float-left">
