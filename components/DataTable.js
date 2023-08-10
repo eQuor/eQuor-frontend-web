@@ -26,11 +26,11 @@ const DataTable = ({ columns, data }) => {
   value={searchQuery}
   onChange={(e) => setSearchQuery(e.target.value)}
   placeholder="Search here"
-  className="p-2 pl-8 mb-4 w-full border border-gray-300 rounded" 
+  className="p-2 pl-8 mb-4 w-full border border-gray-300 rounded-md" 
 />
    <div className=" p-4 bg-white "> <table
       {...getTableProps()}
-      className=" p-4 border-collapse border border-gray-200 "
+      className=" p-4 border-collapse border border-gray-200 rounded-md"
     >
       <thead>
         {headerGroups.map((headerGroup) => (
