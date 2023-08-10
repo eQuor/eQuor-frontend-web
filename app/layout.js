@@ -19,15 +19,6 @@ const RootLayout = ({ children }) => {
     <html lang="en">
       {isUserLoggedIn ? (
         <body>
-<<<<<<< HEAD
-         
-          <main className="layout-with-sidebar layout relative z-0">
-            
-          <header><Navbar/></header>
-            <aside
-              className={`bg-white h-[100%] p-3 pt-8 ${
-                open ? 'w-[300px]' : 'w-[100%] min-w-[80px]'
-=======
           {/* <Navbar /> */}
           <main className="layout-with-sidebar layout relative z-0">
             <header>
@@ -37,7 +28,6 @@ const RootLayout = ({ children }) => {
             <aside
               className={`bg-white h-[100%] p-3 pt-8 -z-2 ${
                 open ? 'w-[300px]' : 'w-[100%]'
->>>>>>> 124cfde3446fa1ae00f4e7201db1093d770232a9
               } duration-300 absolute`}
             >
               <BsArrowLeftShort
