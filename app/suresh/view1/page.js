@@ -3,6 +3,8 @@ import Button from "@components/Button";
 import React, { useEffect } from "react";
 import { RiArrowLeftDoubleFill } from "react-icons/ri";
 import { PieChart, Pie, Cell,ResponsiveContainer } from "recharts";
+import TabsContainer from '@components/Tabscontent'
+
 
 
 const Home = () =>{
@@ -37,8 +39,8 @@ const Home = () =>{
   return (
     
    <>
-    <div className=" bg-white  col-start-1 col-end-13 row-start-1 row-end-2 pl-8  pt-5 ">
-  
+    <div className="  bg-white  row-start-1 row-end-2 w-full  col-start-1 col-end-13  pt-5 ">
+    <TabsContainer/>
    </div>
    
    <div className="  col-start-1 col-end-13 row-start-2 row-end-3 pl-8  pt-5 ">
@@ -80,13 +82,14 @@ const Home = () =>{
    
 
   
-    <div className=" col-start-1 col-end-13 row-start-4 row-end-7   pl-8   ">
+    <div className=" col-start-1 col-end-13 row-start-4 row-end-7   pl-8  ">
 
-     <ResponsiveContainer width="100%" height="100%" className=" relative  ">
-     <PieChart width={400} height={400}>
-          <Pie
+     <ResponsiveContainer width="100%" height="100%"  className="">
+      
+     <PieChart width={400} height={400} >
+          <Pie className=" static !important "
             data={data}
-            cx="10%"
+            cx="15%"
             cy="50%"
             labelLine={false}
             label={renderCustomizedLabel}

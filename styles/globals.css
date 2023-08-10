@@ -92,5 +92,29 @@ section::-webkit-scrollbar{
   @apply rounded-lg border border-none bg-light-blue py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm flex items-center justify-center;
 }
 
+/* styles.css */
+.tabs-container {
+  @apply flex flex-col items-center;
+}
+
+.tab-buttons button {
+  @apply flex flex-row px-4 py-2 border border-white bg-white cursor-pointer w-[200px] ;
+}
+
+.tab-buttons button.active {
+  @apply bg-gray-100;
+}
+
+.tab-content {
+  @apply mt-4;
+}
+
+.custom-pie-chart-container {
+ @apply static; /* Set the position to static */
+  /* Add any other styling you need */
+}
+
+
+
 
 
