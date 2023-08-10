@@ -8,7 +8,7 @@ const page = () => {
   const router = useRouter()
 
   const handleClick = () => {
-    router.push('/admin/staff')
+    router.push('/new/staffmember')
   }
   return (
     <>
