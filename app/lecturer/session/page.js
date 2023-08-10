@@ -20,7 +20,7 @@ const page = () => {
 
       {isSessionActive ? (
         <>
-          <div className="col-start-1 col-end-13 row-start-2 row-end-3  px-4 pt-5">
+          <div className="col-start-1 col-end-13 row-start-2 px-4 pt-5">
             <span className="text-dark-blue font-semibold text-2xl ">
               Active
             </span>
