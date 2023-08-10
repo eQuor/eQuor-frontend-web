@@ -1,4 +1,3 @@
-// TabContent.js
 import React from 'react';
 
 const TabContent = ({ content }) => {
