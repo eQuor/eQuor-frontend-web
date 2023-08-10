@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 import Card from "@components/Card";
 import Search from "@components/Search";
@@ -36,3 +37,14 @@ const page = () => {
 };
 
 export default page;
+=======
+import React from 'react'
+
+const page = () => {
+  return (
+    <div>page</div>
+  )
+}
+
+export default page
+>>>>>>> 124cfde3446fa1ae00f4e7201db1093d770232a9
