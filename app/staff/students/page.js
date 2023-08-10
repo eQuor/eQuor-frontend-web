@@ -1,21 +1,11 @@
 'use client'
 import React from 'react'
-import DataTable from '../../components/DataTable';
+import DataTable from '@components/DataTable';
 import { useRef } from 'react';
 import { useEffect } from 'react';
 
 function page() {
   const tableRef = useRef(null);
-
-
-  // useEffect(() => {
-  //   // Initialize DataTables
-  //   $(tableRef.current).DataTable({
-  //     responsive: true, // Enable responsive layout
-  //     searching: true, // Enable search functionality
-  //     // Add any other DataTables options here
-  //   });
-  // }, []);
 
   const data = [
     { id: 1,name: 'Manag Lama', reg: '2020/IS/027',ind: 20020279, email: 'maan@gmail.com', add: 'molamo' },
@@ -39,7 +29,7 @@ function page() {
     { Header: 'Index No', accessor: 'ind' },
     { Header: 'Email', accessor: 'email' },
     { Header: 'Address', accessor: 'add' },
-    // { Header: 'Age', accessor: 'age' },
+    
   ];
   
   
