@@ -1,5 +1,5 @@
 'use client'
-import Sidebartest from '@components/Sidebartest'
+import Sidebar from '@components/Sidebar'
 import Navbar from '@components/Navbar'
 import '@styles/globals.css'
 import { useState } from 'react'
@@ -37,7 +37,7 @@ const RootLayout = ({ children }) => {
                   setOpen(!open)
                 }}
               />
-              <Sidebartest open={open} />
+              <Sidebar open={open} />
             </aside>
             <section>{children}</section>
           </main>
