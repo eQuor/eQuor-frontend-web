@@ -1,7 +1,8 @@
 "use client";
-import Card from "@components/Card";
+import Card from "@components/card";
 import Search from "@components/Search";
 import React from "react";
+
 
 const page = () => {
   const pageTopic = "Modules";

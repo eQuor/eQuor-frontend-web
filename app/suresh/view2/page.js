@@ -1,3 +1,4 @@
+import Button from "@components/Button";
 import React from "react";
 
 const Home = () => {
@@ -27,6 +28,7 @@ const Home = () => {
           Student attendance Details for this month
         </h1>
       </div>
+      <Button />
     </>
   );
 };
