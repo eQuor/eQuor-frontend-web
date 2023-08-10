@@ -20,7 +20,7 @@ const page = () => {
           <span className="text-dark-blue font-semibold text-2xl ">
             Add a Staff Member
           </span>
-          <div className="mb-6 mt-2">
+          <div className="mb-2 mt-2">
             <label
               htmlFor="name"
               className="block mb-2 text-sm font-medium text-gray-900 "
@@ -35,7 +35,7 @@ const page = () => {
               required
             />
           </div>
-          <div className="mb-6">
+          <div className="mb-2">
             <label
               htmlFor="id"
               className="block mb-2 text-sm font-medium text-gray-900 "
@@ -50,7 +50,7 @@ const page = () => {
               required
             />
           </div>
-          <div className="mb-6">
+          <div className="mb-2">
             <label
               htmlFor="email"
               className="block mb-2 text-sm font-medium text-gray-900 "
@@ -65,7 +65,7 @@ const page = () => {
               required
             />
           </div>
-          <div className="mb-6">
+          <div className="mb-2">
             <label
               htmlFor="address"
               className="block mb-2 text-sm font-medium text-gray-900 "
@@ -82,7 +82,7 @@ const page = () => {
           </div>
 
           <div>
-            <div className="mb-6">
+            <div className="mb-2">
               <label
                 htmlFor="username"
                 className="block mb-2 text-sm font-medium text-gray-900 "
@@ -95,7 +95,7 @@ const page = () => {
                 className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               />
             </div>
-            <div className="mb-6 ">
+            <div className="mb-2">
               <label
                 htmlFor="repeat-password"
                 className="block mb-2 text-sm font-medium text-gray-900"
