@@ -1,4 +1,5 @@
-import React from 'react'
+import Subjectcode from "@components/Subjectcode";
+import React from "react";
 const page = () => {
   return (
     <>
@@ -8,7 +9,7 @@ const page = () => {
         </span>
 
         <p className="text-link-ash font-semibold text-sm">
-          Home / Staff Member /{' '}
+          Home / Staff Member /{" "}
           <span className="text-black font-semibold text-sm">
             Add Staff Member
           </span>
@@ -153,7 +154,7 @@ const page = () => {
         </form>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default page
+export default page;
