@@ -5,7 +5,7 @@ import TabsContainer from "@components/Tabscontent";
 import React from "react";
 
 const page = () => {
-  //const pageTopic = "Modules";
+  const pageTopic = "Modules";
   return (
     <>
       <div className="col-start-1 col-end-13 ">
@@ -13,7 +13,7 @@ const page = () => {
       </div>
       <div className="col-start-1 col-end-13 px-4 row-start-2 row-end-3">
         <span className="text-light-blue font-semibold text-lg">
-          {/* {pageTopic} */}
+          {pageTopic}
         </span>
 
         <p className="text-link-ash font-semibold text-sm">
@@ -26,7 +26,7 @@ const page = () => {
         <Search />
       </div>
 
-      <div className=" col-start-1 col-end-13 flex ">
+      <div className=" col-start-2 col-end-13 flex ">
         <div className="flex gap-6 flex-wrap">
           <Card />
           <Card />
