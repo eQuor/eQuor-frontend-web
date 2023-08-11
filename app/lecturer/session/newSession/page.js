@@ -1,4 +1,8 @@
+"use client"
 import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import Sessioncard from "../Sessioncard"
 
 const page = () => {
      const subject = 'SCS1101 Database Management'
@@ -23,41 +27,38 @@ const page = () => {
           </span>
         </div>
 
-        <div className="col-start-1 col-end-13 row-start-3 row-end-7 px-4 pt-5 mt-3 mx-5 bg-white flex justify-between">
-          <a
-            href="#"
-            className="block max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-          >
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Noteworthy technology acquisitions 2021
-            </h5>
-          
-          </a>
-          <a
-            href="#"
-            className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-          >
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Noteworthy technology acquisitions 2021
-            </h5>
-            <p className="font-normal text-gray-700 dark:text-gray-400">
-              Here are the biggest enterprise technology acquisitions of 2021 so
-              far, in reverse chronological order.
-            </p>
-          </a>
+        <div className="col-start-1 col-end-13 row-start-3 row-end-6 px-4 pt-5  mx-5 bg-white flex justify-between">
+          <div>
+            <button
+              type="submit"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-11 py-12 mt-7 text-center "
+            >
+              With Attendance
+            </button>
+          </div>
+          <Link href="/" className=" gap-2 ml-5 items-center">
+            <Image
+              src="/attendence.svg"
+              alt="eQuor Logo"
+              width={300}
+              height={300}
+              className="object"
+            />
+          </Link>
+          <div>
+            <button
+              type="submit"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-9 py-12 mt-7 text-center "
+            >
+              Without Attendance
+            </button>
+          </div>
+        </div>
 
-          <a
-            href="#"
-            className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-          >
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Noteworthy technology acquisitions 2021
-            </h5>
-            <p className="font-normal text-gray-700 dark:text-gray-400">
-              Here are the biggest enterprise technology acquisitions of 2021 so
-              far, in reverse chronological order.
-            </p>
-          </a>
+        <div className="col-start-1 col-end-13 row-start-7 px-4 pt-0">
+          <span className="text-dark-blue font-semibold text-2xl">Past</span>
+          <Sessioncard />
+         
         </div>
 
         {/* <div className="col-start-3 col-end-11 row-start-3 px-4 pt-0  ">
