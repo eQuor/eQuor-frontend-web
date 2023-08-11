@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import tick from "../../public/login.png";
+import tick from "../../../public/login.png";
 
 
 const regForm = () => {
