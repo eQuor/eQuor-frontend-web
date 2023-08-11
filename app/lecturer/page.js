@@ -9,7 +9,7 @@ const page = () => {
   return (
     <>
       <div className="col-start-1 col-end-13 ">
-        <TabsContainer/>
+        <TabsContainer />
       </div>
       <div className="col-start-1 col-end-13 px-4 row-start-2 row-end-3">
         <span className="text-light-blue font-semibold text-lg">

@@ -26,7 +26,7 @@ const TabsContainer = () => {
           {tab.title}
           <hr
             className={`h-[3px] w-full self-end bg-white border-white ${
-        index === activeTab ? "bg-black" : ""
+              index === activeTab ? "bg-black" : ""
             }`}
           />
         </button>
