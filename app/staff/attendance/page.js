@@ -106,7 +106,7 @@ const Home = () => {
         </p>
       </div>
 
-      <div className="bg-black col-start-2  col-end-11 row-start-3 row-end-5 pl-12  ">
+      <div className="bg-black col-start-1  col-end-11 row-start-4 row-end-5 pl-12  ">
 
       </div>
       <div className=" text-white text-center text-sm col-start-11 col-end-12 row-start-4 row-end-5 ml-4 ">
@@ -121,9 +121,9 @@ const Home = () => {
         </h1>
       </div>
 
-      <div className=" row-start-6 row-end-7">
+      {/* <div className="">
         <DataTable columns={columns} data={data} />
-      </div>
+      </div> */}
     </>
   );
 };

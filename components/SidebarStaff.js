@@ -26,7 +26,7 @@ function SidebarAdmin({ open }) {
     {
       topic: 'attendance management',
       subitems: [
-        { title: 'Attendance', icon: <RiFileChartFill />, url:"/staff" },
+        { title: 'Attendance', icon: <RiFileChartFill />, url:"/staff/attendance" },
         { title: 'Absence Reports', icon: <RiDraftFill />, url:"/staff/medical" },
       ],
     },
