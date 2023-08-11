@@ -3,7 +3,13 @@ import React from 'react';
 import Image from 'next/image';
 import cardimg from '../public/card.png';
 import { BsThreeDots } from 'react-icons/bs';
+import { useRouter } from 'next/navigation'
+
+
 const Card = () => {
+
+
+
   return (
     <>
       <div className='bg-white rounded-xl pb-6 shadow-xl font-medium min-w-[300px]'>

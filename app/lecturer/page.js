@@ -5,7 +5,7 @@ import TabsContainer from "@components/Tabscontent";
 import React from "react";
 
 const page = () => {
-  const pageTopic = "Modules";
+  const pageTopic = 'Modules'
   return (
     <>
       <div className="col-start-1 col-end-13 ">
@@ -17,7 +17,7 @@ const page = () => {
         </span>
 
         <p className="text-link-ash font-semibold text-sm">
-          Home /{" "}
+          Home /{' '}
           <span className="text-black font-semibold text-sm">{pageTopic}</span>
         </p>
       </div>
@@ -35,7 +35,7 @@ const page = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default page;
+export default page
