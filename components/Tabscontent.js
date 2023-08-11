@@ -16,7 +16,7 @@ const TabsContainer = () => {
   ];
 
   return (
-    <div className="pl-10 bg-white tab-buttons flex items-end h-14 gap-12 shadow-md border">
+    <div className="pl-10 bg-white flex items-end h-14 gap-12 shadow-md border">
       {tabs.map((tab, index) => (
         <button
           key={index}
