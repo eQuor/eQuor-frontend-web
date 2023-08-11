@@ -8,25 +8,26 @@ import {
 } from 'react-icons/ri'
 import { PiStudentBold } from 'react-icons/pi'
 import '@fontsource/open-sans'
+import Link from 'next/link'
 function SidebarAdmin({ open }) {
   const Menus = [
-    { topic: false, subitems: [{ title: 'Dashboard' }] },
+    { topic: false, subitems: [{ title: 'Dashboard',icon:<RiDashboardFill />, url:"/admin" }] },
     {
       topic: 'user management',
       subitems: [
-        { title: 'Lecturer', icon: <RiPresentationFill /> },
-        { title: 'Student', icon: <PiStudentBold /> },
+        { title: 'Lecturer', icon: <RiPresentationFill />, url:"/admin" },
+        { title: 'Student', icon: <PiStudentBold />, url:"/admin"},
       ],
     },
     {
       topic: 'module management',
-      subitems: [{ title: 'Module', icon: <RiPresentationFill /> }],
+      subitems: [{ title: 'Module', icon: <RiPresentationFill />, url:"/admin" }],
     },
     {
       topic: 'attendance management',
       subitems: [
-        { title: 'Attendance', icon: <RiFileChartFill /> },
-        { title: 'Absence Reports', icon: <RiDraftFill /> },
+        { title: 'Attendance', icon: <RiFileChartFill />, url:"/admin" },
+        { title: 'Absence Reports', icon: <RiDraftFill />, url:"/admin" },
       ],
     },
   ]
@@ -49,6 +50,8 @@ function SidebarAdmin({ open }) {
             )}
             <ul>
               {menu.subitems.map((subitem, index) => (
+              <Link key={index} href={subitem.url}>
+
                 <li
                   key={index}
                   className={`text-[#012970] font-sans flex items-center gap-x-4 cursor-pointer p-2 hover:bg-[#DCE8FF] rounded-md mt-2 `}
@@ -68,6 +71,7 @@ function SidebarAdmin({ open }) {
                     <span className=" hidden"></span>
                   )}
                 </li>
+              </Link>  
               ))}
             </ul>
           </li>
