@@ -1,23 +1,10 @@
-<<<<<<< HEAD
-"use client"
-import React from 'react'
-import { BsSearch } from "react-icons/bs";
-
-=======
 'use client'
 import React from 'react'
 import { BsSearch } from 'react-icons/bs'
->>>>>>> 124cfde3446fa1ae00f4e7201db1093d770232a9
 
 const Search = () => {
   return (
     <>
-<<<<<<< HEAD
-    <div className="bg-white flex-between gap-5 p-4 self-start h-[60%] rounded-md  shadow-md">
-        <BsSearch className="text-2xl text-[#2B2B2B]"/>
-        <input className="w-full placeholder:font-semibold p-2 outline-none font-semibold" type="text" placeholder="Search here"/>
-      </div>
-=======
       <form>
         <label
           htmlFor="default-search"
@@ -58,13 +45,8 @@ const Search = () => {
           </button>
         </div>
       </form>
->>>>>>> 124cfde3446fa1ae00f4e7201db1093d770232a9
     </>
   )
 }
 
-<<<<<<< HEAD
 export default Search
-=======
-export default Search
->>>>>>> 124cfde3446fa1ae00f4e7201db1093d770232a9
