@@ -1,6 +1,5 @@
 // TabsContainer.js
-import React, { useState } from 'react';
-import TabContent from "@components/Tabcontent";
+import React, { useState } from "react";
 
 const TabsContainer = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -9,32 +8,32 @@ const TabsContainer = () => {
     setActiveTab(index);
   };
 
-  
   const tabs = [
-    { title: '1st Year', content: '' },
-    { title: '2nd Year', content: '' },
-    { title: '3rd Year', content: '' },
-    { title: '4th Year', content: '' },
+    { title: "1st Year", content: "" },
+    { title: "2nd Year", content: "" },
+    { title: "3rd Year", content: "" },
+    { title: "4th Year", content: "" },
   ];
 
   return (
-    <div className="tabs-container">
-      <div className="tab-buttons w-full   flex">
-        {tabs.map((tab, index) => (
-          <button
-            key={index}
-            className={`px-4 py-2  text-xl font-semibold border text-dark-blue  border-gray-300 bg-white cursor-pointer ${
-              index === activeTab ? 'bg-gray-100' : ''
+    <div className="pl-10 bg-white tab-buttons flex items-end h-14 gap-12 shadow-md border">
+      {tabs.map((tab, index) => (
+        <button
+          key={index}
+          className={`text-lg font-semibold text-dark-blue cursor-pointer flex items-center flex-col gap-1 bg-white min-w-[100px]`}
+          onClick={() => handleTabClick(index)}
+        >
+          {tab.title}
+          <hr
+            className={`h-[3px] w-full self-end bg-white border-white ${
+              index === activeTab ? "bg-dark-blue" : ""
             }`}
-            onClick={() => handleTabClick(index)}
-          >
-            {tab.title}
-          </button>
-        ))}
-      </div>
-      <div className="tab-content">
+          />
+        </button>
+      ))}
+      {/* <div className="tab-content">
         <TabContent content={tabs[activeTab].content} />
-      </div>
+      </div> */}
     </div>
   );
 };

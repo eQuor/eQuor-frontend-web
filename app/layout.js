@@ -26,7 +26,7 @@ const RootLayout = ({ children }) => {
           <header><Navbar/></header>
             <aside
               className={`bg-white h-[100%] p-3 pt-8 ${
-                open ? 'w-[300px]' : 'w-[100%] min-w-[80px]'
+                open ? 'w-[300px] absolute' : 'w-[100%] min-w-[80px]'
               } duration-300 absolute`}
             >
               <BsArrowLeftShort
