@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import tick from "../../public/tick.gif";
+import tick from "../../../public/tick.gif";
 
 
 const resetPwd = () => {
