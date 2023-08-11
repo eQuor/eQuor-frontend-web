@@ -2,9 +2,15 @@
 import React, { useState } from 'react'
 import { AiFillPlaySquare } from 'react-icons/ai'
 import Sessioncard from './Sessioncard'
+import { useRouter } from 'next/navigation'
 
 const page = () => {
   const [isSessionActive, setSessionActive] = useState(false)
+  const router = useRouter()
+
+  const handleClick = () => {
+    router.push('/lecturer/session/newSession')
+  }
 
   const subject = 'SCS1101 Database Management'
   return (
@@ -64,10 +70,10 @@ const page = () => {
               <button
                 type="submit"
                 className="text-white bg-light-blue hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-7 py-2 text-center  "
+                onClick={handleClick}
               >
                 New Session
               </button>
-             
             </div>
           </div>
           <div className="col-start-1 col-end-13 row-start-3   px-4 pt-0">
