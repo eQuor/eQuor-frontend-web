@@ -8,7 +8,7 @@ import {
 } from 'react-icons/ri'
 import { PiStudentBold } from 'react-icons/pi'
 import '@fontsource/open-sans'
-function Sidebar({ open }) {
+function SidebarAdmin({ open }) {
   const Menus = [
     { topic: false, subitems: [{ title: 'Dashboard' }] },
     {
@@ -77,4 +77,4 @@ function Sidebar({ open }) {
   )
 }
 
-export default Sidebar
+export default SidebarAdmin
