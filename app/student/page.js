@@ -9,7 +9,7 @@ const page = () => {
   return (
     <>
       <div className="col-start-1 col-end-13 ">
-        <TabsContainer/>
+        <TabsContainer />
       </div>
       <div className="col-start-1 col-end-13 px-4 row-start-2 row-end-3">
         <span className="text-light-blue font-semibold text-lg">
@@ -17,8 +17,7 @@ const page = () => {
         </span>
 
         <p className="text-link-ash font-semibold text-sm">
-          Home /{" "}
-          <span className="text-black font-semibold text-sm"></span>
+          Home / <span className="text-black font-semibold text-sm"></span>
         </p>
       </div>
 
