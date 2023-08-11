@@ -1,8 +1,7 @@
 "use client";
-import Card from "@components/Card";
+import Card from "@components/card";
 import Search from "@components/Search";
 import React from "react";
-
 
 const page = () => {
   const pageTopic = "Modules";
@@ -24,7 +23,7 @@ const page = () => {
       </div>
 
       <div className=" col-start-1 col-end-13 ml-10 flex ">
-        <div className=" ml-1 flex gap-6 flex-wrap"> 
+        <div className=" ml-1 flex gap-6 flex-wrap">
           <Card />
           <Card />
           <Card />
