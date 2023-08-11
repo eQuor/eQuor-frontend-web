@@ -28,6 +28,7 @@ const Navbar = () => {
   }, [])
 
   return (
+    // <nav className=" fixed flex-between top-0 left-0 z-50 bg-white w-full py-1.5 shadow-md">
     <nav className="flex-between top-0 left-0 z-50 bg-white w-full h-full py-1.5 shadow-md">
       <Link href="/" className="flex gap-2 ml-5 items-center">
         <Image
