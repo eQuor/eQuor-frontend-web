@@ -6,6 +6,29 @@ import TabsContainer from "@components/Tabscontent";
 import React from "react";
 
 const page = () => {
+  const data = [
+    { id: 1,sname: 'Manag Lama', mid: '2020/IS/027',email: 20020279, addr: 'maan@gmail.com', action: 23 },
+    { id: 1,sname: 'Manag Lama', mid: '2020/IS/027',email: 20020279, addr: 'maan@gmail.com', action: 23 },
+    { id: 1,sname: 'Manag Lama', mid: '2020/IS/027',email: 20020279, addr: 'maan@gmail.com', action: 23 },
+    { id: 1,sname: 'Manag Lama', mid: '2020/IS/027',email: 20020279, addr: 'maan@gmail.com', action: 23 },
+    { id: 1,sname: 'Manag Lama', mid: '2020/IS/027',email: 20020279, addr: 'maan@gmail.com', action: 23 },
+    { id: 1,sname: 'Manag Lama', mid: '2020/IS/027',email: 20020279, addr: 'maan@gmail.com', action: 23 },
+    { id: 1,sname: 'Manag Lama', mid: '2020/IS/027',email: 20020279, addr: 'maan@gmail.com', action: 23 },
+    { id: 1,sname: 'Manag Lama', mid: '2020/IS/027',email: 20020279, addr: 'maan@gmail.com', action: 23 },
+    { id: 1,sname: 'Manag Lama', mid: '2020/IS/027',email: 20020279, addr: 'maan@gmail.com', action: 23 },
+    
+    // Add more data as needed
+  ];
+
+  const columns = [
+    { Header: '#', accessor: 'id' },
+    { Header: 'Staff Member Name', accessor: 'sname' },
+    { Header: 'Member ID', accessor: 'mid' },
+    { Header: 'Email', accessor: 'email' },
+    { Header: 'Address', accessor: 'addr' },
+    { Header: 'Action', accessor: 'action' },
+  ];
+
   return (
     <>
       <div className=" bg-white  col-start-1 col-end-13 row-start-1 row-end-2 pl-8  pt-5 ">
@@ -32,7 +55,9 @@ const page = () => {
         <h1>Current Staff members</h1>
       </div>
 
-      <div></div>
+      <div className="" >
+      <DataTable columns={columns} data={data} />
+      </div>
     </>
   );
 };
