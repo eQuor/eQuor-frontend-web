@@ -52,7 +52,7 @@ const page = () => {
         <h1>Revoked API Requests</h1>
       </div>
 
-      <div className="" >
+      <div className="col-start-1 col-end-13 row-start-5 px-4 pt-5" >
       <DataTable columns={columns} data={data} />
       </div>
     </>
