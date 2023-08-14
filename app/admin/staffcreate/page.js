@@ -2,8 +2,11 @@
 import React, { useState } from "react";
 import config from "@configuration/config";
 import axios from "axios";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     id: "",
@@ -15,12 +18,32 @@ const page = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    const response = await axios.post(
-      config.API_BASE_URL + config.API_VERSION + "/user/create",
-      formData
-    );
-    console.log("Response:", response);
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This will save the staff member details!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Save it!",
+    })
+      .then(async (result) => {
+        if (result.isConfirmed) {
+          const response = await axios.post(
+            config.API_BASE_URL + config.API_VERSION + "/admin/createStaff",
+            formData
+          );
+          if (response.status === 200) {
+            Swal.fire("Saved!", "New staff member has been saved.", "success");
+            router.push("/admin/staffmanege");
+          } else
+            Swal.fire("Error!", "Couldn't save new staff member.", "success");
+        }
+      })
+      .catch((error) => {
+        Swal.fire("Error!", "Couldn't save new staff member.", "error");
+      });
   };
   return (
     <>
@@ -67,7 +90,7 @@ const page = () => {
               }}
             />
           </div>
-          <div className="mb-6">
+          <div className='mb-6'>
             <label
               htmlFor='id'
               className='block mb-2 text-sm font-medium text-gray-900 '
@@ -87,7 +110,7 @@ const page = () => {
               }}
             />
           </div>
-          <div className="mb-6">
+          <div className='mb-6'>
             <label
               htmlFor='email'
               className='block mb-2 text-sm font-medium text-gray-900 '
@@ -107,7 +130,7 @@ const page = () => {
               }}
             />
           </div>
-          <div className="mb-6">
+          <div className='mb-6'>
             <label
               htmlFor='address'
               className='block mb-2 text-sm font-medium text-gray-900 '
@@ -129,7 +152,7 @@ const page = () => {
           </div>
 
           <div>
-            <div className="mb-6">
+            <div className='mb-6'>
               <label
                 htmlFor='username'
                 className='block mb-2 text-sm font-medium text-gray-900 '
@@ -148,7 +171,7 @@ const page = () => {
                 }}
               />
             </div>
-            <div className="mb-6 ">
+            <div className='mb-6 '>
               <label
                 htmlFor='new-password'
                 className='block mb-2 text-sm font-medium text-gray-900'

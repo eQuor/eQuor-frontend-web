@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const columns = [
-  { Header: "#", accessor: "id" },
+  { Header: "#", accessor: "index" },
   { Header: "Full Name", accessor: "fullName" },
   { Header: "NIC", accessor: "nic" },
   { Header: "Email", accessor: "email" },
@@ -27,14 +27,16 @@ const Page = () => {
     }).then(function (response) {
       console.log("axios wed");
       setData(response.data);
+      let i = 1;
       response.data.forEach((element) => {
         element.action = 1;
+        element.index = i;
+        i++;
       });
       console.log(data);
     });
   }, []);
 
-  console.log(data);
   return (
     <>
       <div className=' col-start-1 col-end-13  '></div>
