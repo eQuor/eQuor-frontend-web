@@ -9,19 +9,14 @@ const DataTable = ({ columns, data }) => {
 
   
   return (
+    <>
     <div className="pl-8 ">
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        placeholder="Search here"
-        className="p-2 pl-8 mb-4 w-full border border-gray-300 rounded-md"
-      />
+      
       <div className=" p-4 bg-white ">
         {" "}
         <table
           {...getTableProps()}
-          className=" p-4 border-collapse border border-gray-200 rounded-md"
+          className=" p-4 border-collapse border border-gray-200 rounded-md w-[100%] px-4"
         >
           <thead>
             {headerGroups.map((headerGroup) => (
@@ -29,7 +24,7 @@ const DataTable = ({ columns, data }) => {
                 {headerGroup.headers.map((column) => (
                   <th
                     {...column.getHeaderProps()}
-                    className=" border-red-500 bg-gray-200 text-gray-600 font-bold font-Open Sans text-lg px-4 py-2"
+                    className=" border-red-500 bg-gray-200 text-gray-600 font-bold font-Open Sans text-lg px-4 py-2 text-left"
                   >
                     {column.render("Header")}
                   </th>
@@ -57,6 +52,7 @@ const DataTable = ({ columns, data }) => {
         </table>
       </div>
     </div>
+    </>
   );
 };
 
