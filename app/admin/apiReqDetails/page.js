@@ -98,7 +98,7 @@ const page = () => {
               type='text'
               id='UCSC'
               className='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 '
-              placeholder='name@flowbite.com'
+              placeholder='UCSC'
               required
               onChange={(e) => {
                 let newFormData = formData;
@@ -108,14 +108,44 @@ const page = () => {
             />
           </div>
 
-            
-        
-          <button
-            type='submit'
-            className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center'
-          >
-            Register new account
-          </button>
+          <div className="mb-6">
+            <label
+              htmlFor='email'
+              className='block mb-2 text-sm font-medium text-gray-900 '
+            >
+              Request Purpose
+            </label>
+            <input
+              type='text'
+              id='purpose'
+              className='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 '
+              placeholder='Academic'
+              required
+              onChange={(e) => {
+                let newFormData = formData;
+                newFormData.email = e.target.value;
+                setFormData(newFormData);
+              }}
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div className="justify-self-end"></div>
+            <div className="flex justify-self-end gap-4 ">
+              <button
+                className="group relative w-26 flex justify-self-end py-2 px-4 border border-transparent font-regular rounded-md text-white bg-indigo-600 hover:bg-indigo-700
+                    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-base"
+              >
+                Submit
+              </button>
+              <button
+                className="group relative w-26 flex justify-self-end py-2 px-4 border border-transparent font-regular rounded-md text-white bg-[#6C757D] hover:bg-[#5a6268]
+                    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-base"
+              >
+                Reset
+              </button>
+            </div>
+          </div>
         </form>
         {/* <div>
           <URLFilter />
