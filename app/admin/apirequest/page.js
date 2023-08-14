@@ -57,6 +57,7 @@ const page = () => {
       <div className="col-start-1 col-end-13 row-start-5 px-4 pt-5" >
       <DataTable columns={columns} data={data} />
       </div>
+
     </>
   );
 };

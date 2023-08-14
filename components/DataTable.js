@@ -12,11 +12,11 @@ const DataTable = ({ columns, data }) => {
     <>
     <div className="pl-8 ">
       
-      <div className=" p-4 bg-white ">
+      <div>
         {" "}
         <table
           {...getTableProps()}
-          className=" p-4 border-collapse border border-gray-200 rounded-md w-[100%] px-4"
+          className=" border-separate bg-[#C7C7C7] border  rounded-md w-[100%]"
         >
           <thead>
             {headerGroups.map((headerGroup) => (
@@ -24,7 +24,7 @@ const DataTable = ({ columns, data }) => {
                 {headerGroup.headers.map((column) => (
                   <th
                     {...column.getHeaderProps()}
-                    className=" border-red-500 bg-gray-200 text-gray-600 font-bold font-Open Sans text-lg px-4 py-2 text-left"
+                    className="bg-[#E7E7E7] border-red-500 text-gray-600 font-bold font-Open Sans text-lg p-1"
                   >
                     {column.render("Header")}
                   </th>
@@ -40,7 +40,7 @@ const DataTable = ({ columns, data }) => {
                   {row.cells.map((cell) => (
                     <td
                       {...cell.getCellProps()}
-                      className="p-4 font-Open Sans text-base bg-white  text-gray-500"
+                      className="p-2 font-Open Sans text-base bg-white  text-gray-500"
                     >
                       {cell.render("Cell")}
                     </td>
