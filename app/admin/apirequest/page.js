@@ -37,9 +37,7 @@ const Page = () => {
   console.log(data);
   return (
     <>
-      <div className=' col-start-1 col-end-13  '>
-        <TabsContainer />
-      </div>
+      <div className=' col-start-1 col-end-13  '></div>
       <div className='  col-start-1 col-end-13 row-start-2 row-end-3 pl-8  pt-5 '>
         <h1 className='text-xl font-normal text-[#4154F1] bg-#F0F4FB'>
           {" "}
