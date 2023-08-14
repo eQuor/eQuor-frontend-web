@@ -21,11 +21,11 @@ const data = [
 
 const columns = [
   { Header: '#', accessor: 'id' },
-  { Header: 'Student name', accessor: 'name' },
-  { Header: 'Reg No', accessor: 'reg' },
-  { Header: 'Index No', accessor: 'ind' },
+  { Header: 'Full Name', accessor: 'fname' },
+  { Header: 'NIC', accessor: 'nic' },
   { Header: 'Email', accessor: 'email' },
-  { Header: 'Action', accessor: 'age' },
+  { Header: 'Address', accessor: 'addr' },
+  { Header: 'Action', accessor: 'action' },
 ];
 
 const page = () => {

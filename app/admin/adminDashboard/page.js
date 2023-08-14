@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from "next/image";
 import graph from "../../../public/Graph.png";
-import piegrph from "../../../public/piechart.png";
+import piegrph from "../../../public/piechart.jpeg";
 
 const adminDashboard = () => {
   const subject = 'Dashboard'
