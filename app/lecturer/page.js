@@ -23,7 +23,7 @@ const page = () => {
       </div>
 
       <div className=" col-start-1 col-end-8 ml-8">
-        <Search />
+        <Search/>
       </div>
 
       <div className=" col-start-2 col-end-13 flex ">

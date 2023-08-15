@@ -22,7 +22,6 @@ function page() {
         element.index = i;
         i++;
       });
-      console.log(data);
     });
   }, []);
 
