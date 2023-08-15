@@ -20,26 +20,32 @@ function SidebarAdmin({ open }) {
     {
       topic: false,
       subitems: [
-        { title: 'Dashboard', icon: <RiDashboardFill />, url: '/admin' }
+        { title: 'Dashboard', icon: <RiDashboardFill />, url: '/admin' },
       ],
     },
     {
       topic: 'user management',
       subitems: [
-        { title: 'Staff Member', icon: <BsFillPersonFill />, url: '/admin' }
+        {
+          title: 'Staff Member',
+          icon: <BsFillPersonFill />,
+          url: '/admin/staffmanage',
+        },
       ],
     },
     {
       topic: 'api request management',
       subitems: [
-        { title: 'Api Requests', icon: <BsBuildingFillLock />, url: '/admin' }
+        {
+          title: 'Api Requests',
+          icon: <BsBuildingFillLock />,
+          url: '/admin/api',
+        },
       ],
     },
     {
       topic: 'audit management',
-      subitems: [
-        { title: 'Audit Log', icon: <BsTools />, url: '/admin' }
-      ],
+      subitems: [{ title: 'Audit Log', icon: <BsTools />, url: '/admin' }],
     },
   ]
 
