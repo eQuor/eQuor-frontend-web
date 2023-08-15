@@ -16,14 +16,20 @@ const page = () => {
         </p>
       </div>
 
-      <div className="col-start-1 col-end-12 row-start-2   px-4 pt-5 mt-3">
+      {/* <div className="col-start-1 col-end-12 row-start-2   px-4 pt-5 mt-3">
         <span className="text-dark-blue font-semibold text-2xl ">
           API Request Details
         </span>
-      </div>
+      </div> */}
 
       <div className="col-start-3 col-end-11 row-start-3 px-4 pt-0  ">
         <form className="bg-white rounded shadow-lg px-4 py-3">
+          <div className="mb-6 mt-2">
+            <span className="text-dark-blue font-semibold text-2xl ">
+              API Request Details
+            </span>
+          </div>
+
           <div className="mb-6 mt-2">
             <label
               htmlFor="name"
