@@ -113,14 +113,14 @@ const Navbar = () => {
               <IoMdArrowDropdown />
             </div>
             {toggleDropDown && (
-              <div ref={dropdownRef} className='dropdown'>
+              <div ref={dropdownRef} className='dropdown '>
                 <button
                   type='button'
                   onClick={() => {
                     setToggleDropdown(false);
                     signOut();
                   }}
-                  className='mt-5 w-full log-in'
+                  className='mt-5 w-full log-in '
                 >
                   Log out
                 </button>
