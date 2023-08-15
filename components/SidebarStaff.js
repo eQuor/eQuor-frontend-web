@@ -75,28 +75,27 @@ function SidebarAdmin({ open }) {
             )}
             <ul>
               {menu.subitems.map((subitem, index) => (
-              <Link key={index} href={subitem.url}>
-
-                <li
-                  key={index}
-                  className={`text-[#012970] font-sans flex items-center gap-x-4 cursor-pointer p-2 hover:bg-[#DCE8FF] rounded-md mt-2 `}
-                >
-                  <span key={index} className="text-2xl block float-left">
-                    {subitem.icon ? subitem.icon : <RiDashboardFill />}
-                  </span>
-                  {subitem.title ? (
-                    <span
-                      className={`text-base font-semibold flex-1 duration-200 ${
-                        !open && 'hidden'
-                      }`}
-                    >
-                      {subitem.title}
+                <Link key={index} href={subitem.url}>
+                  <li
+                    key={index}
+                    className={`text-[#012970] font-sans flex items-center gap-x-4 cursor-pointer p-2 hover:bg-[#DCE8FF] rounded-md mt-2 `}
+                  >
+                    <span key={index} className="text-2xl block float-left">
+                      {subitem.icon ? subitem.icon : <RiDashboardFill />}
                     </span>
-                  ) : (
-                    <span className=" hidden"></span>
-                  )}
-                </li>
-              </Link>  
+                    {subitem.title ? (
+                      <span
+                        className={`text-base font-semibold flex-1 duration-200 ${
+                          !open && 'hidden'
+                        }`}
+                      >
+                        {subitem.title}
+                      </span>
+                    ) : (
+                      <span className=" hidden"></span>
+                    )}
+                  </li>
+                </Link>
               ))}
             </ul>
           </li>

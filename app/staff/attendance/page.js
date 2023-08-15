@@ -9,38 +9,6 @@ import Card from '@components/Card'
 import Link from 'next/link'
 
 const Home = () => {
-  const datapie = [
-    { name: 'present students', value: 500 },
-    { name: 'abesent students', value: 300 },
-  ]
-  const COLORS = ['#012970', '#899BBD']
-
-  const RADIAN = Math.PI / 180
-  const renderCustomizedLabel = ({
-    cx,
-    cy,
-    midAngle,
-    innerRadius,
-    outerRadius,
-    percent,
-    index,
-  }) => {
-    const radius = innerRadius + (outerRadius - innerRadius) * 0.5
-    const x = cx + radius * Math.cos(-midAngle * RADIAN)
-    const y = cy + radius * Math.sin(-midAngle * RADIAN)
-
-    return (
-      <text
-        x={x}
-        y={y}
-        fill="white"
-        textAnchor={x > cx ? 'start' : 'end'}
-        dominantBaseline="central"
-      >
-        {`${(percent * 100).toFixed(0)}%`}
-      </text>
-    )
-  }
 
   return (
     <>

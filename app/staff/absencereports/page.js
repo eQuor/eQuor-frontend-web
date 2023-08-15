@@ -54,7 +54,7 @@ const page = () => {
                       type="checkbox"
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
                     />
-                    <label for="checkbox-all-search" className="sr-only">
+                    <label htmlFor="checkbox-all-search" className="sr-only">
                       checkbox
                     </label>
                   </div>
@@ -82,7 +82,7 @@ const page = () => {
                       type="checkbox"
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2"
                     />
-                    <label for="checkbox-table-search-1" className="sr-only">
+                    <label htmlFor="checkbox-table-search-1" className="sr-only">
                       checkbox
                     </label>
                   </div>
@@ -122,7 +122,7 @@ const page = () => {
                       type="checkbox"
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2"
                     />
-                    <label for="checkbox-table-search-2" className="sr-only">
+                    <label htmlFor="checkbox-table-search-2" className="sr-only">
                       checkbox
                     </label>
                   </div>
@@ -162,7 +162,7 @@ const page = () => {
                       type="checkbox"
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2 "
                     />
-                    <label for="checkbox-table-search-2" className="sr-only">
+                    <label htmlFor="checkbox-table-search-2" className="sr-only">
                       checkbox
                     </label>
                   </div>
@@ -203,7 +203,7 @@ const page = () => {
                       type="checkbox"
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2 "
                     />
-                    <label for="checkbox-table-search-2" className="sr-only">
+                    <label htmlFor="checkbox-table-search-2" className="sr-only">
                       checkbox
                     </label>
                   </div>
@@ -244,7 +244,7 @@ const page = () => {
                       type="checkbox"
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
                     />
-                    <label for="checkbox-table-search-3" className="sr-only">
+                    <label htmlFor="checkbox-table-search-3" className="sr-only">
                       checkbox
                     </label>
                   </div>
