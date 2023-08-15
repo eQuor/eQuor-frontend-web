@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 const addStudent = () => {
   const router = useRouter();
-  const subject = "Student registration";
+  const subject = "Lecturer registration";
   const [formData, setFormData] = useState({
     fullName: "",
     id: "",
@@ -15,13 +15,13 @@ const addStudent = () => {
     address: "",
     userName: "",
     password: "",
-    indexNo: "",
+    lectureCode: "",
     propic: "",
-    regNo: "",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData)
 
     Swal.fire({
       title: "Are you sure?",
@@ -35,18 +35,18 @@ const addStudent = () => {
       .then(async (result) => {
         if (result.isConfirmed) {
           const response = await axios.post(
-            config.API_BASE_URL + config.API_VERSION + "/staff/createStudent",
+            config.API_BASE_URL + config.API_VERSION + "/staff/createLecturer",
             formData
           );
           if (response.status === 200) {
-            Swal.fire("Saved!", "New staff member has been saved.", "success");
-            router.push("/staff/lectures");
+            Swal.fire("Saved!", "New Lecturer has been saved.", "success");
+            router.push("/staff/students");
           } else
-            Swal.fire("Error!", "Couldn't save new staff member.", "success");
+            Swal.fire("Error!", "Couldn't save new Lecturer.", "success");
         }
       })
       .catch((error) => {
-        Swal.fire("Error!", "Couldn't save new staff member.", "error");
+        Swal.fire("Error!", "Couldn't save new Lecturer.", "error");
       });
   };
 
@@ -56,7 +56,7 @@ const addStudent = () => {
         <span className="text-light-blue font-semibold text-lg">{subject}</span>
 
         <p className="text-link-ash font-semibold text-sm">
-          Home / Student /{" "}
+          Home / Staff /{" "}
           <span className="text-black font-semibold text-sm">{subject}</span>
         </p>
       </div>
@@ -65,13 +65,13 @@ const addStudent = () => {
         <form action="" className="bg-white">
           <div>
             <h1 className="text-xl text-left text-[#012970] font-medium">
-              Add a Student
+              Add a Lecturer
             </h1>
           </div>
           <div className="h-12 bg-white"></div>
           <div className="text-base bg-white">
             <div>
-              <label>Student full name</label>
+              <label>Lecturer full name</label>
               <input
                 type="text"
                 autoComplete="none"
@@ -89,38 +89,23 @@ const addStudent = () => {
             <br />
             <div className="flex">
               <div>
-                <label>Registration Number</label>
+                <label>Lecturer Code</label>
                 <input
                   type="text"
                   autoComplete="none"
                   required
                   className="appearance-none rounded-none static vlock w-full px-3 py-2 border border-gray-300 placeholder-gray-500
                         text-gray-900 rounded-t-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="2020/IS/027"
+                  placeholder="Code here"
                   onChange={(e) => {
                     let newFormData = formData;
-                    newFormData.regNo = e.target.value;
+                    newFormData.lectureCode = e.target.value;
                     setFormData(newFormData);
                   }}
                 />
               </div>
               <br />
-              <div className="ml-10">
-                <label>Index Number</label>
-                <input
-                  type="text"
-                  autoComplete="none"
-                  required
-                  className="appearance-none rounded-none static vlock w-full px-3 py-2 border border-gray-300 placeholder-gray-500
-                        text-gray-900 rounded-t-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="2020/IS/027"
-                  onChange={(e) => {
-                    let newFormData = formData;
-                    newFormData.indexNo = e.target.value;
-                    setFormData(newFormData);
-                  }}
-                />
-              </div>
+             
             </div>
             <br />
             <div>

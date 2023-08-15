@@ -19,7 +19,7 @@ const page = () => {
   const router = useRouter();
   const [data, setData] = useState([]);
   useEffect(() => {
-    console.log("useEffect is running");
+   
 
     axios({
       method: "get",
