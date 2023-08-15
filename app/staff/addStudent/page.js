@@ -39,14 +39,14 @@ const addStudent = () => {
             formData
           );
           if (response.status === 200) {
-            Swal.fire("Saved!", "New staff member has been saved.", "success");
+            Swal.fire("Saved!", "New Student has been saved.", "success");
             router.push("/staff/lectures");
           } else
-            Swal.fire("Error!", "Couldn't save new staff member.", "success");
+            Swal.fire("Error!", "Couldn't save new Student.", "success");
         }
       })
       .catch((error) => {
-        Swal.fire("Error!", "Couldn't save new staff member.", "error");
+        Swal.fire("Error!", "Couldn't save new Student.", "error");
       });
   };
 
