@@ -19,12 +19,13 @@ const DataTable = ({ columns, data }) => {
           className=" border-separate bg-[#C7C7C7] border  rounded-md w-[100%]"
         >
           <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
+            {headerGroups.map((headerGroup,index) => (
+              <tr {...headerGroup.getHeaderGroupProps()} key={index}>
+                {headerGroup.headers.map((column,index) => (
                   <th
                     {...column.getHeaderProps()}
                     className="bg-[#E7E7E7] border-red-500 text-gray-600 font-bold font-Open Sans text-lg p-1"
+                    key={index}
                   >
                     {column.render("Header")}
                   </th>
@@ -33,14 +34,15 @@ const DataTable = ({ columns, data }) => {
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
-            {rows.map((row) => {
+            {rows.map((row,index) => {
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => (
+                <tr {...row.getRowProps()} key={index}>
+                  {row.cells.map((cell,index) => (
                     <td
                       {...cell.getCellProps()}
                       className="p-2 font-Open Sans text-base bg-white  text-gray-500"
+                      key={index}
                     >
                       {cell.render("Cell")}
                     </td>
