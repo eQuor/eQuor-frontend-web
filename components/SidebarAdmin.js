@@ -45,7 +45,7 @@ function SidebarAdmin({ open }) {
     },
     {
       topic: 'audit management',
-      subitems: [{ title: 'Audit Log', icon: <BsTools />, url: '/admin' }],
+      subitems: [{ title: 'Audit Log', icon: <BsTools />, url: '/admin/auditlog' }],
     },
   ]
 

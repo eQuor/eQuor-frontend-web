@@ -14,14 +14,12 @@ const page = () => {
       </div> */}
       <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
         <span className="text-light-blue font-semibold text-lg">
-          Staff Member Management
+          Student Management
         </span>
 
         <p className="text-link-ash font-semibold text-sm">
           Home /{' '}
-          <span className="text-black font-semibold text-sm">
-            Staff members
-          </span>
+          <span className="text-black font-semibold text-sm">Students</span>
         </p>
       </div>
 
@@ -31,16 +29,13 @@ const page = () => {
         </div>
 
         <div className="ml-3">
-          <Button
-            title={'Add Staff Member'}
-            url={'/admin/staffmanage/staffcreate'}
-          />
+          <Button title={'Add Student'} url={'/staff/student/addstudent'} />
         </div>
       </div>
 
       <div className="col-start-1 col-end-13 px-4 pt-5">
         <span className="text-dark-blue font-semibold text-2xl ">
-          Current Staff Members
+          Current Students
         </span>
         <div class=" overflow-x-auto shadow-md sm:rounded-lg mt-4">
           <table class="w-full text-sm text-left text-gray-500 ">
@@ -77,7 +72,7 @@ const page = () => {
                 <td className="px-6 py-4">
                   <Link
                     className="font-medium text-blue-600 "
-                    href="/admin/staffmanage/editstaff"
+                    href="/staff/Student/editStudent"
                   >
                     Edit
                   </Link>
@@ -97,7 +92,7 @@ const page = () => {
                 <td className="px-6 py-4">
                   <Link
                     className="font-medium text-blue-600 "
-                    href="/admin/staffmanage/editstaff"
+                    href="/staff/Student/editStudent"
                   >
                     Edit
                   </Link>
@@ -116,7 +111,7 @@ const page = () => {
                 <td className="px-6 py-4">
                   <Link
                     className="font-medium text-blue-600 "
-                    href="/admin/staffmanage/editstaff"
+                    href="/staff/Student/editStudent"
                   >
                     Edit
                   </Link>
@@ -135,7 +130,7 @@ const page = () => {
                 <td className="px-6 py-4">
                   <Link
                     className="font-medium text-blue-600 "
-                    href="/admin/staffmanage/editstaff"
+                    href="/staff/Student/editStudent"
                   >
                     Edit
                   </Link>
@@ -154,7 +149,7 @@ const page = () => {
                 <td className="px-6 py-4">
                   <Link
                     className="font-medium text-blue-600 "
-                    href="/admin/staffmanage/editstaff"
+                    href="/staff/Student/editStudent"
                   >
                     Edit
                   </Link>
@@ -173,7 +168,7 @@ const page = () => {
                 <td className="px-6 py-4">
                   <Link
                     className="font-medium text-blue-600 "
-                    href="/admin/staffmanage/editstaff"
+                    href="/staff/Student/editStudent"
                   >
                     Edit
                   </Link>
@@ -192,7 +187,7 @@ const page = () => {
                 <td className="px-6 py-4">
                   <Link
                     className="font-medium text-blue-600 "
-                    href="/admin/staffmanage/editstaff"
+                    href="/staff/Student/editStudent"
                   >
                     Edit
                   </Link>
@@ -211,7 +206,7 @@ const page = () => {
                 <td className="px-6 py-4">
                   <Link
                     className="font-medium text-blue-600 "
-                    href="/admin/staffmanage/editstaff"
+                    href="/staff/Student/editStudent"
                   >
                     Edit
                   </Link>
@@ -230,7 +225,7 @@ const page = () => {
                 <td className="px-6 py-4">
                   <Link
                     className="font-medium text-blue-600 "
-                    href="/admin/staffmanage/editstaff"
+                    href="/staff/Student/editStudent"
                   >
                     Edit
                   </Link>

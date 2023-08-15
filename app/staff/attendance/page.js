@@ -1,131 +1,202 @@
-"use client";
-import Button from "@components/Button";
-import React from "react";
-import TabsContainer from "@components/Tabscontent";
-import DataTable from "@components/DataTable";
+'use client'
+import Button from '@components/Button'
+import React from 'react'
+import Search from '@components/Search'
+import TabsContainer from '@components/Tabscontent'
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
+
+import Card from '@components/Card'
+import Link from 'next/link'
 
 const Home = () => {
-  const data = [
-    {
-      id: 1,
-      name: "Manag Lama",
-      reg: "2020/IS/027",
-      ind: 20020279,
-      email: "maan@gmail.com",
-      age: 23,
-    },
-    {
-      id: 1,
-      name: "Manag Lama",
-      reg: "2020/IS/027",
-      ind: 20020279,
-      email: "maan@gmail.com",
-      age: 23,
-    },
-    {
-      id: 1,
-      name: "Manag Lama",
-      reg: "2020/IS/027",
-      ind: 20020279,
-      email: "maan@gmail.com",
-      age: 23,
-    },
-    {
-      id: 1,
-      name: "Manag Lama",
-      reg: "2020/IS/027",
-      ind: 20020279,
-      email: "maan@gmail.com",
-      age: 23,
-    },
-    {
-      id: 1,
-      name: "Manag Lama",
-      reg: "2020/IS/027",
-      ind: 20020279,
-      email: "maan@gmail.com",
-      age: 23,
-    },
-    {
-      id: 1,
-      name: "Manag Lama",
-      reg: "2020/IS/027",
-      ind: 20020279,
-      email: "maan@gmail.com",
-      age: 23,
-    },
-    {
-      id: 1,
-      name: "Manag Lama",
-      reg: "2020/IS/027",
-      ind: 20020279,
-      email: "maan@gmail.com",
-      age: 23,
-    },
-    {
-      id: 1,
-      name: "Manag Lama",
-      reg: "2020/IS/027",
-      ind: 20020279,
-      email: "maan@gmail.com",
-      age: 23,
-    },
-    {
-      id: 1,
-      name: "Manag Lama",
-      reg: "2020/IS/027",
-      ind: 20020279,
-      email: "maan@gmail.com",
-      age: 23,
-    },
+  const datapie = [
+    { name: 'present students', value: 500 },
+    { name: 'abesent students', value: 300 },
+  ]
+  const COLORS = ['#012970', '#899BBD']
 
-    // Add more data as needed
-  ];
+  const RADIAN = Math.PI / 180
+  const renderCustomizedLabel = ({
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    percent,
+    index,
+  }) => {
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5
+    const x = cx + radius * Math.cos(-midAngle * RADIAN)
+    const y = cy + radius * Math.sin(-midAngle * RADIAN)
 
-  const columns = [
-    { Header: "#", accessor: "id" },
-    { Header: "Student name", accessor: "name" },
-    { Header: "Reg No", accessor: "reg" },
-    { Header: "Index No", accessor: "ind" },
-    { Header: "Email", accessor: "email" },
-    { Header: "Action", accessor: "age" },
-  ];
+    return (
+      <text
+        x={x}
+        y={y}
+        fill="white"
+        textAnchor={x > cx ? 'start' : 'end'}
+        dominantBaseline="central"
+      >
+        {`${(percent * 100).toFixed(0)}%`}
+      </text>
+    )
+  }
 
   return (
     <>
-      <div className=" col-start-1 col-end-13  ">
+      <div className="col-start-1 col-end-13 ">
         <TabsContainer />
       </div>
-      <div className="  col-start-1 col-end-13 row-start-2 row-end-3 pl-8  pt-5 ">
-        <h1 className="text-xl font-normal text-[#4154F1] bg-#F0F4FB">
-          {" "}
-          IS3116 Database Management System
-        </h1>
-        <p className=" text-xs font-normal">
-          Home/Attendance/Attendance Reports
+
+      <div className="col-start-1 col-end-13 row-start-2 row-end-2  px-4 pt-5 mt-3">
+        <span className="text-light-blue font-semibold text-lg">
+          Attendance
+        </span>
+
+        <p className="text-link-ash font-semibold text-sm">
+          Home /{' '}
+          <span className="text-black font-semibold text-sm"> Attendance</span>
         </p>
       </div>
 
-      <div className="bg-black col-start-1  col-end-11 row-start-4 row-end-5 pl-12  ">
+      <div className="col-start-1 col-end-13 px-4 pt-5 flex">
+        <div className="w-[1200px] overflow-x-auto">
+          <Search />
+        </div>
 
-      </div>
-      <div className=" text-white text-center text-sm col-start-11 col-end-12 row-start-4 row-end-5 ml-4 ">
-        <button className="bg-light-blue w-[150px] h-[50px] rounded-[5px] ">
-          Generate Report
-        </button>
-      </div>
-
-      <div className="  col-start-1 col-end-13 row-start-5 row-end-6 pl-12  pt-10 ">
-        <h1 className="text-xl font-semibold text-dark-blue bg-#F0F4FB">
-          Student attendance Details for this month
-        </h1>
+        <div className="ml-3">
+          <Button title={'Generate Report'} url={'/staff/module/addmodule'} />
+        </div>
       </div>
 
-      {/* <div className="">
-        <DataTable columns={columns} data={data} />
-      </div> */}
+      <div className="col-start-1 col-end-13 px-4 pt-5">
+        <span className="text-dark-blue font-semibold text-2xl ">
+          Present Students
+        </span>
+        <div class=" overflow-x-auto shadow-md sm:rounded-lg mt-4">
+          <table class="w-full text-sm text-left text-gray-500 ">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
+              <tr>
+                <th scope="col" className="px-6 py-3">
+                  Student Name
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Student Email
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Index Number
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Registration Number
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="bg-white border-b">
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                >
+                  Pasan Silva
+                </th>
+                <td className="px-6 py-4">john@example.com</td>
+                <td className="px-6 py-4">20001278</td>
+                <td className="px-6 py-4">2020/CS/120</td>
+              </tr>
+              <tr className="bg-white border-b ">
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                >
+                  Pasan Silva
+                </th>
+                <td className="px-6 py-4">jane@example.com</td>
+                <td className="px-6 py-4">20001278</td>
+                <td className="px-6 py-4">2020/CS/120</td>
+              </tr>
+              <tr className="bg-white border-b ">
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                >
+                  Pasan Silva
+                </th>
+                <td className="px-6 py-4">jane@example.com</td>
+                <td className="px-6 py-4">20001278</td>
+                <td className="px-6 py-4">2020/CS/120</td>
+              </tr>
+              <tr className="bg-white border-b ">
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                >
+                  Pasan Silva
+                </th>
+                <td className="px-6 py-4">jane@example.com</td>
+                <td className="px-6 py-4">20001278</td>
+                <td className="px-6 py-4">2020/CS/120</td>
+              </tr>
+              <tr className="bg-white border-b ">
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                >
+                  Pasan Silva
+                </th>
+                <td className="px-6 py-4">jane@example.com</td>
+                <td className="px-6 py-4">20001278</td>
+                <td className="px-6 py-4">2020/CS/120</td>
+              </tr>
+              <tr className="bg-white border-b ">
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                >
+                  Pasan Silva
+                </th>
+                <td className="px-6 py-4">jane@example.com</td>
+                <td className="px-6 py-4">20001278</td>
+                <td className="px-6 py-4">2020/CS/120</td>
+              </tr>
+              <tr className="bg-white border-b ">
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                >
+                  Pasan Silva
+                </th>
+                <td className="px-6 py-4">jane@example.com</td>
+                <td className="px-6 py-4">20001278</td>
+                <td className="px-6 py-4">2020/CS/120</td>
+              </tr>
+              <tr className="bg-white border-b ">
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                >
+                  Pasan Silva
+                </th>
+                <td className="px-6 py-4">jane@example.com</td>
+                <td className="px-6 py-4">20001278</td>
+                <td className="px-6 py-4">2020/CS/120</td>
+              </tr>
+              <tr className="bg-white ">
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
+                >
+                  Pasan Silva
+                </th>
+                <td className="px-6 py-4">jane@example.com</td>
+                <td className="px-6 py-4">20001278</td>
+                <td className="px-6 py-4">UCSC</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

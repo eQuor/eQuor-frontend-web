@@ -1,18 +1,29 @@
-import React from "react";
+'use client'
+import React from 'react'
+import { useRouter } from 'next/navigation'
 
 const addModule = () => {
   const subject = 'Module Management'
 
+
+   const router = useRouter()
+
+   const handleClick = () => {
+     router.push('/staff/module')
+   }
   return (
     <>
-      <div className="col-start-1 col-end-9 row-start-1 row-end-13 px-10">
-        <span className="text-light-blue font-semibold text-lg">{subject}</span>
+      <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
+        <span className="text-light-blue font-semibold text-lg">
+          Module Management
+        </span>
 
         <p className="text-link-ash font-semibold text-sm">
-          Home / Student /{" "}
-          <span className="text-black font-semibold text-sm">{subject}</span>
+          Home / Modules /{' '}
+          <span className="text-black font-semibold text-sm">Add Module</span>
         </p>
       </div>
+
       <div className="col-start-3 col-end-13 row-start-2 m-24 p-5 sm:px-6 lg:px-8 w-[700px] h-[540px] justify-center bg-white rounded-lg shadow-lg overflow-y-auto scrollbar-hidden">
         <form action="" className="bg-white">
           <div>
@@ -89,6 +100,7 @@ const addModule = () => {
               <button
                 className="group relative w-26 flex justify-self-end py-2 px-4 border border-transparent font-regular rounded-md text-white bg-indigo-600 hover:bg-indigo-700
                     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-base"
+                onClick={handleClick}
               >
                 Submit
               </button>
@@ -103,7 +115,7 @@ const addModule = () => {
         </form>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default addModule;
+export default addModule
