@@ -97,12 +97,13 @@ const adminDashboard = () => {
 
   return (
     <>
-      <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5">
-        <span className="text-light-blue font-semibold text-lg">{subject}</span>
-
-        <p className="text-link-ash font-semibold text-sm">
-          Home /{" "}
-          <span className="text-black font-semibold text-sm">{subject}</span>
+     <div className="  col-start-1 col-end-13  pl-8  pt-5 ">
+        <h1 className="text-xl font-normal text-[#4154F1] bg-#F0F4FB">
+          {" "}
+          Dashboard
+        </h1>
+        <p className=" text-xs font-normal">
+          Home / Dashboard
         </p>
       </div>
 
@@ -158,7 +159,7 @@ const adminDashboard = () => {
       </div>
       {/* .................cards end here .......................  */}
 
-      <div className="col-start-2 col-end-6 row-start-4 row-end-7 text-center h-full mt-10 bg-white">
+      <div className="col-start-2 col-end-7 row-start-4 row-end-7 h-[280px] text-center  mt-10 bg-white">
         <p className="text-lg font-medium text-dark-blue ">
           Attendance Growth This Month
         </p>
@@ -188,13 +189,13 @@ const adminDashboard = () => {
         </ResponsiveContainer>
       </div>
 
-      <div className="col-start-7 col-end-12 row-start-4 row-end-7 h-full text-center mt-10 bg-white  ">
+      <div className="col-start-8 col-end-12 row-start-4 row-end-7  h-[280px] text-center mt-10 bg-white  ">
         <p className="text-lg font-medium text-dark-blue ">
           Total Attendance for this month
         </p>
 
         <ResponsiveContainer width="100%" height="100%" className="">
-          <PieChart className=" -ml-40" width={300} height={300}>
+          <PieChart className=" -top-3" width={300} height={300}>
             <Pie
               className=" static !important "
               data={datapie}
@@ -202,7 +203,7 @@ const adminDashboard = () => {
               // cy="50%"
               labelLine={false}
               label={renderCustomizedLabel}
-              outerRadius={100}
+              outerRadius={110}
               fill="#899BBD80"
               dataKey="value"
             >

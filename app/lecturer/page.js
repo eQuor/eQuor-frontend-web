@@ -4,7 +4,7 @@ import React from "react";
 import Search from "@components/Search";
 import TabsContainer from "@components/Tabscontent";
 
-import Card from "@components/Card";
+import Card from "@components/card";
 import Link from "next/link";
 
 const Home = () => {
@@ -29,7 +29,7 @@ const Home = () => {
         </div>
 
         <div className="ml-3">
-          <Button title={"Add Module"} url={"/staff/module/addmodule"} />
+          <Button title={"Search"} url={"/lecturer"} />
         </div>
       </div>
 

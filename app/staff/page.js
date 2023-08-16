@@ -158,7 +158,7 @@ const adminDashboard = () => {
       </div>
       {/* .................cards end here .......................  */}
 
-      <div className="col-start-2 col-end-6 row-start-4 row-end-7 text-center h-full mt-10 bg-white">
+      <div className="col-start-2 col-end-7 row-start-4 row-end-7 h-[280px] text-center  mt-10 bg-white">
         <p className="text-lg font-medium text-dark-blue ">
           Attendance Growth This Month
         </p>
@@ -188,13 +188,13 @@ const adminDashboard = () => {
         </ResponsiveContainer>
       </div>
 
-      <div className="col-start-7 col-end-12 row-start-4 row-end-7 h-full text-center mt-10 bg-white  ">
+      <div className="col-start-8 col-end-12 row-start-4 row-end-7  h-[280px] text-center mt-10 bg-white  ">
         <p className="text-lg font-medium text-dark-blue ">
           Total Attendance for this month
         </p>
 
         <ResponsiveContainer width="100%" height="100%" className="">
-          <PieChart className=" -ml-40" width={300} height={300}>
+          <PieChart className=" -top-3" width={300} height={300}>
             <Pie
               className=" static !important "
               data={datapie}
@@ -202,7 +202,7 @@ const adminDashboard = () => {
               // cy="50%"
               labelLine={false}
               label={renderCustomizedLabel}
-              outerRadius={100}
+              outerRadius={110}
               fill="#899BBD80"
               dataKey="value"
             >

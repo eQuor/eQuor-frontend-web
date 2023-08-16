@@ -9,6 +9,11 @@ import "@styles/globals.css";
 import { useState } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
 
+
+import { usePathname } from 'next/navigation'
+
+
+
 export const metadata = {
   title: "eQuor",
   description: "Keep you in know",
@@ -16,10 +21,26 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   const isUserLoggedIn = true;
-  const userType = 3;
+  let userType;
+
+
+   const pathname = usePathname()
+  const segment = pathname.split('/')[1]
+  if (segment === "admin") {
+    userType = 1;
+  } else if (segment === "staff") {
+    userType = 2;
+  } else if (segment === "lecturer") {
+    userType = 3;
+  } else if (segment === "student") {
+    userType = 4;
+  } else {
+    userType = 1;
+  }
 
   const [open, setOpen] = useState(false);
   return (
+    
     <html lang='en'>
       {isUserLoggedIn ? (
         <body>

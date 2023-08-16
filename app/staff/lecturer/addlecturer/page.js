@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 const addStudent = () => {
   const router = useRouter();
-  const subject = "Lecturer registration";
+  const subject = "Lecturer Registration";
   const [formData, setFormData] = useState({
     fullName: "",
     id: "",
@@ -61,7 +61,7 @@ const addStudent = () => {
         </p>
       </div>
 
-      <div className="col-start-3 col-end-13 row-start-2 row-end-1 m-24 p-5 sm:px-6 lg:px-8 w-[700px] h-[540px] justify-center bg-white rounded-lg shadow-lg overflow-y-auto scrollbar-hidden">
+      <div className="col-start-4 col-end-13 p-5 w-[700px] h-[750px] justify-center bg-white rounded-lg shadow-lg overflow-y-auto">
         <form action="" className="bg-white">
           <div>
             <h1 className="text-xl text-left text-[#012970] font-medium">

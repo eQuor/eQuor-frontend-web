@@ -48,7 +48,7 @@ const page = () => {
           {" "}
           Staff Member Management
         </h1>
-        <p className=' text-xs font-normal'>Home/Staff Member</p>
+        <p className=' text-xs font-normal'>Home / Staff Member</p>
       </div>
 
       <div className='w-[950px] pl-10 '>

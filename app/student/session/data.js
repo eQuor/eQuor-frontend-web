@@ -40,5 +40,5 @@ export const sessionData = [
     date: '2023 / 07 / 30',
     time: '8.00-10.00',
     lecturer: 'Mr.Kavinda Atapattu',
-  }
+  },
 ]

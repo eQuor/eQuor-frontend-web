@@ -47,7 +47,7 @@ function page() {
           {" "}
           Lecturer Management
         </h1>
-        <p className=' text-xs font-normal'>Home/Lecturers</p>
+        <p className=' text-xs font-normal'>Home / Lecturers</p>
       </div>
 
       <div className='w-[950px] pl-10 '>

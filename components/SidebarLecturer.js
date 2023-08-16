@@ -34,24 +34,24 @@ function SidebarAdmin({ open }) {
           icon: <PiChalkboardTeacherFill />,
           url: '/lecturer/session/newSession',
         },
-        { title: 'Groups', icon: <MdPeople />, url: '/lecturer' },
+        { title: 'Groups', icon: <MdPeople />, url: '/lecturer/groups' },
       ],
     },
-    {
-      topic: 'Interations',
-      subitems: [
-        {
-          title: 'Polls',
-          icon: <BsFillFileBarGraphFill />,
-          url: '/lecturer',
-        },
-        {
-          title: 'Q&A',
-          icon: <RiQuestionAnswerFill />,
-          url: '/lecturer',
-        },
-      ],
-    },
+    // {
+    //   topic: 'Interations',
+    //   subitems: [
+    //     {
+    //       title: 'Polls',
+    //       icon: <BsFillFileBarGraphFill />,
+    //       url: '/lecturer',
+    //     },
+    //     {
+    //       title: 'Q&A',
+    //       icon: <RiQuestionAnswerFill />,
+    //       url: '/lecturer',
+    //     },
+    //   ],
+    // },
     {
       topic: 'Attendance',
       subitems: [

@@ -48,7 +48,7 @@ function page() {
           {" "}
           Student Management
         </h1>
-        <p className=' text-xs font-normal'>Home/Students</p>
+        <p className=' text-xs font-normal'>Home / Students</p>
       </div>
 
       <div className='w-[950px] pl-10 '>

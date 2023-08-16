@@ -44,7 +44,7 @@ const Page = () => {
           {" "}
           API Request Management
         </h1>
-        <p className=" text-xs font-normal">Home/API requests</p>
+        <p className=" text-xs font-normal">Home / API Requests</p>
       </div>
 
       <div className="w-[950px] pl-10 ">
