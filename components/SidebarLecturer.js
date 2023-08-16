@@ -58,7 +58,7 @@ function SidebarAdmin({ open }) {
         {
           title: 'Attendance',
           icon: <RiFileChartFill />,
-          url: '/lecturer',
+          url: '/lecturer/attendance',
         },
       ],
     },

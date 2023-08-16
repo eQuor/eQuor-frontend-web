@@ -1,224 +1,68 @@
-import React from 'react'
-import Link from 'next/link'
+"use client";
+import Button from "@components/Button";
+import DataTable from "@components/DataTable";
+import Search from "@components/Search";
+import TabsContainer from "@components/Tabscontent";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-const page = () => {
+const columns = [
+  { Header: "#", accessor: "index" },
+  { Header: "Full Name", accessor: "fullName" },
+  { Header: "NIC", accessor: "nic" },
+  { Header: "Email", accessor: "email" },
+  { Header: "Address", accessor: "address" },
+  { Header: "Action", accessor: "action" },
+];
+
+const Page = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    console.log("useEffect is running");
+
+    axios({
+      method: "get",
+      url: "http://localhost:3001/api/v1/admin/getApiRequests",
+      responseType: "json",
+    }).then(function (response) {
+      console.log("axios wed");
+      setData(response.data);
+      let i = 1;
+      response.data.forEach((element) => {
+        element.action = 1;
+        element.index = i;
+        i++;
+      });
+      console.log(data);
+    });
+  }, []);
+
   return (
     <>
-      <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
-        <span className="text-light-blue font-semibold text-lg">
-          API Requst Management
-        </span>
+      <div className="  col-start-1 col-end-13  pl-8  pt-5 ">
+        <h1 className="text-xl font-normal text-[#4154F1] bg-#F0F4FB">
+          {" "}
+          API Request Management
+        </h1>
+        <p className=" text-xs font-normal">Home/API requests</p>
+      </div>
 
-        <p className="text-link-ash font-semibold text-sm">
-          Home /{' '}
-          <span className="text-black font-semibold text-sm">API Requests</span>
-        </p>
+      <div className="w-[950px] pl-10 ">
+        <Search />
+      </div>
+      <div className=" col-start-4 col-end-7">
+        <Button title={"Revoked API Requests"} />
+      </div>
+
+      <div className=" font-semibold text-[#012970] text-3xl col-start-1 col-end-13  pl-12  pt-4 ">
+        <h1>API Requests</h1>
       </div>
 
       <div className="col-start-1 col-end-13 px-4 pt-5">
-        <span className="text-dark-blue font-semibold text-2xl ">
-          API Requests
-        </span>
-        <div class=" overflow-x-auto shadow-md sm:rounded-lg mt-4">
-          <table class="w-full text-sm text-left text-gray-500 ">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
-              <tr>
-                <th scope="col" className="px-6 py-3">
-                  ID
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  email
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Institute
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Department
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Action
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="bg-white border-b">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                >
-                  U12345
-                </th>
-                <td className="px-6 py-4">john@example.com</td>
-                <td className="px-6 py-4">University of Colombo</td>
-                <td className="px-6 py-4">Finance</td>
-                <td className="px-6 py-4">
-                  <Link
-                    className="font-medium text-blue-600 "
-                    href="/admin/api/apirequestdetails"
-                  >
-                    Edit
-                  </Link>
-                  {/* <a href="#" className="font-medium text-blue-600 "></a> */}
-                </td>
-              </tr>
-              <tr className="bg-white border-b ">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                >
-                  U67890
-                </th>
-                <td className="px-6 py-4">jane@example.com</td>
-                <td className="px-6 py-4">University of Colombo</td>
-                <td className="px-6 py-4">Marketing</td>
-                <td className="px-6 py-4">
-                  <Link
-                    className="font-medium text-blue-600 "
-                    href="/admin/api/apirequestdetails"
-                  >
-                    Edit
-                  </Link>
-                </td>
-              </tr>
-              <tr className="bg-white border-b ">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                >
-                  U67890
-                </th>
-                <td className="px-6 py-4">jane@example.com</td>
-                <td className="px-6 py-4">University of Colombo</td>
-                <td className="px-6 py-4">Marketing</td>
-                <td className="px-6 py-4">
-                  <Link
-                    className="font-medium text-blue-600 "
-                    href="/admin/api/apirequestdetails"
-                  >
-                    Edit
-                  </Link>
-                </td>
-              </tr>
-              <tr className="bg-white border-b ">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                >
-                  U67890
-                </th>
-                <td className="px-6 py-4">jane@example.com</td>
-                <td className="px-6 py-4">University of Colombo</td>
-                <td className="px-6 py-4">Marketing</td>
-                <td className="px-6 py-4">
-                  <Link
-                    className="font-medium text-blue-600 "
-                    href="/admin/api/apirequestdetails"
-                  >
-                    Edit
-                  </Link>
-                </td>
-              </tr>
-              <tr className="bg-white border-b ">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                >
-                  U67890
-                </th>
-                <td className="px-6 py-4">jane@example.com</td>
-                <td className="px-6 py-4">University of Colombo</td>
-                <td className="px-6 py-4">Marketing</td>
-                <td className="px-6 py-4">
-                  <Link
-                    className="font-medium text-blue-600 "
-                    href="/admin/api/apirequestdetails"
-                  >
-                    Edit
-                  </Link>
-                </td>
-              </tr>
-              <tr className="bg-white border-b ">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                >
-                  U67890
-                </th>
-                <td className="px-6 py-4">jane@example.com</td>
-                <td className="px-6 py-4">University of Colombo</td>
-                <td className="px-6 py-4">Marketing</td>
-                <td className="px-6 py-4">
-                  <Link
-                    className="font-medium text-blue-600 "
-                    href="/admin/api/apirequestdetails"
-                  >
-                    Edit
-                  </Link>
-                </td>
-              </tr>
-              <tr className="bg-white border-b ">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                >
-                  U67890
-                </th>
-                <td className="px-6 py-4">jane@example.com</td>
-                <td className="px-6 py-4">University of Colombo</td>
-                <td className="px-6 py-4">Marketing</td>
-                <td className="px-6 py-4">
-                  <Link
-                    className="font-medium text-blue-600 "
-                    href="/admin/api/apirequestdetails"
-                  >
-                    Edit
-                  </Link>
-                </td>
-              </tr>
-              <tr className="bg-white border-b ">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                >
-                  U67890
-                </th>
-                <td className="px-6 py-4">jane@example.com</td>
-                <td className="px-6 py-4">University of Colombo</td>
-                <td className="px-6 py-4">Marketing</td>
-                <td className="px-6 py-4">
-                  <Link
-                    className="font-medium text-blue-600 "
-                    href="/admin/api/apirequestdetails"
-                  >
-                    Edit
-                  </Link>
-                </td>
-              </tr>
-              <tr className="bg-white ">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
-                >
-                  U67890
-                </th>
-                <td className="px-6 py-4">jane@example.com</td>
-                <td className="px-6 py-4">University of Colombo</td>
-                <td className="px-6 py-4">UCSC</td>
-                <td className="px-6 py-4">
-                  <Link
-                    className="font-medium text-blue-600 "
-                    href="/admin/api/apirequestdetails"
-                  >
-                    Edit
-                  </Link>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <DataTable columns={columns} data={data} />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default page
+export default Page;

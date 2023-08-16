@@ -6,29 +6,91 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import TabsContainer from "@components/Tabscontent";
 import DataTable from "@components/DataTable";
 
-
 const Home = () => {
   const data = [
-    { id: 1,name: 'Manag Lama', reg: '2020/IS/027',ind: 20020279, email: 'maan@gmail.com', age: 23 },
-    { id: 1,name: 'Manag Lama', reg: '2020/IS/027',ind: 20020279, email: 'maan@gmail.com', age: 23 },
-    { id: 1,name: 'Manag Lama', reg: '2020/IS/027',ind: 20020279, email: 'maan@gmail.com', age: 23 },
-    { id: 1,name: 'Manag Lama', reg: '2020/IS/027',ind: 20020279, email: 'maan@gmail.com', age: 23 },
-    { id: 1,name: 'Manag Lama', reg: '2020/IS/027',ind: 20020279, email: 'maan@gmail.com', age: 23 },
-    { id: 1,name: 'Manag Lama', reg: '2020/IS/027',ind: 20020279, email: 'maan@gmail.com', age: 23 },
-    { id: 1,name: 'Manag Lama', reg: '2020/IS/027',ind: 20020279, email: 'maan@gmail.com', age: 23 },
-    { id: 1,name: 'Manag Lama', reg: '2020/IS/027',ind: 20020279, email: 'maan@gmail.com', age: 23 },
-    { id: 1,name: 'Manag Lama', reg: '2020/IS/027',ind: 20020279, email: 'maan@gmail.com', age: 23 },
-    
+    {
+      id: 1,
+      name: "Manag Lama",
+      reg: "2020/IS/027",
+      ind: 20020279,
+      email: "maan@gmail.com",
+      age: 23,
+    },
+    {
+      id: 1,
+      name: "Manag Lama",
+      reg: "2020/IS/027",
+      ind: 20020279,
+      email: "maan@gmail.com",
+      age: 23,
+    },
+    {
+      id: 1,
+      name: "Manag Lama",
+      reg: "2020/IS/027",
+      ind: 20020279,
+      email: "maan@gmail.com",
+      age: 23,
+    },
+    {
+      id: 1,
+      name: "Manag Lama",
+      reg: "2020/IS/027",
+      ind: 20020279,
+      email: "maan@gmail.com",
+      age: 23,
+    },
+    {
+      id: 1,
+      name: "Manag Lama",
+      reg: "2020/IS/027",
+      ind: 20020279,
+      email: "maan@gmail.com",
+      age: 23,
+    },
+    {
+      id: 1,
+      name: "Manag Lama",
+      reg: "2020/IS/027",
+      ind: 20020279,
+      email: "maan@gmail.com",
+      age: 23,
+    },
+    {
+      id: 1,
+      name: "Manag Lama",
+      reg: "2020/IS/027",
+      ind: 20020279,
+      email: "maan@gmail.com",
+      age: 23,
+    },
+    {
+      id: 1,
+      name: "Manag Lama",
+      reg: "2020/IS/027",
+      ind: 20020279,
+      email: "maan@gmail.com",
+      age: 23,
+    },
+    {
+      id: 1,
+      name: "Manag Lama",
+      reg: "2020/IS/027",
+      ind: 20020279,
+      email: "maan@gmail.com",
+      age: 23,
+    },
+
     // Add more data as needed
   ];
-  
+
   const columns = [
-    { Header: '#', accessor: 'id' },
-    { Header: 'Student name', accessor: 'name' },
-    { Header: 'Reg No', accessor: 'reg' },
-    { Header: 'Index No', accessor: 'ind' },
-    { Header: 'Email', accessor: 'email' },
-    { Header: 'Action', accessor: 'age' },
+    { Header: "#", accessor: "id" },
+    { Header: "Student name", accessor: "name" },
+    { Header: "Reg No", accessor: "reg" },
+    { Header: "Index No", accessor: "ind" },
+    { Header: "Email", accessor: "email" },
+    { Header: "Action", accessor: "age" },
   ];
 
   const datapie = [
@@ -66,7 +128,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="  bg-white  row-start-1 row-end-2 w-full  col-start-1 col-end-13  pt-5 ">
+      <div className="col-start-1 col-end-13 ">
         <TabsContainer />
       </div>
 
@@ -83,16 +145,6 @@ const Home = () => {
       <div className=" font-semibold text-[#012970] text-lg col-start-1 col-end-13 row-start-3 row-end-4 pl-12  pt-4 ">
         <h1>
           IS3116 Database Management System Attendance Report - 2023.07.25
-        </h1>
-      </div>
-
-      <div className=" text-center  col-start-2 col-end-7 row-start-5 row-end-7 ">
-        <h1 className="bg-[#012970] text-white rounded-[5px] w-[250px] h-[28px] ">
-          Total Present Students - 85
-        </h1>
-
-        <h1 className="bg-[#989797] text-dark-blue rounded-[5px] w-[250px] h-[28px] mt-5 ">
-          Total Absent Students - 28
         </h1>
       </div>
 
@@ -141,9 +193,18 @@ const Home = () => {
           </PieChart>
         </ResponsiveContainer>
       </div>
+      <div className=" text-center  col-start-5 col-end-7 row-start-5 row-end-7 ">
+        <h1 className="bg-[#012970] text-white rounded-[5px] w-[250px] h-[28px] ">
+          Total Present Students - 85
+        </h1>
 
-      <div className="" >
-      <DataTable columns={columns} data={data} />
+        <h1 className="bg-[#989797] text-dark-blue rounded-[5px] w-[250px] h-[28px] mt-5 ">
+          Total Absent Students - 28
+        </h1>
+      </div>
+
+      <div className="col-start-1 col-end-13  px-4 pt-5">
+        <DataTable columns={columns} data={data} />
       </div>
     </>
   );

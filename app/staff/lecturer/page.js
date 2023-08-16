@@ -4,6 +4,9 @@ import DataTable from "@components/DataTable";
 import { useRef } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import TabsContainer from "@components/Tabscontent";
+import Search from "@components/Search";
+import Button from "@components/Button";
 
 function page() {
   const tableRef = useRef(null);
@@ -36,19 +39,32 @@ function page() {
 
   return (
     <>
-      <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
-        <span className="text-light-blue font-semibold text-lg">
-          Lecturer Management
-        </span>
-
-        <p className="text-link-ash font-semibold text-sm">
-          Home / Modules /{" "}
-          <span className="text-black font-semibold text-sm">
-            Lecturer Management
-          </span>
-        </p>
+        <div className="col-start-1 col-end-13 ">
+        <TabsContainer />
       </div>
-      <div className="col-start-1 col-end-13 row-start-2 px-4 pt-5">
+      <div className='  col-start-1 col-end-13 row-start-2 row-end-3 pl-8  pt-5 '>
+        <h1 className='text-xl font-normal text-[#4154F1] bg-#F0F4FB'>
+          {" "}
+          Lecturer Management
+        </h1>
+        <p className=' text-xs font-normal'>Home/Lecturers</p>
+      </div>
+
+      <div className='w-[950px] pl-10 '>
+        <Search />
+      </div>
+      <div className=' col-start-4 col-end-7'>
+        <Button
+          title={"Add Lecturer"}
+          url={'/staff/lecturer/addlecturer'}
+        />
+      </div>
+
+      <div className=' font-semibold text-[#012970] text-3xl col-start-1 col-end-13  pl-12  pt-10 '>
+        <h1>Current Lecturers</h1>
+      </div>
+
+      <div className='col-start-1 col-end-13 row-start-5 px-4 pt-5'>
         <DataTable columns={columns} data={data} />
       </div>
     </>

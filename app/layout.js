@@ -16,7 +16,7 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   const isUserLoggedIn = true;
-  const userType = 2;
+  const userType = 4;
 
   const [open, setOpen] = useState(false);
   return (

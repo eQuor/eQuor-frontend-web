@@ -1,56 +1,11 @@
-// "use client";
-// import Card from "@components/Card";
-// import Search from "@components/Search";
-// import TabsContainer from "@components/Tabscontent";
-// import React from "react";
+"use client";
+import Button from "@components/Button";
+import React from "react";
+import Search from "@components/Search";
+import TabsContainer from "@components/Tabscontent";
 
-// const page = () => {
-//   const pageTopic = 'Modules'
-//   return (
-//     <>
-//       <div className="col-start-1 col-end-13 ">
-//         <TabsContainer />
-//       </div>
-//       <div className="col-start-1 col-end-13 px-4 row-start-2 row-end-3">
-//         <span className="text-light-blue font-semibold text-lg">
-//           {pageTopic}
-//         </span>
-
-//         <p className="text-link-ash font-semibold text-sm">
-//           Home /{' '}
-//           <span className="text-black font-semibold text-sm">{pageTopic}</span>
-//         </p>
-//       </div>
-
-//       <div className=" col-start-1 col-end-8 ml-8">
-//         <Search />
-//       </div>
-
-//       <div className=" col-start-2 col-end-13 flex ">
-//         <div className="flex gap-6 flex-wrap">
-//           <Card />
-//           <Card />
-//           <Card />
-//           <Card />
-//           <Card />
-//           <Card />
-//         </div>
-//       </div>
-//     </>
-//   )
-// }
-
-// export default page
-
-
-'use client'
-import Button from '@components/Button'
-import React from 'react'
-import Search from '@components/Search'
-import TabsContainer from '@components/Tabscontent'
-
-import Card from '@components/Card'
-import Link from 'next/link'
+import Card from "@components/Card";
+import Link from "next/link";
 
 const Home = () => {
   return (
@@ -63,7 +18,7 @@ const Home = () => {
         <span className="text-light-blue font-semibold text-lg">Dashboard</span>
 
         <p className="text-link-ash font-semibold text-sm">
-          Home /{' '}
+          Home /{" "}
           <span className="text-black font-semibold text-sm">Modules</span>
         </p>
       </div>
@@ -74,7 +29,7 @@ const Home = () => {
         </div>
 
         <div className="ml-3">
-          <Button title={'Add Module'} url={'/staff/module/addmodule'} />
+          <Button title={"Add Module"} url={"/staff/module/addmodule"} />
         </div>
       </div>
 
@@ -130,8 +85,7 @@ const Home = () => {
         <h1>Assigned Lecturers</h1>
       </div> */}
     </>
-  )
-}
+  );
+};
 
-export default Home
-
+export default Home;
