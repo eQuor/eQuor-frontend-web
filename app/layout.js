@@ -18,7 +18,7 @@ export const metadata = {
 };
 
 const RootLayout = ({ children }) => {
-  const isUserLoggedIn = false;
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   let userType;
 
   const pathname = usePathname();
@@ -79,7 +79,10 @@ const RootLayout = ({ children }) => {
         <body>
           <main className='layout-without-sidebar layout relative z-0'>
             <section>
-              <RegForm />
+              <RegForm
+                currentUserType={userType}
+                setLoginStatus={setIsUserLoggedIn}
+              />
             </section>
           </main>
         </body>

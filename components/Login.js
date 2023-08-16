@@ -1,85 +1,104 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import tick from "../public/login.png";
+import axios from "axios";
+import config from "@configuration/config";
+import { useRouter } from "next/navigation";
 
-const RegForm = () => {
+const RegForm = ({ setLoginStatus, currentUserType }) => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
 
   return (
-    <div className='col-start-3 col-end-10 row-start-1 mt-10 ml-7 grid grid-cols-2 gap-[150px] '>
-      <div className='w-[730px] h-[540px] flex justify-self-center '>
-        <Image src={tick} alt='tick' className='w-[630px] h-[540px]' />
-      </div>
-      <div className=' p-[100px] sm:px-6 lg:px-8 w-[530px] h-[540px] tems-center justify-center bg-white rounded-lg shadow-lg '>
-        <form action=''>
-          <div>
-            <h1 className='text-center  text-light-blue text-6xl font-bold font-sans bg-white'>
-              Log In
-            </h1>
+    <div className=' flex col-start-1 col-end-13 row-start-1 row-end-7  items-center justify-center  '>
+      <form action='' className=' w-[700px] rounded-lg shadow-lg p-4'>
+        <div>
+          <h1 className='text-center  text-light-blue text-6xl font-bold font-sans bg-white'>
+            Log In
+          </h1>
+        </div>
+        <div>
+          <div className=' bg-white'>
+            <label>Username</label>
+            <input
+              type='text'
+              autoComplete='none'
+              required
+              className='appearance-none rounded-none static vlock w-full px-3 py-2 border border-CED4DA placeholder-gray-500
+                  text-gray-900 rounded-t-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-white '
+              placeholder='Username'
+              onChange={(e) => {
+                let newData = formData;
+                newData.username = e.target.value;
+                setFormData(newData);
+              }}
+            />
           </div>
-          <div>
-            <div className=' bg-white'>
-              <label>Username</label>
+          <div className=' bg-white'>
+            <label>Password</label>
+            <input
+              type='password'
+              autoComplete='none'
+              required
+              className='appearance-none rounded-none static vlock w-full px-3 py-2 border border-gray-300 placeholder-gray-500
+                  text-gray-900 rounded-t-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-white'
+              placeholder='Password'
+              onChange={(e) => {
+                let newData = formData;
+                newData.password = e.target.value;
+                setFormData(newData);
+              }}
+            />
+          </div>
+        </div>
+        <br></br>
+        <div className='flex items-center justify-between bg-white'>
+          <div className='flrx items-center bg-white'>
+            <label className='ml-2 block text-sm text-gray-900 bg-white'>
               <input
-                type='text'
-                autoComplete='none'
-                required
-                className='appearance-none rounded-none static vlock w-full px-3 py-2 border border-CED4DA placeholder-gray-500
-                        text-gray-900 rounded-t-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-white '
-                placeholder='Username'
-                onChange={(e) => {
-                  let newData = formData;
-                  newData.username = e.target.value;
-                }}
+                type='checkbox'
+                className='h-4 w-4 text-light-blue focus:ring-light-blue border-gray-300 rounded '
               />
-            </div>
-            <div className=' bg-white'>
-              <label>Password</label>
-              <input
-                type='password'
-                autoComplete='none'
-                required
-                className='appearance-none rounded-none static vlock w-full px-3 py-2 border border-gray-300 placeholder-gray-500
-                        text-gray-900 rounded-t-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-white'
-                placeholder='Password'
-              />
-            </div>
+              Remember me
+            </label>
           </div>
-          <br></br>
-          <div className='flex items-center justify-between bg-white'>
-            <div className='flrx items-center bg-white'>
-              <label className='ml-2 block text-sm text-gray-900 bg-white'>
-                <input
-                  type='checkbox'
-                  className='h-4 w-4 text-light-blue focus:ring-light-blue border-gray-300 rounded '
-                />
-                Remember me
-              </label>
-            </div>
-          </div>
-          <br></br>
-          <div>
-            <button
-              className='group static w-full flex justify-center py-2 px-4 border border-transparent text-sm font-regular rounded-md text-white bg-light-blue hover:bg-indigo-700
-                    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-            >
-              Sign in
-            </button>
-          </div>
-          <br></br>
-          <div className='textt-sm bg-white'>
-            <a
-              href='#'
-              className='  hover:text-light-blue text-gray-400  bg-white'
-            >
-              Forgot password?
-            </a>
-          </div>
-        </form>
-      </div>
+        </div>
+        <br></br>
+        <div>
+          <button
+            className='group static w-full flex justify-center py-2 px-4 border border-transparent text-sm font-regular rounded-md text-white bg-light-blue hover:bg-indigo-700
+              focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+            onClick={async (e) => {
+              e.preventDefault();
+              const response = await axios.post(
+                config.API_BASE_URL + config.API_VERSION + "/auth/login",
+                formData
+              );
+              if (response.data.status) {
+                if (currentUserType === 1) router.push("/admin");
+                else if (currentUserType === 2) router.push("/staff");
+                else if (currentUserType === 1) router.push("/lecturer");
+                else if (currentUserType === 1) router.push("/student");
+                setLoginStatus(true);
+              }
+            }}
+          >
+            Sign in
+          </button>
+        </div>
+        <br></br>
+        <div className='textt-sm bg-white'>
+          <a
+            href='#'
+            className='  hover:text-light-blue text-gray-400  bg-white'
+          >
+            Forgot password?
+          </a>
+        </div>
+      </form>
     </div>
   );
 };
