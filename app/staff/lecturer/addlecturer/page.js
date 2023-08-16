@@ -1,34 +1,71 @@
-'use client'
-import React from 'react'
-import { useRouter } from 'next/navigation'
+"use client";
+import React, { useState } from "react";
+import config from "@configuration/config";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
-const page = () => {
-  const subject = 'Lecturerregistration'
-  
- const router = useRouter()
+const addStudent = () => {
+  const router = useRouter();
+  const subject = "Lecturer registration";
+  const [formData, setFormData] = useState({
+    fullName: "",
+    id: "",
+    email: "",
+    address: "",
+    userName: "",
+    password: "",
+    lectureCode: "",
+    propic: "",
+  });
 
- const handleClick = () => {
-   router.push('/staff/lecturer')
- }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(formData)
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This will save the staff member details!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Save it!",
+    })
+      .then(async (result) => {
+        if (result.isConfirmed) {
+          const response = await axios.post(
+            config.API_BASE_URL + config.API_VERSION + "/staff/createLecturer",
+            formData
+          );
+          if (response.status === 200) {
+            Swal.fire("Saved!", "New Lecturer has been saved.", "success");
+            router.push("/staff/lecturer");
+          } else
+            Swal.fire("Error!", "Couldn't save new Lecturer.", "success");
+        }
+      })
+      .catch((error) => {
+        Swal.fire("Error!", "Couldn't save new Lecturer.", "error");
+      });
+  };
 
   return (
     <>
-      <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
-        <span className="text-light-blue font-semibold text-lg">
-          Lecturer Registration
-        </span>
+      <div className="col-start-1 col-end-9 row-start-1 row-end-1  px-4 pt-5">
+        <span className="text-light-blue font-semibold text-lg">{subject}</span>
 
         <p className="text-link-ash font-semibold text-sm">
-          Home / Lecturer /{' '}
-          <span className="text-black font-semibold text-sm">Add Lecturer</span>
+          Home / Staff /{" "}
+          <span className="text-black font-semibold text-sm">{subject}</span>
         </p>
       </div>
 
-      <div className="col-start-3 col-end-13 row-start-1  m-24 p-5 sm:px-6 lg:px-8 w-[700px] h-[540px] justify-center bg-white rounded-lg shadow-lg overflow-y-auto scrollbar-hidden">
+      <div className="col-start-3 col-end-13 row-start-2 row-end-1 m-24 p-5 sm:px-6 lg:px-8 w-[700px] h-[540px] justify-center bg-white rounded-lg shadow-lg overflow-y-auto scrollbar-hidden">
         <form action="" className="bg-white">
           <div>
             <h1 className="text-xl text-left text-[#012970] font-medium">
-              Add Lecturer
+              Add a Lecturer
             </h1>
           </div>
           <div className="h-12 bg-white"></div>
@@ -41,34 +78,34 @@ const page = () => {
                 required
                 className="appearance-none rounded-none static vlock w-full px-3 py-2 border border-gray-300 placeholder-gray-500
                         text-gray-900 rounded-t-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm "
-                placeholder="Name"
+                placeholder="Full Name"
+                onChange={(e) => {
+                  let newFormData = formData;
+                  newFormData.fullName = e.target.value;
+                  setFormData(newFormData);
+                }}
               />
             </div>
             <br />
             <div className="flex">
               <div>
-                <label>Registration Number</label>
+                <label>Lecturer Code</label>
                 <input
                   type="text"
                   autoComplete="none"
                   required
                   className="appearance-none rounded-none static vlock w-full px-3 py-2 border border-gray-300 placeholder-gray-500
                         text-gray-900 rounded-t-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="2020/IS/027"
+                  placeholder="Code here"
+                  onChange={(e) => {
+                    let newFormData = formData;
+                    newFormData.lectureCode = e.target.value;
+                    setFormData(newFormData);
+                  }}
                 />
               </div>
               <br />
-              <div className="ml-10">
-                <label>Index Number</label>
-                <input
-                  type="text"
-                  autoComplete="none"
-                  required
-                  className="appearance-none rounded-none static vlock w-full px-3 py-2 border border-gray-300 placeholder-gray-500
-                        text-gray-900 rounded-t-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="2020/IS/027"
-                />
-              </div>
+             
             </div>
             <br />
             <div>
@@ -80,6 +117,11 @@ const page = () => {
                 className="appearance-none rounded-none static vlock w-full px-3 py-2 border border-gray-300 placeholder-gray-500
                         text-gray-900 rounded-t-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="sam@gmail.com"
+                onChange={(e) => {
+                  let newFormData = formData;
+                  newFormData.email = e.target.value;
+                  setFormData(newFormData);
+                }}
               />
             </div>
             <br />
@@ -92,6 +134,11 @@ const page = () => {
                 className="appearance-none rounded-none static vlock w-full px-3 py-2 border border-gray-300 placeholder-gray-500
                         text-gray-900 rounded-t-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Apprtment,studio, or floor"
+                onChange={(e) => {
+                  let newFormData = formData;
+                  newFormData.address = e.target.value;
+                  setFormData(newFormData);
+                }}
               />
             </div>
             <br />
@@ -106,6 +153,11 @@ const page = () => {
                     className="appearance-none rounded-none static vlock w-full px-3 py-2 border border-gray-300 placeholder-gray-500
                         text-gray-900 rounded-t-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                     placeholder="Username"
+                    onChange={(e) => {
+                      let newFormData = formData;
+                      newFormData.userName = e.target.value;
+                      setFormData(newFormData);
+                    }}
                   />
                 </div>
                 <br />
@@ -118,6 +170,11 @@ const page = () => {
                     className="appearance-none rounded-none static vlock w-full px-3 py-2 border border-gray-300 placeholder-gray-500
                         text-gray-900 rounded-t-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                     placeholder="Password"
+                    onChange={(e) => {
+                      let newFormData = formData;
+                      newFormData.password = e.target.value;
+                      setFormData(newFormData);
+                    }}
                   />
                 </div>
                 <br />
@@ -131,6 +188,11 @@ const page = () => {
                   className="h-32 appearance-none rounded-none static vlock w-full px-3 border border-gray-300 placeholder-gray-500
                         text-gray-900 rounded-t-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Password"
+                  onChange={(e) => {
+                    let newFormData = formData;
+                    newFormData.propic = e.target.value;
+                    setFormData(newFormData);
+                  }}
                 />
               </div>
               <br />
@@ -142,7 +204,7 @@ const page = () => {
               <button
                 className="group relative w-26 flex justify-self-end py-2 px-4 border border-transparent font-regular rounded-md text-white bg-indigo-600 hover:bg-indigo-700
                     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-base"
-                onClick={handleClick}
+                onClick={handleSubmit}
               >
                 Submit
               </button>
@@ -157,7 +219,7 @@ const page = () => {
         </form>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default page
+export default addStudent;
