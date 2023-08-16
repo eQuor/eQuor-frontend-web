@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import tick from "../../../public/login.png";
+import tick from "../public/login.png";
 
-const regForm = () => {
+const RegForm = () => {
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
+
   return (
     <div className='col-start-3 col-end-10 row-start-1 mt-10 ml-7 grid grid-cols-2 gap-[150px] '>
       <div className='w-[730px] h-[540px] flex justify-self-center '>
@@ -25,6 +30,10 @@ const regForm = () => {
                 className='appearance-none rounded-none static vlock w-full px-3 py-2 border border-CED4DA placeholder-gray-500
                         text-gray-900 rounded-t-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-white '
                 placeholder='Username'
+                onChange={(e) => {
+                  let newData = formData;
+                  newData.username = e.target.value;
+                }}
               />
             </div>
             <div className=' bg-white'>
@@ -75,4 +84,4 @@ const regForm = () => {
   );
 };
 
-export default regForm;
+export default RegForm;

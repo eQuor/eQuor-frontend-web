@@ -9,10 +9,8 @@ import "@styles/globals.css";
 import { useState } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
 
-
-import { usePathname } from 'next/navigation'
-
-
+import { usePathname } from "next/navigation";
+import RegForm from "@components/Login";
 
 export const metadata = {
   title: "eQuor",
@@ -20,12 +18,11 @@ export const metadata = {
 };
 
 const RootLayout = ({ children }) => {
-  const isUserLoggedIn = true;
+  const isUserLoggedIn = false;
   let userType;
 
-
-   const pathname = usePathname()
-  const segment = pathname.split('/')[1]
+  const pathname = usePathname();
+  const segment = pathname.split("/")[1];
   if (segment === "admin") {
     userType = 1;
   } else if (segment === "staff") {
@@ -40,7 +37,6 @@ const RootLayout = ({ children }) => {
 
   const [open, setOpen] = useState(false);
   return (
-    
     <html lang='en'>
       {isUserLoggedIn ? (
         <body>
@@ -52,7 +48,7 @@ const RootLayout = ({ children }) => {
 
             <aside
               className={`bg-white h-[100%] p-3 pt-8 ${
-                open ? 'w-[300px] absolute' : 'w-[100%] min-w-[80px]'
+                open ? "w-[300px] absolute" : "w-[100%] min-w-[80px]"
               } duration-300 absolute`}
             >
               <BsArrowLeftShort
@@ -81,10 +77,10 @@ const RootLayout = ({ children }) => {
         </body>
       ) : (
         <body>
-          <main className="layout-without-sidebar layout relative z-0">
-          <header><Navbar/></header>
-
-            <section>{children}</section>
+          <main className='layout-without-sidebar layout relative z-0'>
+            <section>
+              <RegForm />
+            </section>
           </main>
         </body>
       )}
