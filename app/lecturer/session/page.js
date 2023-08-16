@@ -5,7 +5,7 @@ import Sessioncard from './Sessioncard'
 import { useRouter } from 'next/navigation'
 
 const page = () => {
-  const [isSessionActive, setSessionActive] = useState(false)
+  const [isSessionActive, setSessionActive] = useState(true)
   const router = useRouter()
 
   const handleClick = () => {
