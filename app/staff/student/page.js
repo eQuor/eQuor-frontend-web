@@ -1,23 +1,41 @@
+'use client'
+import Button from '@components/Button'
+import DataTable from '@components/DataTable'
+import Search from '@components/Search'
+import TabsContainer from '@components/Tabscontent'
 import React from 'react'
 import Link from 'next/link'
 
 const page = () => {
   return (
     <>
+      {/* <div className=" bg-white  col-start-1 col-end-13 row-start-1 row-end-2 pl-8  pt-5 ">
+        <TabsContainer />
+      </div> */}
       <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
         <span className="text-light-blue font-semibold text-lg">
-          API Requst Management
+          Student Management
         </span>
 
         <p className="text-link-ash font-semibold text-sm">
           Home /{' '}
-          <span className="text-black font-semibold text-sm">API Requests</span>
+          <span className="text-black font-semibold text-sm">Students</span>
         </p>
+      </div>
+
+      <div className="col-start-1 col-end-13 px-4 pt-5 flex">
+        <div className="w-[1200px] overflow-x-auto">
+          <Search />
+        </div>
+
+        <div className="ml-3">
+          <Button title={'Add Student'} url={'/staff/student/addstudent'} />
+        </div>
       </div>
 
       <div className="col-start-1 col-end-13 px-4 pt-5">
         <span className="text-dark-blue font-semibold text-2xl ">
-          API Requests
+          Current Students
         </span>
         <div class=" overflow-x-auto shadow-md sm:rounded-lg mt-4">
           <table class="w-full text-sm text-left text-gray-500 ">
@@ -54,7 +72,7 @@ const page = () => {
                 <td className="px-6 py-4">
                   <Link
                     className="font-medium text-blue-600 "
-                    href="/admin/api/apirequestdetails"
+                    href="/staff/Student/editStudent"
                   >
                     Edit
                   </Link>
@@ -74,7 +92,7 @@ const page = () => {
                 <td className="px-6 py-4">
                   <Link
                     className="font-medium text-blue-600 "
-                    href="/admin/api/apirequestdetails"
+                    href="/staff/Student/editStudent"
                   >
                     Edit
                   </Link>
@@ -93,7 +111,7 @@ const page = () => {
                 <td className="px-6 py-4">
                   <Link
                     className="font-medium text-blue-600 "
-                    href="/admin/api/apirequestdetails"
+                    href="/staff/Student/editStudent"
                   >
                     Edit
                   </Link>
@@ -112,7 +130,7 @@ const page = () => {
                 <td className="px-6 py-4">
                   <Link
                     className="font-medium text-blue-600 "
-                    href="/admin/api/apirequestdetails"
+                    href="/staff/Student/editStudent"
                   >
                     Edit
                   </Link>
@@ -131,7 +149,7 @@ const page = () => {
                 <td className="px-6 py-4">
                   <Link
                     className="font-medium text-blue-600 "
-                    href="/admin/api/apirequestdetails"
+                    href="/staff/Student/editStudent"
                   >
                     Edit
                   </Link>
@@ -150,7 +168,7 @@ const page = () => {
                 <td className="px-6 py-4">
                   <Link
                     className="font-medium text-blue-600 "
-                    href="/admin/api/apirequestdetails"
+                    href="/staff/Student/editStudent"
                   >
                     Edit
                   </Link>
@@ -169,7 +187,7 @@ const page = () => {
                 <td className="px-6 py-4">
                   <Link
                     className="font-medium text-blue-600 "
-                    href="/admin/api/apirequestdetails"
+                    href="/staff/Student/editStudent"
                   >
                     Edit
                   </Link>
@@ -188,7 +206,7 @@ const page = () => {
                 <td className="px-6 py-4">
                   <Link
                     className="font-medium text-blue-600 "
-                    href="/admin/api/apirequestdetails"
+                    href="/staff/Student/editStudent"
                   >
                     Edit
                   </Link>
@@ -207,7 +225,7 @@ const page = () => {
                 <td className="px-6 py-4">
                   <Link
                     className="font-medium text-blue-600 "
-                    href="/admin/api/apirequestdetails"
+                    href="/staff/Student/editStudent"
                   >
                     Edit
                   </Link>
@@ -217,6 +235,10 @@ const page = () => {
           </table>
         </div>
       </div>
+
+      {/* <div className=" font-semibold text-[#012970] text-3xl col-start-1 col-end-13  pl-12  pt-10 ">
+        <h1>Current Staff members</h1>
+      </div> */}
     </>
   )
 }

@@ -9,26 +9,43 @@ import {
 import { PiStudentBold } from 'react-icons/pi'
 import '@fontsource/open-sans'
 import Link from 'next/link'
+import { BsFillPersonFill, BsBuildingFillLock, BsTools } from 'react-icons/bs'
+
+
+
+
+
 function SidebarAdmin({ open }) {
   const Menus = [
-    { topic: false, subitems: [{ title: 'Dashboard',icon:<RiDashboardFill />, url:"/admin" }] },
+    {
+      topic: false,
+      subitems: [
+        { title: 'Dashboard', icon: <RiDashboardFill />, url: '/admin' },
+      ],
+    },
     {
       topic: 'user management',
       subitems: [
-        { title: 'Lecturer', icon: <RiPresentationFill />, url:"/admin" },
-        { title: 'Student', icon: <PiStudentBold />, url:"/admin"},
+        {
+          title: 'Staff Member',
+          icon: <BsFillPersonFill />,
+          url: '/admin/staffmanage',
+        },
       ],
     },
     {
-      topic: 'module management',
-      subitems: [{ title: 'Module', icon: <RiPresentationFill />, url:"/admin" }],
-    },
-    {
-      topic: 'attendance management',
+      topic: 'api request management',
       subitems: [
-        { title: 'Attendance', icon: <RiFileChartFill />, url:"/admin" },
-        { title: 'Absence Reports', icon: <RiDraftFill />, url:"/admin" },
+        {
+          title: 'Api Requests',
+          icon: <BsBuildingFillLock />,
+          url: '/admin/api',
+        },
       ],
+    },
+    {
+      topic: 'audit management',
+      subitems: [{ title: 'Audit Log', icon: <BsTools />, url: '/admin/auditlog' }],
     },
   ]
 
