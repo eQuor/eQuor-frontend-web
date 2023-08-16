@@ -3,6 +3,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Sessioncard from "../Sessioncard"
+import Button from '@components/Button'
 
 const page = () => {
      const subject = 'SCS1101 Database Management'
@@ -29,12 +30,9 @@ const page = () => {
 
         <div className="col-start-1 col-end-13 row-start-3 row-end-6 px-4 pt-5  mx-5 bg-white flex justify-between">
           <div>
-            <button
-              type="submit"
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-11 py-12 mt-7 text-center "
-            >
-              With Attendance
-            </button>
+          <div className=" relative top-10 left-40 col-start-7 col-end-10">
+          <Button title={"With Attendance"} />
+        </div>
           </div>
           <Link href="/" className=" gap-2 ml-5 items-center">
             <Image
@@ -46,12 +44,9 @@ const page = () => {
             />
           </Link>
           <div>
-            <button
-              type="submit"
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-9 py-12 mt-7 text-center "
-            >
-              Without Attendance
-            </button>
+          <div className=" relative top-10 right-40 col-start-7 col-end-10">
+          <Button title={"Without Attendance"} />
+        </div>
           </div>
         </div>
 
