@@ -5,30 +5,59 @@ import {
   RiPresentationFill,
   RiFileChartFill,
   RiDraftFill,
+  RiQuestionAnswerFill,
 } from 'react-icons/ri'
-import { PiStudentBold } from 'react-icons/pi'
+import { PiStudentBold, PiChalkboardTeacherFill } from 'react-icons/pi'
+import { MdPeople } from 'react-icons/md'
 import '@fontsource/open-sans'
+import Link from 'next/link'
+import {
+  BsFillPersonFill,
+  BsBuildingFillLock,
+  BsTools,
+  BsFillFileBarGraphFill,
+  BsFillClipboard2PulseFill,
+  BsFillClipboard2DataFill
+} from 'react-icons/bs'
+
 function SidebarAdmin({ open }) {
   const Menus = [
-    { topic: false, subitems: [{ title: 'Dashboard' }] },
     {
-      topic: 'user management',
+      topic: false,
       subitems: [
-        { title: 'Lecturer', icon: <RiPresentationFill /> },
-        { title: 'Student', icon: <PiStudentBold /> },
+        { title: 'Dashboard', icon: <RiDashboardFill />, url: '/student' },
       ],
     },
     {
-      topic: 'module management',
-      subitems: [{ title: 'Module', icon: <RiPresentationFill /> }],
-    },
-    {
-      topic: 'attendance management',
+      topic: 'View Attendance ',
       subitems: [
-        { title: 'Attendance', icon: <RiFileChartFill /> },
-        { title: 'Absence Reports', icon: <RiDraftFill /> },
+        {
+          title: 'Attendance',
+          icon: <BsFillClipboard2DataFill />,
+          url: '/student/attendance',
+        },
       ],
     },
+    {
+      topic: 'Report Submisson',
+      subitems: [
+        {
+          title: 'Absence Reports',
+          icon: <BsFillClipboard2PulseFill />,
+          url: '/student/absencereport',
+        },
+      ],
+    },
+    // {
+    //   topic: 'Attendance',
+    //   subitems: [
+    //     {
+    //       title: 'Attendance',
+    //       icon: <RiFileChartFill />,
+    //       url: '/lecturer/attendance',
+    //     },
+    //   ],
+    // },
   ]
 
   return (
@@ -49,25 +78,27 @@ function SidebarAdmin({ open }) {
             )}
             <ul>
               {menu.subitems.map((subitem, index) => (
-                <li
-                  key={index}
-                  className={`text-[#012970] font-sans flex items-center gap-x-4 cursor-pointer p-2 hover:bg-[#DCE8FF] rounded-md mt-2 `}
-                >
-                  <span key={index} className="text-2xl block float-left">
-                    {subitem.icon ? subitem.icon : <RiDashboardFill />}
-                  </span>
-                  {subitem.title ? (
-                    <span
-                      className={`text-base font-semibold flex-1 duration-200 ${
-                        !open && 'hidden'
-                      }`}
-                    >
-                      {subitem.title}
+                <Link key={index} href={subitem.url}>
+                  <li
+                    key={index}
+                    className={`text-[#012970] font-sans flex items-center gap-x-4 cursor-pointer p-2 hover:bg-[#DCE8FF] rounded-md mt-2 `}
+                  >
+                    <span key={index} className="text-2xl block float-left">
+                      {subitem.icon ? subitem.icon : <RiDashboardFill />}
                     </span>
-                  ) : (
-                    <span className=" hidden"></span>
-                  )}
-                </li>
+                    {subitem.title ? (
+                      <span
+                        className={`text-base font-semibold flex-1 duration-200 ${
+                          !open && 'hidden'
+                        }`}
+                      >
+                        {subitem.title}
+                      </span>
+                    ) : (
+                      <span className=" hidden"></span>
+                    )}
+                  </li>
+                </Link>
               ))}
             </ul>
           </li>
