@@ -6,7 +6,7 @@ const addModule = () => {
   const subject = 'Module Management'
 
 
-   const router = useRouter()
+   const router = useRouter() 
 
    const handleClick = () => {
      router.push('/staff/module')
