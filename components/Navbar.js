@@ -9,7 +9,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 const Navbar = () => {
   //const isUserLoggedIn = false
 
-  const [isUserLoggedIn, setState] = useState(false);
+  const [isUserLoggedIn, setState] = useState(true);
   const [toggleDropDown, setToggleDropdown] = useState(false);
   const dropdownRef = useRef();
 

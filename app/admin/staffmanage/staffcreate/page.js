@@ -12,7 +12,7 @@ const page = () => {
     id: "",
     email: "",
     address: "",
-    username: "",
+    user_name: "",
     password: "",
   });
 
@@ -31,10 +31,10 @@ const page = () => {
       .then(async (result) => {
         if (result.isConfirmed) {
           const response = await axios.post(
-            config.API_BASE_URL + config.API_VERSION + "/admin/createStaff",
+            config.API_BASE_URL + config.API_VERSION + "/staff",
             formData
           );
-          if (response.status === 200) {
+          if (response.status === 201) {
             Swal.fire("Saved!", "New staff member has been saved.", "success");
             router.push("/admin/staffmanage");
           } else

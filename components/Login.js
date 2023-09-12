@@ -4,6 +4,7 @@ import tick from "../public/login.png";
 import axios from "axios";
 import config from "@configuration/config";
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 const RegForm = ({ setLoginStatus, currentUserType }) => {
   const router = useRouter();
@@ -73,6 +74,7 @@ const RegForm = ({ setLoginStatus, currentUserType }) => {
               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
             onClick={async (e) => {
               e.preventDefault();
+
               const response = await axios.post(
                 config.API_BASE_URL + config.API_VERSION + "/auth/login",
                 formData
@@ -80,9 +82,16 @@ const RegForm = ({ setLoginStatus, currentUserType }) => {
               if (response.data.status) {
                 if (currentUserType === 1) router.push("/admin");
                 else if (currentUserType === 2) router.push("/staff");
-                else if (currentUserType === 1) router.push("/lecturer");
-                else if (currentUserType === 1) router.push("/student");
+                else if (currentUserType === 3) router.push("/lecturer");
+                else if (currentUserType === 4) router.push("/student");
                 setLoginStatus(true);
+              } else {
+                Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Email or password is wrong!",
+                  footer: '<a href="">Why do I have this issue?</a>',
+                });
               }
             }}
           >

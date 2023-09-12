@@ -12,8 +12,7 @@ function tabViews({ columns, data }) {
 
 const columns = [
   { Header: "#", accessor: "index" },
-  { Header: "Full Name", accessor: "fullName" },
-  { Header: "NIC", accessor: "nic" },
+  { Header: "Full Name", accessor: "full_name" },
   { Header: "Email", accessor: "email" },
   { Header: "Address", accessor: "address" },
   { Header: "Action", accessor: "action" },
@@ -26,7 +25,7 @@ const Page = () => {
 
     axios({
       method: "get",
-      url: "http://localhost:3001/api/v1/admin/getApiRequests",
+      url: "http://localhost:3001/api/v1/apiRequests",
       responseType: "json",
     }).then(function (response) {
       console.log("axios wed");

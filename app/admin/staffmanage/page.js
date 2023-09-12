@@ -23,24 +23,25 @@ const page = () => {
 
     axios({
       method: "get",
-      url: "http://localhost:3001/api/v1/admin/getStaff",
+      url: "http://localhost:3001/api/v1/staff",
       responseType: "json",
     }).then(function (response) {
       console.log("axios wed");
-      setData(response.data);
       let i = 1;
-      response.data.forEach((element) => {
+      let resdata = response.data._embedded.staff;
+      resdata.forEach((element) => {
         element.action = 1;
         element.index = i;
         i++;
       });
-      console.log(data);
+      setData(resdata);
+      console.log(resdata);
     });
   }, []);
 
   return (
     <>
-       <div className="col-start-1 col-end-13 ">
+      <div className='col-start-1 col-end-13 '>
         <TabsContainer />
       </div>
       <div className='  col-start-1 col-end-13 row-start-2 row-end-3 pl-8  pt-5 '>
@@ -56,8 +57,8 @@ const page = () => {
       </div>
       <div className=' col-start-4 col-end-7'>
         <Button
-         title={"Add Staff Member"}
-         url={'/admin/staffmanage/staffcreate'}
+          title={"Add Staff Member"}
+          url={"/admin/staffmanage/staffcreate"}
         />
       </div>
 
