@@ -1,16 +1,13 @@
 "use client";
 import Navbar from "@components/Navbar";
 import SidebarAdmin from "@components/SidebarAdmin";
-
 import SidebarLecturer from "@components/SidebarLecturer";
 import SidebarStaff from "@components/SidebarStaff";
 import SidebarStudent from "@components/SidebarStudent";
 import "@styles/globals.css";
 import { useState } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
-
-import { usePathname } from "next/navigation";
-import RegForm from "@components/Login";
+import { usePathname, useRouter } from "next/navigation";
 
 export const metadata = {
   title: "eQuor",

@@ -1,51 +1,69 @@
-'use client'
-import Button from '@components/Button'
-import React from 'react'
-import Search from '@components/Search'
-import TabsContainer from '@components/Tabscontent'
-
-import Card from '@components/Card'
-import Link from 'next/link'
+"use client";
+import Button from "@components/Button";
+import React, { useEffect, useState } from "react";
+import Search from "@components/Search";
+import TabsContainer from "@components/Tabscontent";
+import axios from "axios";
+import Card from "@components/card";
+import Link from "next/link";
 
 const Home = () => {
+  const [data, setData] = useState([]);
+  const [cards, setCards] = useState([]);
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: "http://localhost:3001/api/v1/module",
+      responseType: "json",
+    }).then(function (response) {
+      console.log("axios wed");
+      let i = 1;
+      let resdata = response.data._embedded.module;
+      resdata.forEach((element) => {
+        element.action = 1;
+        element.index = i;
+        i++;
+      });
+      setData(resdata);
+      console.log(resdata);
+      let newCards = [];
+      resdata.forEach((element) => {
+        newCards.push(<Card name={element.name} semester={element.semester} />);
+        setCards(newCards);
+        console.log(cards);
+      });
+    });
+  }, []);
+
   return (
     <>
-      <div className="col-start-1 col-end-13 ">
+      <div className='col-start-1 col-end-13 '>
         <TabsContainer />
       </div>
 
-      <div className="col-start-1 col-end-13 row-start-2 row-end-2  px-4 pt-5 mt-3">
-        <span className="text-light-blue font-semibold text-lg">
+      <div className='col-start-1 col-end-13 row-start-2 row-end-2  px-4 pt-5 mt-3'>
+        <span className='text-light-blue font-semibold text-lg'>
           Module Management
         </span>
 
-        <p className="text-link-ash font-semibold text-sm">
-          Home /{' '}
-          <span className="text-black font-semibold text-sm">Modules</span>
+        <p className='text-link-ash font-semibold text-sm'>
+          Home /{" "}
+          <span className='text-black font-semibold text-sm'>Modules</span>
         </p>
       </div>
 
-      <div className="col-start-1 col-end-13 px-4 pt-5 flex">
-        <div className="w-[1200px] overflow-x-auto">
+      <div className='col-start-1 col-end-13 px-4 pt-5 flex'>
+        <div className='w-[1200px] overflow-x-auto'>
           <Search />
         </div>
 
-        <div className="ml-3">
-          <Button title={'Add Module'} url={'/staff/module/addmodule'} />
+        <div className='ml-3'>
+          <Button title={"Add Module"} url={"/staff/module/addmodule"} />
         </div>
       </div>
 
-      <div className=" col-start-1 col-end-13 flex px-4 mt-4">
-        <div className="flex gap-5 flex-wrap">
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </div>
+      <div className=' col-start-1 col-end-13 flex px-4 mt-4'>
+        <div className='flex gap-5 flex-wrap'>{cards}</div>
       </div>
       {/* 
       <div className=" text-white text-center text-sm col-start-10 col-end-11 row-start-2 row-end-4 ">
@@ -63,7 +81,7 @@ const Home = () => {
         <h1>Assigned Lecturers</h1>
       </div> */}
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
