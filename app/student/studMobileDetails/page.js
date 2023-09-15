@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import profImg from "../../../../public/login.png";
+import profImg from "../../../public/login.png";
 
 
 const studMobileDetails = () => {
