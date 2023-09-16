@@ -1,10 +1,15 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
 import { CgPoll } from "react-icons/cg";
 import multiqz from "../../../../public/question.png";
 import qz from "../../../../public/quiz.png";
+import PollResults from "components/PollResults";
 
 const lecturerPolls = () => {
+  const [pollOptions, setPollOptions] = useState([]);
+
   return (
     <>
       {/* .................cards........................... */}
@@ -53,28 +58,20 @@ const lecturerPolls = () => {
             </div>
           </div>
         </div>
+      {/* .................cards end here .......................  */}
 
-        <div className="flex-1 h-[100%]">
+      <div className="flex-1 h-[100%]">
           <div className="bg-white p-6 rounded shadow-md w-[100%] h-[400%] justify-end">
-            <div className="text-lg font-regular p-4 rounded bg-[#e6e8f7]">
+            <div className="text-lg font-regular p-4 rounded bg-[#e6e8f7] pl-10">
               <div>
-                <span className="font-regular text-xl">
-                  What is the capital city of France?
-                </span>
-                <div>
-                  <ol className="list-inside list-alpha">
-                    <li className="pl-4 before:content-['a.'] before:text-[counter(list-alpha, lower-alpha)]">Paris</li>
-                    <li className="pl-4 before:content-['b.'] before:text-[counter(list-alpha, lower-alpha)]">London</li>
-                    <li className="pl-4 before:content-['c.'] before:text-[counter(list-alpha, lower-alpha)]">Rome</li>
-                    <li className="pl-4 before:content-['d.'] before:text-[counter(list-alpha, lower-alpha)]">Madrid</li>
-                  </ol>
+                <div className="col-start-2 col-end-12 row-start-2 row-end-4 container mx-auto mt-4 ">
+                  <PollResults options={pollOptions} />
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/* .................cards end here .......................  */}
     </>
   );
 };

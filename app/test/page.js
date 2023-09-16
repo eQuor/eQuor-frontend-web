@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from 'react';
-import CreatePoll from 'components/CreatePoll';
 import PollResults from 'components/PollResults';
 
 function test() {
@@ -9,10 +8,11 @@ function test() {
   // Define functions to handle poll creation and voting
 
   return (
-    <div>
-      <CreatePoll />
-      <PollResults options={pollOptions} />
+    <>
+    <div className="col-start-2 col-end-12 row-start-2 row-end-4 container mx-auto mt-4 flex gap-10">
+    <PollResults options={pollOptions} />
     </div>
+    </>
   );
 }
 
