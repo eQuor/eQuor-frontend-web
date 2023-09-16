@@ -1,12 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import axios from "axios";
+import config from "@configuration/config";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@contexts/authContext";
 
-const Home = () => {
+const Home = ({ setLoginStatus }) => {
+  const { isAuth, setIsAuth } = useAuth();
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
+
+  const router = useRouter();
   return (
     <>
       <div className=' flex col-start-1 col-end-13 row-start-1 row-end-7  items-center justify-center  '>
@@ -71,15 +80,28 @@ const Home = () => {
                 e.preventDefault();
 
                 const response = await axios.post(
-                  config.API_BASE_URL + config.API_VERSION + "/auth/login",
-                  formData
+                  config.API_BASE_URL + config.API_VERSION + "/auth/token",
+                  {},
+                  {
+                    headers: {
+                      Authorization:
+                        "Basic " +
+                        btoa(formData.username + ":" + formData.password),
+                      "Content-Type": "application/json",
+                    },
+                  }
                 );
-                if (response.data.status) {
-                  if (currentUserType === 1) router.push("/admin");
-                  else if (currentUserType === 2) router.push("/staff");
-                  else if (currentUserType === 3) router.push("/lecturer");
-                  else if (currentUserType === 4) router.push("/student");
-                  setLoginStatus(true);
+                if (response.status == 200) {
+                  const user = response.data;
+                  setIsAuth(true);
+                  if (user.role[0].authority === "ADMIN") router.push("/admin");
+                  else if (user.role[0].authority === "STAFF")
+                    router.push("/staff");
+                  else if (user.role[0].authority === "LECTURER")
+                    router.push("/lecturer");
+                  else if (user.role[0].authority === "STUDENT")
+                    router.push("/student");
+                  setIsAuth(true);
                 } else {
                   Swal.fire({
                     icon: "error",
