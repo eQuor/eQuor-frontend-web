@@ -56,9 +56,20 @@ const lecturerPolls = () => {
 
         <div className="flex-1 h-[100%]">
           <div className="bg-white p-6 rounded shadow-md w-[100%] h-[400%] justify-end">
-            <div className="text-lg font-regular p-4 rounded bg-[#4154F1]">
-              jhgjhghj
-              <div></div>
+            <div className="text-lg font-regular p-4 rounded bg-[#e6e8f7]">
+              <div>
+                <span className="font-regular text-xl">
+                  What is the capital city of France?
+                </span>
+                <div>
+                  <ol className="list-inside list-alpha">
+                    <li className="pl-4 before:content-['a.'] before:text-[counter(list-alpha, lower-alpha)]">Paris</li>
+                    <li className="pl-4 before:content-['b.'] before:text-[counter(list-alpha, lower-alpha)]">London</li>
+                    <li className="pl-4 before:content-['c.'] before:text-[counter(list-alpha, lower-alpha)]">Rome</li>
+                    <li className="pl-4 before:content-['d.'] before:text-[counter(list-alpha, lower-alpha)]">Madrid</li>
+                  </ol>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -15,31 +15,34 @@ function page() {
   useEffect(() => {
     axios({
       method: "get",
-      url: "http://localhost:3001/api/v1/staff/getLecturer",
+      url: "http://localhost:3001/api/v1/lecturer",
       responseType: "json",
     }).then(function (response) {
-      setData(response.data);
+      console.log("axios wed");
       let i = 1;
-      response.data.forEach((element) => {
+      let resdata = response.data._embedded.lecturer;
+      resdata.forEach((element) => {
         element.action = 1;
         element.index = i;
         i++;
       });
+      setData(resdata);
+      console.log(resdata);
     });
   }, []);
 
   const columns = [
     { Header: "#", accessor: "index" },
-    { Header: "Lecturer Name", accessor: "fullName" },
-    { Header: "User Name", accessor: "userName" },
-    { Header: "Lecturer Code", accessor: "lectureCode" },
+    { Header: "Lecturer Name", accessor: "name" },
+    { Header: "User Name", accessor: "user_name" },
+    { Header: "Lecturer Code", accessor: "id" },
     { Header: "Email", accessor: "email" },
     { Header: "Address", accessor: "address" },
   ];
 
   return (
     <>
-        <div className="col-start-1 col-end-13 ">
+      <div className='col-start-1 col-end-13 '>
         <TabsContainer />
       </div>
       <div className='  col-start-1 col-end-13 row-start-2 row-end-3 pl-8  pt-5 '>
@@ -54,10 +57,7 @@ function page() {
         <Search />
       </div>
       <div className=' col-start-4 col-end-7'>
-        <Button
-          title={"Add Lecturer"}
-          url={'/staff/lecturer/addlecturer'}
-        />
+        <Button title={"Add Lecturer"} url={"/staff/lecturer/addlecturer"} />
       </div>
 
       <div className=' font-semibold text-[#012970] text-3xl col-start-1 col-end-13  pl-12  pt-10 '>
