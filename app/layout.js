@@ -8,6 +8,7 @@ import SidebarStudent from "@components/SidebarStudent";
 import "@styles/globals.css";
 import { useState } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
+import Login from "@components/Login";
 
 export const metadata = {
   title: "eQuor",
@@ -15,7 +16,7 @@ export const metadata = {
 };
 
 const RootLayout = ({ children }) => {
-  const isUserLoggedIn = true;
+  const [isUserLoggedIn,setisUserLoggedIn] = useState(true)
   const userType = 4;
 
   const [open, setOpen] = useState(false);
@@ -61,9 +62,9 @@ const RootLayout = ({ children }) => {
       ) : (
         <body>
           <main className="layout-without-sidebar layout relative z-0">
-          <header><Navbar/></header>
+          {/* <header><Navbar/></header> */}
 
-            <section>{children}</section>
+            <section><Login changeUserState={setisUserLoggedIn}/></section>
           </main>
         </body>
       )}
