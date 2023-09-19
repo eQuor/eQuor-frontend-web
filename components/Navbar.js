@@ -23,11 +23,11 @@ const Navbar = () => {
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    // document.addEventListener("mousedown", handleClickOutside);
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    // return () => {
+    //   document.removeEventListener("mousedown", handleClickOutside);
+    // };
   }, []);
 
   return (
@@ -78,9 +78,7 @@ const Navbar = () => {
                 <button
                   type='button'
                   onClick={() => {
-                    alert("aaa");
-                    setToggleDropdown(false);
-                    alert("clicked");
+                    alert("aa");
                     setIsAuth(false);
                   }}
                   className='mt-5 w-full log-in'
@@ -119,9 +117,11 @@ const Navbar = () => {
                 <button
                   type='button'
                   onClick={() => {
-                    setToggleDropdown(false);
-                    router.push("/auth/signin");
-                    setIsAuth(false);
+                    // setToggleDropdown(false);
+                    // router.push("/auth/signin");
+                    // setIsAuth(false);
+
+                    console.log("hihi");
                   }}
                   className='mt-5 w-full log-in'
                 >

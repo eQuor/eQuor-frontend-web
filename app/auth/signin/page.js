@@ -6,20 +6,63 @@ import config from "@configuration/config";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@contexts/authContext";
+import RouteWrap from "@app/RouteWrap";
 
-const Home = ({ setLoginStatus }) => {
-  const { isAuth, setIsAuth } = useAuth();
+const Home = () => {
+  const { authUser, setAuthUser } = useAuth();
 
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
 
+  alert("awww");
+
   const router = useRouter();
   return (
-    <>
+    <RouteWrap>
       <div className=' flex col-start-1 col-end-13 row-start-1 row-end-7  items-center justify-center  '>
-        <form action='' className=' w-[700px] rounded-lg shadow-lg p-4'>
+        <form
+          className=' w-[700px] rounded-lg shadow-lg p-4'
+          onSubmit={async (e) => {
+            e.preventDefault();
+
+            const response = await axios.post(
+              config.API_BASE_URL + config.API_VERSION + "/auth/token",
+              {},
+              {
+                headers: {
+                  Authorization:
+                    "Basic " +
+                    btoa(formData.username + ":" + formData.password),
+                  "Content-Type": "application/json",
+                },
+              }
+            );
+
+            if (response.status == 200) {
+              const user = response.data;
+              setAuthUser(user);
+              if (user.role[0].authority === "ADMIN") {
+                alert("h");
+                router.push("/admin");
+                alert("before");
+              } else if (user.role[0].authority === "STAFF")
+                router.push("/staff");
+              else if (user.role[0].authority === "LECTURER")
+                router.push("/lecturer");
+              else if (user.role[0].authority === "STUDENT")
+                router.push("/student");
+            } else {
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Email or password is wrong!",
+                footer: '<a href="">Why do I have this issue?</a>',
+              });
+            }
+          }}
+        >
           <div>
             <h1 className='text-center  text-light-blue text-6xl font-bold font-sans bg-white'>
               Log In
@@ -74,43 +117,9 @@ const Home = ({ setLoginStatus }) => {
           <br></br>
           <div>
             <button
+              type='submit'
               className='group static w-full flex justify-center py-2 px-4 border border-transparent text-sm font-regular rounded-md text-white bg-light-blue hover:bg-indigo-700
             focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-              onClick={async (e) => {
-                e.preventDefault();
-
-                const response = await axios.post(
-                  config.API_BASE_URL + config.API_VERSION + "/auth/token",
-                  {},
-                  {
-                    headers: {
-                      Authorization:
-                        "Basic " +
-                        btoa(formData.username + ":" + formData.password),
-                      "Content-Type": "application/json",
-                    },
-                  }
-                );
-                if (response.status == 200) {
-                  const user = response.data;
-                  setIsAuth(true);
-                  if (user.role[0].authority === "ADMIN") router.push("/admin");
-                  else if (user.role[0].authority === "STAFF")
-                    router.push("/staff");
-                  else if (user.role[0].authority === "LECTURER")
-                    router.push("/lecturer");
-                  else if (user.role[0].authority === "STUDENT")
-                    router.push("/student");
-                  setIsAuth(true);
-                } else {
-                  Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Email or password is wrong!",
-                    footer: '<a href="">Why do I have this issue?</a>',
-                  });
-                }
-              }}
             >
               Sign in
             </button>
@@ -126,7 +135,7 @@ const Home = ({ setLoginStatus }) => {
           </div>
         </form>
       </div>
-    </>
+    </RouteWrap>
   );
 };
 

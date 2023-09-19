@@ -13,7 +13,7 @@ import {
   CartesianGrid,
   Tooltip,
 } from "recharts";
-import RouteProtector from "@app/routeProtector";
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 
 const adminDashboard = () => {
   const subject = "Dashboard";
@@ -97,7 +97,7 @@ const adminDashboard = () => {
   };
 
   return (
-    <>
+    <ProtectedRouteWRap>
       <div className='  col-start-1 col-end-13  pl-8  pt-5 '>
         <h1 className='text-xl font-normal text-[#4154F1] bg-#F0F4FB'>
           {" "}
@@ -216,7 +216,7 @@ const adminDashboard = () => {
           </PieChart>
         </ResponsiveContainer>
       </div>
-    </>
+    </ProtectedRouteWRap>
   );
 };
 

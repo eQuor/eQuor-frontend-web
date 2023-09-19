@@ -5,23 +5,22 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isAuth, setIsAuth] = useState(() => {
+  const [authUser, setAuthUser] = useState(() => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("isAuth") === "true" || false;
+      return JSON.parse(localStorage.getItem("authUser"));
     } else {
-      // Return a default value for isAuth on the server
-      return false;
+      return null;
     }
   });
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      localStorage.setItem("isAuth", isAuth.toString());
+      localStorage.setItem("authUser", JSON.stringify(authUser));
     }
-  }, [isAuth]);
+  }, [authUser]);
 
   return (
-    <AuthContext.Provider value={{ isAuth, setIsAuth }}>
+    <AuthContext.Provider value={{ authUser, setAuthUser }}>
       {children}
     </AuthContext.Provider>
   );
