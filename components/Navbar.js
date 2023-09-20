@@ -20,11 +20,11 @@ const Navbar = () => {
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    // document.addEventListener("mousedown", handleClickOutside);
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    // return () => {
+    //   document.removeEventListener("mousedown", handleClickOutside);
+    // };
   }, []);
 
   return (
@@ -76,7 +76,10 @@ const Navbar = () => {
                   type='button'
                   onClick={() => {
                     setToggleDropdown(false);
-                    signOut();
+                    //signOut();
+                    console.log("hi")
+                    alert("hi");
+
                   }}
                   className='mt-5 w-full log-in'
                 >
