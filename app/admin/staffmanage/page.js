@@ -18,7 +18,6 @@ const Page = () => {
   const getResponse = async () => {
     const response = await axiosGet("/staff");
     if (response.status == 200) {
-      console.log("axios wed");
       let i = 1;
       let resdata = response.data._embedded.staff;
       resdata.forEach((element) => {

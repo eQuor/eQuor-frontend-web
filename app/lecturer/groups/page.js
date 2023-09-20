@@ -2,10 +2,11 @@
 import React from 'react'
 import Image from 'next/image'
 import Group from '@components/Group'
+import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
 
 const page = () => {
   return (
-    <>
+    <ProtectedRouteWRap>
       <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
         <span className="text-light-blue font-semibold text-lg">Groups</span>
 
@@ -216,7 +217,7 @@ const page = () => {
           <Group />
         </div>
       </div>
-    </>
+    </ProtectedRouteWRap>
   )
 }
 
