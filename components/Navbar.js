@@ -84,17 +84,7 @@ const Navbar = () => {
               <div ref={dropdownRef} className='dropdown'>
                 <button
                   type='button'
-<<<<<<< HEAD
-                  onClick={() => {
-                    setToggleDropdown(false);
-                    //signOut();
-                    console.log("hi")
-                    alert("hi");
-
-                  }}
-=======
                   onClick={handleLogOut}
->>>>>>> testRouteProtection
                   className='mt-5 w-full log-in'
                 >
                   Log out
