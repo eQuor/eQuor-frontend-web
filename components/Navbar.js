@@ -9,12 +9,19 @@ import { useAuth } from "@contexts/authContext";
 import { useRouter } from "next/navigation";
 
 const Navbar = () => {
-  const { isAuth, setIsAuth } = useAuth();
+  const { authUser, setAuthUser } = useAuth();
+  const router = useRouter();
 
   const [toggleDropDown, setToggleDropdown] = useState(false);
   const dropdownRef = useRef();
 
-  const router = useRouter();
+  const handleLogOut = () => {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("authUser");
+      setAuthUser(null);
+      router.push("/auth/signin");
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -45,7 +52,7 @@ const Navbar = () => {
 
       {/* Desktop Naviagation */}
       <div className='sm:flex hidden '>
-        {isAuth ? (
+        {authUser ? (
           <div className='flex gap-3 md:gap-5'>
             {/* <div className="py-4">
               <FaBell />
@@ -65,7 +72,7 @@ const Navbar = () => {
               className='py-1 mr-0 pl-0'
               onClick={() => setIsAuth(!isAuth)}
             >
-              Tharusha Pathirana
+              {authUser.username}
             </span>
             <div
               className='mt-2 ml-0 mr-3'
@@ -77,10 +84,7 @@ const Navbar = () => {
               <div ref={dropdownRef} className='dropdown'>
                 <button
                   type='button'
-                  onClick={() => {
-                    alert("aa");
-                    setIsAuth(false);
-                  }}
+                  onClick={handleLogOut}
                   className='mt-5 w-full log-in'
                 >
                   Log out
@@ -96,7 +100,7 @@ const Navbar = () => {
       </div>
       {/* Mobile Nevigation */}
       <div className='sm:hidden flex relative'>
-        {isAuth ? (
+        {authUser ? (
           <div div className='flex'>
             <Image
               src='/logo.svg'
@@ -116,13 +120,7 @@ const Navbar = () => {
               <div ref={dropdownRef} className='dropdown'>
                 <button
                   type='button'
-                  onClick={() => {
-                    // setToggleDropdown(false);
-                    // router.push("/auth/signin");
-                    // setIsAuth(false);
-
-                    console.log("hihi");
-                  }}
+                  onClick={handleLogOut}
                   className='mt-5 w-full log-in'
                 >
                   Log out

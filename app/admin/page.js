@@ -16,7 +16,7 @@ import {
 import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 
 const adminDashboard = () => {
-  const subject = "Dashboard";
+  // const subject = "Dashboard";
 
   const datare = [
     {

@@ -20,11 +20,9 @@ function ProtectedRouteWRap({ children }) {
   const [open, setOpen] = useState(false);
 
   if (authUser === null) {
-    alert("aa");
     router.push("/auth/signin");
     return <></>;
   }
-  alert(authUser);
   return (
     <>
       <main className='layout-with-sidebar layout relative z-0'>

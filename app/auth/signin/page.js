@@ -16,8 +16,6 @@ const Home = () => {
     password: "",
   });
 
-  alert("awww");
-
   const router = useRouter();
   return (
     <RouteWrap>
@@ -44,9 +42,7 @@ const Home = () => {
               const user = response.data;
               setAuthUser(user);
               if (user.role[0].authority === "ADMIN") {
-                alert("h");
                 router.push("/admin");
-                alert("before");
               } else if (user.role[0].authority === "STAFF")
                 router.push("/staff");
               else if (user.role[0].authority === "LECTURER")
