@@ -6,26 +6,18 @@ import TabsContainer from "@components/Tabscontent";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { axiosGet } from "@common/basicAxios";
+import { useAuth } from "@contexts/authContext";
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 
-const page = () => {
-  const columns = [
-    { Header: "#", accessor: "index" },
-    { Header: "Staff Member Name", accessor: "name" },
-    { Header: "Member ID", accessor: "id" },
-    { Header: "Email", accessor: "email" },
-    { Header: "Address", accessor: "address" },
-    { Header: "Action", accessor: "action" },
-  ];
+const Page = () => {
+  const { authUser, setAuthUser } = useAuth();
   const router = useRouter();
   const [data, setData] = useState([]);
-  useEffect(() => {
-    console.log("useEffect is running");
 
-    axios({
-      method: "get",
-      url: "http://localhost:3001/api/v1/staff",
-      responseType: "json",
-    }).then(function (response) {
+  const getResponse = async () => {
+    const response = await axiosGet("/staff");
+    if (response.status == 200) {
       console.log("axios wed");
       let i = 1;
       let resdata = response.data._embedded.staff;
@@ -36,11 +28,27 @@ const page = () => {
       });
       setData(resdata);
       console.log(resdata);
-    });
+    } else {
+      console.log("error while fetching API");
+    }
+    return response;
+  };
+  useEffect(() => {
+    console.log("useEffect is running");
+    const response = getResponse();
   }, []);
 
+  const columns = [
+    { Header: "#", accessor: "index" },
+    { Header: "Staff Member Name", accessor: "name" },
+    { Header: "Member ID", accessor: "id" },
+    { Header: "Email", accessor: "email" },
+    { Header: "Address", accessor: "address" },
+    { Header: "Action", accessor: "action" },
+  ];
+
   return (
-    <>
+    <ProtectedRouteWRap>
       <div className='col-start-1 col-end-13 '>
         <TabsContainer />
       </div>
@@ -69,8 +77,8 @@ const page = () => {
       <div className='col-start-1 col-end-13 row-start-5 px-4 pt-5'>
         <DataTable columns={columns} data={data} />
       </div>
-    </>
+    </ProtectedRouteWRap>
   );
 };
 
-export default page;
+export default Page;

@@ -4,9 +4,13 @@ import config from "@configuration/config";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+import { axiosPost } from "@common/basicAxios";
+import { useAuth } from "@contexts/authContext";
 
 const page = () => {
   const router = useRouter();
+  const { authUser, setAuthUser } = useAuth();
   const [formData, setFormData] = useState({
     name: "",
     id: "",
@@ -14,6 +18,7 @@ const page = () => {
     address: "",
     user_name: "",
     password: "",
+    role: "STAFF",
   });
 
   const handleSubmit = async (e) => {
@@ -30,9 +35,11 @@ const page = () => {
     })
       .then(async (result) => {
         if (result.isConfirmed) {
-          const response = await axios.post(
-            config.API_BASE_URL + config.API_VERSION + "/staff",
-            formData
+          const response = await axiosPost(
+            "/staff",
+            formData,
+            router,
+            setAuthUser
           );
           if (response.status === 201) {
             Swal.fire("Saved!", "New staff member has been saved.", "success");
@@ -46,7 +53,7 @@ const page = () => {
       });
   };
   return (
-    <>
+    <ProtectedRouteWRap>
       <div className='col-start-1 col-end-12 row-start-1 row-end-1  px-4 pt-5 mt-3'>
         <span className='text-light-blue font-semibold text-lg'>
           Staff Member
@@ -228,7 +235,7 @@ const page = () => {
           </div>
         </form>
       </div>
-    </>
+    </ProtectedRouteWRap>
   );
 };
 
