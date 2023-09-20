@@ -24,7 +24,21 @@ const Home = () => {
           className=' w-[700px] rounded-lg shadow-lg p-4'
           onSubmit={async (e) => {
             e.preventDefault();
-
+            Swal.fire({
+              title: "Signing in!",
+              html: "Please wait",
+              timer: 2000,
+              timerProgressBar: true,
+              didOpen: () => {
+                Swal.showLoading();
+              },
+              willClose: () => {},
+            }).then((result) => {
+              /* Read more about handling dismissals below */
+              if (result.dismiss === Swal.DismissReason.timer) {
+                console.log("I was closed by the timer");
+              }
+            });
             const response = await axios.post(
               config.API_BASE_URL + config.API_VERSION + "/auth/token",
               {},
@@ -37,6 +51,7 @@ const Home = () => {
                 },
               }
             );
+            Swal.close();
 
             if (response.status == 200) {
               const user = response.data;
