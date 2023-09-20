@@ -8,21 +8,16 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { axiosGet } from "@common/basicAxios";
 import { useAuth } from "@contexts/authContext";
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 
 const Page = () => {
-  const { isAuth, setIsAuth } = useAuth();
+  const { authUser, setAuthUser } = useAuth();
   const router = useRouter();
   const [data, setData] = useState([]);
-  useEffect(async () => {
-    console.log("useEffect is running");
 
-    const response = await axiosGet("/staff", []);
-    if (response.status === 401) {
-      setIsAuth(false);
-      router.push("/auth/signin");
-    } else if (response === null) {
-      console.log("request failed");
-    } else if (response.status == 200) {
+  const getResponse = async () => {
+    const response = await axiosGet("/staff");
+    if (response.status == 200) {
       console.log("axios wed");
       let i = 1;
       let resdata = response.data._embedded.staff;
@@ -36,6 +31,11 @@ const Page = () => {
     } else {
       console.log("error while fetching API");
     }
+    return response;
+  };
+  useEffect(() => {
+    console.log("useEffect is running");
+    const response = getResponse();
   }, []);
 
   const columns = [
@@ -48,7 +48,7 @@ const Page = () => {
   ];
 
   return (
-    <>
+    <ProtectedRouteWRap>
       <div className='col-start-1 col-end-13 '>
         <TabsContainer />
       </div>
@@ -77,7 +77,7 @@ const Page = () => {
       <div className='col-start-1 col-end-13 row-start-5 px-4 pt-5'>
         <DataTable columns={columns} data={data} />
       </div>
-    </>
+    </ProtectedRouteWRap>
   );
 };
 
