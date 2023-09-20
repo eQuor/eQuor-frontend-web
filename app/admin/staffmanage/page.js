@@ -6,8 +6,38 @@ import TabsContainer from "@components/Tabscontent";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { axiosGet } from "@common/basicAxios";
+import { useAuth } from "@contexts/authContext";
 
-const page = () => {
+const Page = () => {
+  const { isAuth, setIsAuth } = useAuth();
+  const router = useRouter();
+  const [data, setData] = useState([]);
+  useEffect(async () => {
+    console.log("useEffect is running");
+
+    const response = await axiosGet("/staff", []);
+    if (response.status === 401) {
+      setIsAuth(false);
+      router.push("/auth/signin");
+    } else if (response === null) {
+      console.log("request failed");
+    } else if (response.status == 200) {
+      console.log("axios wed");
+      let i = 1;
+      let resdata = response.data._embedded.staff;
+      resdata.forEach((element) => {
+        element.action = 1;
+        element.index = i;
+        i++;
+      });
+      setData(resdata);
+      console.log(resdata);
+    } else {
+      console.log("error while fetching API");
+    }
+  }, []);
+
   const columns = [
     { Header: "#", accessor: "index" },
     { Header: "Staff Member Name", accessor: "name" },
@@ -16,31 +46,10 @@ const page = () => {
     { Header: "Address", accessor: "address" },
     { Header: "Action", accessor: "action" },
   ];
-  const router = useRouter();
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    console.log("useEffect is running");
-
-    axios({
-      method: "get",
-      url: "http://localhost:3001/api/v1/admin/getStaff",
-      responseType: "json",
-    }).then(function (response) {
-      console.log("axios wed");
-      setData(response.data);
-      let i = 1;
-      response.data.forEach((element) => {
-        element.action = 1;
-        element.index = i;
-        i++;
-      });
-      console.log(data);
-    });
-  }, []);
 
   return (
     <>
-       <div className="col-start-1 col-end-13 ">
+      <div className='col-start-1 col-end-13 '>
         <TabsContainer />
       </div>
       <div className='  col-start-1 col-end-13 row-start-2 row-end-3 pl-8  pt-5 '>
@@ -48,7 +57,7 @@ const page = () => {
           {" "}
           Staff Member Management
         </h1>
-        <p className=' text-xs font-normal'>Home/Staff Member</p>
+        <p className=' text-xs font-normal'>Home / Staff Member</p>
       </div>
 
       <div className='w-[950px] pl-10 '>
@@ -56,8 +65,8 @@ const page = () => {
       </div>
       <div className=' col-start-4 col-end-7'>
         <Button
-         title={"Add Staff Member"}
-         url={'/admin/staffmanage/staffcreate'}
+          title={"Add Staff Member"}
+          url={"/admin/staffmanage/staffcreate"}
         />
       </div>
 
@@ -72,4 +81,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

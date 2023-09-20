@@ -5,13 +5,23 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { FaBell } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { useAuth } from "@contexts/authContext";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
-  //const isUserLoggedIn = false
+  const { authUser, setAuthUser } = useAuth();
+  const router = useRouter();
 
-  const [isUserLoggedIn, setState] = useState(false);
   const [toggleDropDown, setToggleDropdown] = useState(false);
   const dropdownRef = useRef();
+
+  const handleLogOut = () => {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("authUser");
+      setAuthUser(null);
+      router.push("/auth/signin");
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -20,11 +30,11 @@ const Navbar = () => {
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    // document.addEventListener("mousedown", handleClickOutside);
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    // return () => {
+    //   document.removeEventListener("mousedown", handleClickOutside);
+    // };
   }, []);
 
   return (
@@ -42,7 +52,7 @@ const Navbar = () => {
 
       {/* Desktop Naviagation */}
       <div className='sm:flex hidden '>
-        {isUserLoggedIn ? (
+        {authUser ? (
           <div className='flex gap-3 md:gap-5'>
             {/* <div className="py-4">
               <FaBell />
@@ -60,9 +70,9 @@ const Navbar = () => {
             <span
               // mr-4
               className='py-1 mr-0 pl-0'
-              onClick={() => setState(!isUserLoggedIn)}
+              onClick={() => setIsAuth(!isAuth)}
             >
-              Tharusha Pathirana
+              {authUser.username}
             </span>
             <div
               className='mt-2 ml-0 mr-3'
@@ -74,10 +84,7 @@ const Navbar = () => {
               <div ref={dropdownRef} className='dropdown'>
                 <button
                   type='button'
-                  onClick={() => {
-                    setToggleDropdown(false);
-                    signOut();
-                  }}
+                  onClick={handleLogOut}
                   className='mt-5 w-full log-in'
                 >
                   Log out
@@ -86,17 +93,14 @@ const Navbar = () => {
             )}
           </div>
         ) : (
-          <button
-            onClick={() => setState(!isUserLoggedIn)}
-            className='log-in mr-4'
-          >
+          <button onClick={() => setIsAuth(!isAuth)} className='log-in mr-4'>
             Log in
           </button>
         )}
       </div>
       {/* Mobile Nevigation */}
       <div className='sm:hidden flex relative'>
-        {isUserLoggedIn ? (
+        {authUser ? (
           <div div className='flex'>
             <Image
               src='/logo.svg'
@@ -116,10 +120,7 @@ const Navbar = () => {
               <div ref={dropdownRef} className='dropdown'>
                 <button
                   type='button'
-                  onClick={() => {
-                    setToggleDropdown(false);
-                    signOut();
-                  }}
+                  onClick={handleLogOut}
                   className='mt-5 w-full log-in'
                 >
                   Log out
@@ -128,10 +129,7 @@ const Navbar = () => {
             )}
           </div>
         ) : (
-          <button
-            onClick={() => setState(!isUserLoggedIn)}
-            className='log-in mr-4'
-          >
+          <button onClick={() => setIsAuth(!isAuth)} className='log-in mr-4'>
             Log in
           </button>
         )}
