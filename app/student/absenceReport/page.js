@@ -3,11 +3,50 @@ import Button from '@components/Button'
 import DataTable from '@components/DataTable'
 import Search from '@components/Search'
 import TabsContainer from '@components/Tabscontent'
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import Link from 'next/link'
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { axiosGet } from "@common/basicAxios";
+import { useAuth } from "@contexts/authContext";
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+
 
 const page = () => {
+
+  //...............................
+
+  const { authUser, setAuthUser } = useAuth();
+  const router = useRouter();
+  const [data, setData] = useState([]);
+
+
+  const getResponse = async () => {
+    const response = await axiosGet("/absencereport");
+    if (response.status == 200) {
+      let i = 1;
+      let resdata = response.data._embedded.absencereport;
+      resdata.forEach((element) => {
+        element.action = 1;
+        element.index = i;
+        i++;
+      });
+      setData(resdata);
+      console.log(resdata);
+    } else {
+      console.log("error while fetching API");
+    }
+    return response;
+  };
+
+  useEffect(() => {
+    console.log("useEffect is running");
+    const response = getResponse();
+  }, []);
+
+  //...............................
   return (
+    <ProtectedRouteWRap>
     <>
       {/* <div className=" bg-white  col-start-1 col-end-13 row-start-1 row-end-2 pl-8  pt-5 ">
         <TabsContainer />
@@ -152,7 +191,8 @@ const page = () => {
         <h1>Current Staff members</h1>
       </div> */}
     </>
-  )
-}
+    </ProtectedRouteWRap>
+  );
+};
 
-export default page
+export default page;
