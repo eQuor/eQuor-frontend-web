@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { AiFillPlaySquare } from 'react-icons/ai'
 import Sessioncard from './Sessioncard'
 import { useRouter } from 'next/navigation'
+import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
+
 
 const page = () => {
   const [isSessionActive, setSessionActive] = useState(true)
@@ -14,7 +16,7 @@ const page = () => {
 
   const subject = 'SCS1101 Database Management'
   return (
-    <>
+    <ProtectedRouteWRap>
       <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
         <span className="text-light-blue font-semibold text-lg">{subject}</span>
 
@@ -112,7 +114,7 @@ const page = () => {
           </>
         )}
       </div> */}
-    </>
+    </ProtectedRouteWRap>
   )
 }
 

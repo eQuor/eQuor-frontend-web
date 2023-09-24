@@ -3,6 +3,8 @@ import Button from '@components/Button'
 import React from 'react'
 import Search from '@components/Search'
 import TabsContainer from '@components/Tabscontent'
+import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
+
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
 
 import Card from '@components/Card'
@@ -10,7 +12,7 @@ import Link from 'next/link'
 
 const page= () => {
   return (
-    <>
+     <ProtectedRouteWRap>
       <div className="col-start-1 col-end-13 ">
         <TabsContainer />
       </div>
@@ -168,7 +170,7 @@ const page= () => {
           </table>
         </div>
       </div>
-    </>
+     </ProtectedRouteWRap>
   )
 }
 

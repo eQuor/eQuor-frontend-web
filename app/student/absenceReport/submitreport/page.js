@@ -1,10 +1,12 @@
 import React from 'react'
+import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
+
 
 const medReport = () => {
   const subject = 'Absence Report'
 
   return (
-    <>
+     <ProtectedRouteWRap>
       <div className="col-start-1 col-end-9 row-start-1 row-end-1  px-4 pt-5">
         <span className="text-light-blue font-semibold text-lg">{subject}</span>
 
@@ -101,7 +103,7 @@ const medReport = () => {
           </div>
         </form>
       </div>
-    </>
+    </ProtectedRouteWRap>
   )
 }
 
