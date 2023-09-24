@@ -5,6 +5,7 @@ import { RiArrowLeftDoubleFill } from "react-icons/ri";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import TabsContainer from "@components/Tabscontent";
 import DataTable from "@components/DataTable";
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 
 const Home = () => {
   const data = [
@@ -127,7 +128,7 @@ const Home = () => {
   };
 
   return (
-    <>
+    <ProtectedRouteWRap>
       <div className="col-start-1 col-end-13 ">
         <TabsContainer />
       </div>
@@ -206,7 +207,7 @@ const Home = () => {
       <div className="col-start-1 col-end-13  px-4 pt-5">
         <DataTable columns={columns} data={data} />
       </div>
-    </>
+    </ProtectedRouteWRap>
   );
 };
 

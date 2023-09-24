@@ -1,5 +1,6 @@
 "use client";
 
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 import React from "react";
 import {
   PieChart,
@@ -96,7 +97,7 @@ const adminDashboard = () => {
   };
 
   return (
-    <>
+    <ProtectedRouteWRap>
       <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5">
         <span className="text-light-blue font-semibold text-lg">{subject}</span>
 
@@ -216,7 +217,7 @@ const adminDashboard = () => {
           </PieChart>
         </ResponsiveContainer>
       </div>
-    </>
+    </ProtectedRouteWRap>
   );
 };
 
