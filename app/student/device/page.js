@@ -2,13 +2,52 @@
 import React from 'react'
 import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
 import QRCode from 'react-qr-code'
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
+
+import { axiosGet } from '@common/basicAxios'
+import { useAuth } from '@contexts/authContext'
+
+import axios from 'axios'
+
+
+
+
+
+
+
 
 const page = () => {
-  const [text, setText] = useState('')
-  function handleChange(e) {
-    setText(e.target.value)
-  }
+  // const [text, setText] = useState('')
+  // function handleChange(e) {
+  //   setText(e.target.value)
+  // }
+
+  const [data, setValue] = useState([])
+
+  const { authUser, setAuthUser } = useAuth()
+
+ const getResponse = async () => {
+   const response = await axiosGet('/auth/getId')
+   if (response.status == 200) {
+     console.log('axios wed')
+     console.log(response.data)
+     
+     let value = response.data.toString()
+     setValue(value)
+ 
+   } else {
+     console.log('error while fetching API')
+   }
+   return response
+ }
+ useEffect(() => {
+   console.log('useEffect is running')
+   const response = getResponse()
+ }, [])
+
+
+
+
 
   return (
     <ProtectedRouteWRap>
@@ -25,21 +64,21 @@ const page = () => {
 
       <div className="col-start-1 col-end-13 px-4 pt-5 ">
         <div className="flex">
-          <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
-            <p class="mb-3 font-normal text-gray-500 ">
+          <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
+            <p className="mb-3 font-normal text-gray-500 ">
               1. Download eQuor mobile application.
             </p>
-            <p class="mb-3 font-normal text-gray-500 ">
+            <p className="mb-3 font-normal text-gray-500 ">
               2. Open the Web Application
             </p>
-            <p class="mb-3 font-normal text-gray-500 ">3. Scan the QR Code</p>
+            <p className="mb-3 font-normal text-gray-500 ">3. Scan the QR Code</p>
           </div>
-          <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow ml-5">
+          <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow ml-5">
             <div>
               <h1>QR Code</h1>
-              <QRCode value={text} />
+              <QRCode value={data} />
 
-              <div>
+              {/* <div>
                 <p>Enter your text</p>
                 <input
                   type="text"
@@ -49,7 +88,7 @@ const page = () => {
                   }}
                 />
                 <button>Generate</button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
