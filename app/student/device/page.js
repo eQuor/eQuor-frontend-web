@@ -22,7 +22,7 @@ const page = () => {
   //   setText(e.target.value)
   // }
 
-  const [data, setValue] = useState([])
+  const [data, setValue] = useState('')
 
   const { authUser, setAuthUser } = useAuth()
 
