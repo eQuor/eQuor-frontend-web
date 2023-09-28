@@ -34,6 +34,7 @@ const page = () => {
      console.log(response.data)
      console.log(response.data.qrString)
      console.log(response.data.userName)
+     console.log(response.data.token)
      
      //let value = response.data.toString()
      let value = response.data.qrString.toString()
