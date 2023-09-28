@@ -23,6 +23,7 @@ const page = () => {
   // }
 
   const [data, setValue] = useState('')
+  const[userName,setUsername] = useState('')
 
   const { authUser, setAuthUser } = useAuth()
 
@@ -31,9 +32,14 @@ const page = () => {
    if (response.status == 200) {
      console.log('axios wed')
      console.log(response.data)
+     console.log(response.data.qrString)
+     console.log(response.data.userName)
      
-     let value = response.data.toString()
+     //let value = response.data.toString()
+     let value = response.data.qrString.toString()
+     let userName = response.data.userName.toString()
      setValue(value)
+     setUsername(userName)
  
    } else {
      console.log('error while fetching API')
@@ -62,20 +68,27 @@ const page = () => {
         </p>
       </div>
 
-      <div className="col-start-1 col-end-13 px-4 pt-5 ">
+      <div className="col-start-3 col-end-13 px-4 pt-5">
         <div className="flex">
-          <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
-            <p className="mb-3 font-normal text-gray-500 ">
-              1. Download eQuor mobile application.
-            </p>
-            <p className="mb-3 font-normal text-gray-500 ">
-              2. Open the Web Application
-            </p>
-            <p className="mb-3 font-normal text-gray-500 ">3. Scan the QR Code</p>
+          <div className="p-20 bg-white border border-gray-200 rounded-lg shadow">
+            <div className="mt-12">
+              <p className="mb-3 font-normal text-gray-500 ">
+                1. Download eQuor mobile application.
+              </p>
+              <p className="mb-3 font-normal text-gray-500 ">
+                2. Click Scan QR button.
+              </p>
+              <p className="mb-3 font-normal text-gray-500 ">
+                3. Scan the QR Code
+              </p>
+              <p className="mb-3 font-normal text-gray-500 ">
+                4. Register your device to mark attendance.
+              </p>
+            </div>
           </div>
-          <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow ml-5">
-            <div>
-              <h1>QR Code</h1>
+          <div className="p-20 bg-white border border-gray-200 rounded-lg shadow ml-5">
+            <div className="ml-0">
+              {/* <h1 className='ml-23'>QR Code</h1> */}
               <QRCode value={data} />
 
               {/* <div>
