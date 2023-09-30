@@ -9,15 +9,8 @@ import { useAuth } from "@contexts/authContext";
 
 import axios from "axios";
 
-const page = () => {
-  // const [text, setText] = useState('')
-  // function handleChange(e) {
-  //   setText(e.target.value)
-  // }
-
-  const [data, setValue] = useState("");
-
-  const { authUser, setAuthUser } = useAuth();
+const Page = () => {
+  const [data, setData] = useState([]);
 
   const getResponse = async () => {
     const response = await axiosGet("/auth/getId");
@@ -25,8 +18,7 @@ const page = () => {
       console.log("axios wed");
       console.log(response.data);
 
-      let value = response.data.toString();
-      setValue(value);
+      setData(response.data);
     } else {
       console.log("error while fetching API");
     }
@@ -35,6 +27,7 @@ const page = () => {
   useEffect(() => {
     console.log("useEffect is running");
     const response = getResponse();
+    console.log(data);
   }, []);
 
   return (
@@ -50,23 +43,28 @@ const page = () => {
         </p>
       </div>
 
-      <div className='col-start-1 col-end-13 px-4 pt-5 '>
+      <div className='col-start-3 col-end-13 px-4 pt-5'>
         <div className='flex'>
-          <div className='max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow'>
-            <p className='mb-3 font-normal text-gray-500 '>
-              1. Download eQuor mobile application.
-            </p>
-            <p className='mb-3 font-normal text-gray-500 '>
-              2. Open the Web Application
-            </p>
-            <p className='mb-3 font-normal text-gray-500 '>
-              3. Scan the QR Code
-            </p>
+          <div className='p-20 bg-white border border-gray-200 rounded-lg shadow'>
+            <div className='mt-12'>
+              <p className='mb-3 font-normal text-gray-500 '>
+                1. Download eQuor mobile application.
+              </p>
+              <p className='mb-3 font-normal text-gray-500 '>
+                2. Click Scan QR button.
+              </p>
+              <p className='mb-3 font-normal text-gray-500 '>
+                3. Scan the QR Code
+              </p>
+              <p className='mb-3 font-normal text-gray-500 '>
+                4. Register your device to mark attendance.
+              </p>
+            </div>
           </div>
-          <div className='max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow ml-5'>
-            <div>
-              <h1>QR Code</h1>
-              <QRCode value={data} />
+          <div className='p-20 bg-white border border-gray-200 rounded-lg shadow ml-5'>
+            <div className='ml-0'>
+              {/* <h1 className='ml-23'>QR Code</h1> */}
+              <QRCode value={JSON.stringify(data)} />
 
               {/* <div>
                 <p>Enter your text</p>
@@ -87,4 +85,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
