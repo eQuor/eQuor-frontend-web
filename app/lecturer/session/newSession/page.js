@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Sessioncard from "../Sessioncard";
@@ -9,42 +9,56 @@ import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 import { renderToStaticMarkup } from "react-dom/server";
 import Card from "@components/card";
 import Popup from "@components/Popup";
+import { useRouter } from "next/navigation";
+import { axiosGet } from "@common/basicAxios";
 
 const page = () => {
-
+  const navigator = useRouter();
   const getResponse = async () => {
     const response = await axiosGet("/module");
     if (response.status == 200) {
-      
-      setData(resdata);
-      console.log(resdata);
+      // setData(resdata);
+      // console.log(resdata);
     } else {
       console.log("error while fetching API");
     }
     return response;
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     const response = getResponse();
-  })
-  const cardhtml = renderToStaticMarkup(<Popup/>);
+  });
+  const cardhtml = renderToStaticMarkup(<Popup />);
 
   const subject = "SCS1101 Database Management";
   const handlewithattendance = () => {
-    Swal.fire({
-      html: `${cardhtml}`,
-      showCloseButton: true,
-      showCancelButton: true,
-      focusConfirm: false,
-      confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
-      confirmButtonAriaLabel: "Thumbs up, great!",
-      cancelButtonText: '<i class="fa fa-thumbs-down"></ i>',
-      cancelButtonAriaLabel: "Thumbs down",
-    });
+    navigator.push("/lecturer/session/withattendance");
+    // Swal.fire({
+    //   html: `${cardhtml}`,
+    //   showCloseButton: false,
+    //   showCancelButton: false,
+    //   focusConfirm: false,
+    //   confirmButtonText: '<i class="fa fa-thumbs-up"></i> Confirm',
+    //   confirmButtonAriaLabel: "Thumbs up, great!",
+    //   cancelButtonText: '<i class="fa fa-thumbs-down"></ i> Cancel',
+    //   cancelButtonAriaLabel: "Thumbs down",
+    // });
+  };
+  const handlewithoutattendance = () => {
+    navigator.push("/lecturer/session/withoutattendance");
+    // Swal.fire({
+    //   html: `${cardhtml}`,
+    //   showCloseButton: false,
+    //   showCancelButton: false,
+    //   focusConfirm: false,
+    //   confirmButtonText: '<i class="fa fa-thumbs-up"></i> Confirm',
+    //   confirmButtonAriaLabel: "Thumbs up, great!",
+    //   cancelButtonText: '<i class="fa fa-thumbs-down"></ i> Cancel',
+    //   cancelButtonAriaLabel: "Thumbs down",
+    // });
   };
   return (
     <ProtectedRouteWRap>
-      
       <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
         <span className="text-light-blue font-semibold text-lg">{subject}</span>
 
@@ -83,7 +97,13 @@ const page = () => {
         </Link>
         <div>
           <div className=" relative top-10 right-40 col-start-7 col-end-10">
-            <Button title={"Without Attendance"} />
+          <button
+              className="bg-light-blue w-[210px] h-[50px] rounded-[5px]"
+              onClick={handlewithoutattendance}
+              name={"With Attendance"}
+            >
+              Without Attendance
+            </button>
           </div>
         </div>
       </div>

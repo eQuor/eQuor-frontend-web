@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { axiosPost, axiosGet } from "@common/basicAxios";
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+
 
 function Popup() {
   const [data, setData] = useState([]);
@@ -61,24 +63,27 @@ function Popup() {
   };
 
   return (
-    <div className="  ">
+    <ProtectedRouteWRap>
+    <div className=" col-start-2 col-end-10 row-start-2   px-4 pt-5 mt-3 ">
+       
       <form
         onSubmit={(e) => {
           handleSubmit(e);
         }}
-        className="  "
+        className="  bg-white rounded shadow-lg px-4 py-3 "
       >
+         <span className='text-dark-blue font-semibold text-2xl  '>
+         When do you want to use this session?
+          </span>
         <div className="  ">
-          <h2 className="text-lg  text-dark-blue font-normal ">
-            When do you want to use this session?{" "}
-          </h2>
+          
           <div className="">
-            <label className=" mb-2 text-lg  text-dark-blue font-normal">
+            <label className="  mb-2 text-lg  text-dark-blue font-normal">
               Start Time
             </label>
             <input
               type="time"
-              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[200px] p-2.5 "
+              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               onChange={(e) => {
                 let newFormData = formData;
                 newFormData.start_time = e.target.value;
@@ -91,7 +96,7 @@ function Popup() {
               </label>
               <input
                 type="time"
-                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[200px] p-2.5"
+                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 onChange={(e) => {
                   let newFormData = formData;
                   newFormData.end_time = e.target.value;
@@ -110,20 +115,14 @@ function Popup() {
                 newFormData.module_id = e.target.value;
                 setFormData(newFormData);
               }}
-              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[200px] p-2.5"
+              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
             >
               {data.map((option) => (
                 <option key={option.id} value={option.id}>
                   {option.name}
                 </option>
               ))}
-              {/* <option
-                value={123}
-                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[200px] p-2.5"
-              >
-                database
-              </option>
-              <option>DSA</option> */}
+           
             </select>
             <label className="mb-2 text-lg  text-dark-blue font-normal">
               Session Name
@@ -134,7 +133,7 @@ function Popup() {
                 newFormData.session_name = e.target.value;
                 setFormData(newFormData);
               }}
-              className=" shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[200px] p-2.5"
+              className=" shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
             ></input>
           </div>
           <div className="flex justify-self-end gap-4 pt-5 ">
@@ -142,12 +141,13 @@ function Popup() {
               className="group relative w-26 flex justify-self-end py-2 px-4 border border-transparent font-regular rounded-md text-white bg-indigo-600 hover:bg-indigo-700
                     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-base"
             >
-              Createee
+              Create
             </button>
           </div>
         </div>
       </form>
     </div>
+    </ProtectedRouteWRap>
   );
 }
 
