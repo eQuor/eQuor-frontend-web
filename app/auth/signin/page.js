@@ -41,7 +41,9 @@ const Home = () => {
             });
             const response = await axios.post(
               config.API_BASE_URL + config.API_VERSION + "/auth/token",
-              {},
+              {
+                requestDeviceCode: 0,
+              },
               {
                 headers: {
                   Authorization:

@@ -3,6 +3,8 @@ import Button from '@components/Button'
 import React from 'react'
 import Search from '@components/Search'
 import TabsContainer from '@components/Tabscontent'
+import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
+
 
 import Card from '@components/card'
 import Link from 'next/link'

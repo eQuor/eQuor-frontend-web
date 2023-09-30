@@ -8,6 +8,9 @@ import {
   RiQuestionAnswerFill,
 } from 'react-icons/ri'
 import { PiStudentBold, PiChalkboardTeacherFill } from 'react-icons/pi'
+import { FaMobileScreen } from 'react-icons/fa'
+import { FaMobileAlt } from 'react-icons/fa'
+
 import { MdPeople } from 'react-icons/md'
 import '@fontsource/open-sans'
 import Link from 'next/link'
@@ -45,6 +48,16 @@ function SidebarAdmin({ open }) {
           title: 'Absence Reports',
           icon: <BsFillClipboard2PulseFill />,
           url: '/student/absenceReport',
+        },
+      ],
+    },
+    {
+      topic: 'Register Device',
+      subitems: [
+        {
+          title: 'Your Device',
+          icon: <FaMobileAlt/>,
+          url: '/student/device',
         },
       ],
     },

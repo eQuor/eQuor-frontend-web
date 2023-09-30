@@ -129,7 +129,7 @@ const Navbar = () => {
             )}
           </div>
         ) : (
-          <button onClick={() => setIsAuth(!isAuth)} className='log-in mr-4'>
+          <button onClick={() => {}} className='log-in mr-4'>
             Log in
           </button>
         )}
