@@ -7,6 +7,7 @@ import axios from "axios";
 import TabsContainer from "@components/Tabscontent";
 import Search from "@components/Search";
 import Button from "@components/Button";
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 
 function page() {
   const tableRef = useRef(null);
@@ -41,7 +42,7 @@ function page() {
   ];
 
   return (
-    <>
+    <ProtectedRouteWRap>
       <div className='col-start-1 col-end-13 '>
         <TabsContainer />
       </div>
@@ -67,7 +68,7 @@ function page() {
       <div className='col-start-1 col-end-13 row-start-5 px-4 pt-5'>
         <DataTable columns={columns} data={data} />
       </div>
-    </>
+      </ProtectedRouteWRap>
   );
 }
 
