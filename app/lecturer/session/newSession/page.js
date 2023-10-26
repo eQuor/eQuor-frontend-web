@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Sessioncard from '../Sessioncard'
 import Button from '@components/Button'
 import Swal from 'sweetalert2'
+import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
 //import withReactContent from 'sweetalert2-react-content'
 
 
@@ -58,7 +59,7 @@ const page = () => {
 
 
   return (
-    <>
+    <ProtectedRouteWRap>
       <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
         <span className="text-light-blue font-semibold text-lg">{subject}</span>
 
@@ -112,7 +113,7 @@ const page = () => {
       {/* <div className="col-start-3 col-end-11 row-start-3 px-4 pt-0  ">
                 <div className="bg-white rounded shadow-lg px-4 py-3"></div>
             </div> */}
-    </>
+    </ProtectedRouteWRap>
   )
 }
 
