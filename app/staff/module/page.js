@@ -6,64 +6,90 @@ import TabsContainer from "@components/Tabscontent";
 import axios from "axios";
 import Card from "@components/card";
 import Link from "next/link";
+import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
+import { axiosGet } from '@common/basicAxios'
+import { useAuth } from '@contexts/authContext'
+import { useRouter } from 'next/navigation'
 
 const Home = () => {
-  const [data, setData] = useState([]);
-  const [cards, setCards] = useState([]);
-  useEffect(() => {
-    axios({
-      method: "get",
-      url: "http://localhost:3001/api/v1/module",
-      responseType: "json",
-    }).then(function (response) {
-      console.log("axios wed");
-      let i = 1;
-      let resdata = response.data._embedded.module;
-      resdata.forEach((element) => {
-        element.action = 1;
-        element.index = i;
-        i++;
-      });
-      setData(resdata);
-      console.log(resdata);
-      let newCards = [];
-      resdata.forEach((element) => {
-        newCards.push(<Card name={element.name} semester={element.semester} />);
-        setCards(newCards);
-        console.log(cards);
-      });
-    });
-  }, []);
+
+const { authUser, setAuthUser } = useAuth()
+const router = useRouter()
+const [data, setData] = useState([])
+
+const getResponse = async () => {
+  const response = await axiosGet('/module')
+ 
+  if (response.status == 200) {
+    console.log('axios wed')
+    let i = 1
+    let resdata = response.data._embedded.module
+    resdata.forEach((element) => {
+      element.action = 1
+      element.index = i
+      i++
+    })
+    setData(resdata)
+   console.log(resdata)
+  } else {
+    console.log('error while fetching API')
+  }
+  return response
+}
+useEffect(() => {
+  console.log('useEffect is running')
+  const response = getResponse()
+  console.log(response)
+}, [])
+
+
+
+
+
+
+
 
   return (
-    <>
-      <div className='col-start-1 col-end-13 '>
+    <ProtectedRouteWRap>
+      <div className="col-start-1 col-end-13 ">
         <TabsContainer />
       </div>
-
-      <div className='col-start-1 col-end-13 row-start-2 row-end-2  px-4 pt-5 mt-3'>
-        <span className='text-light-blue font-semibold text-lg'>
+      <div className="col-start-1 col-end-13 row-start-2 row-end-2  px-4 pt-5 mt-3">
+        <span className="text-light-blue font-semibold text-lg">
           Module Management
         </span>
 
-        <p className='text-link-ash font-semibold text-sm'>
-          Home /{" "}
-          <span className='text-black font-semibold text-sm'>Modules</span>
+        <p className="text-link-ash font-semibold text-sm">
+          Home /{' '}
+          <span className="text-black font-semibold text-sm">Modules</span>
         </p>
       </div>
-
-      <div className='col-start-1 col-end-13 px-4 pt-5 flex'>
-        <div className='w-[1200px] overflow-x-auto'>
+      <div className="col-start-1 col-end-13 px-4 pt-5 flex">
+        <div className="w-[1200px] overflow-x-auto">
           <Search />
         </div>
 
-        <div className='ml-3'>
-          <Button title={"Add Module"} url={"/staff/module/addmodule"} />
+        <div className="ml-3">
+          <Button title={'Add Module'} url={'/staff/module/addmodule'} />
         </div>
       </div>
+      <div className=" col-start-1 col-end-13 flex px-4 mt-4">
+        <div className="flex gap-5 flex-wrap">{data.map((module,index) => {
 
-      <div className=' col-start-1 col-end-13 flex px-4 mt-4'>
-        <div className='flex gap-5 flex-wrap'>{cards}</div>
+          //const { name, semester } = data
+          
+          // return <Card name={module.name} semester = {module.semester} />
+
+          return (
+            <div key={index}>
+              <Link href={`/staff/module/${module.id}`}>
+                
+                <Card name={module.name} semester={module.semester} />
+              </Link>
+            </div>
+          )
+          
+        })}</div>
       </div>
       {/* 
       <div className=" text-white text-center text-sm col-start-10 col-end-11 row-start-2 row-end-4 ">
@@ -76,12 +102,11 @@ const Home = () => {
           Assign Students{' '}
         </button>
       </div> */}
-
       {/* <div className=" font-semibold text-[#012970] text-lg col-start-1 col-end-13 row-start-3 row-end-4 pl-12  pt-10 ">
         <h1>Assigned Lecturers</h1>
       </div> */}
-    </>
-  );
+    </ProtectedRouteWRap>
+  )
 };
 
 export default Home;

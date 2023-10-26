@@ -52,6 +52,10 @@ const page = () => {
         Swal.fire("Error!", "Couldn't save new staff member.", "error");
       });
   };
+
+
+
+
   return (
     <ProtectedRouteWRap>
       <div className='col-start-1 col-end-12 row-start-1 row-end-1  px-4 pt-5 mt-3'>
