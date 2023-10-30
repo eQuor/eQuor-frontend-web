@@ -1,9 +1,12 @@
+"use client";
 import React from 'react'
 import Link from 'next/link'
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+
 
 const page = () => {
   return (
-    <>
+    <ProtectedRouteWRap>
       {/* <div classNameName="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
         <span classNameName="text-light-blue font-semibold text-lg">
           Attendance Management
@@ -280,7 +283,7 @@ const page = () => {
           </table>
         </div>
       </div>
-    </>
+    </ProtectedRouteWRap>
   )
 }
 

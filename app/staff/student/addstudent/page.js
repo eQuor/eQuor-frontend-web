@@ -4,6 +4,8 @@ import config from "@configuration/config";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+
 
 const addStudent = () => {
   const router = useRouter();
@@ -49,7 +51,7 @@ const addStudent = () => {
   };
 
   return (
-    <>
+    <ProtectedRouteWRap>
       <div className='col-start-1 col-end-9 row-start-1 row-end-1  px-4 pt-5'>
         <span className='text-light-blue font-semibold text-lg'>{subject}</span>
 
@@ -231,7 +233,7 @@ const addStudent = () => {
           </div>
         </form>
       </div>
-    </>
+    </ProtectedRouteWRap>
   );
 };
 

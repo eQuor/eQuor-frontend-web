@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use client'
 import React from 'react'
 import { useRouter } from 'next/navigation'
@@ -6,6 +7,13 @@ import { useState } from 'react'
 import Swal from 'sweetalert2'
 import { axiosPost } from '@common/basicAxios'
 import { useAuth } from '@contexts/authContext'
+=======
+"use client";
+import React from "react";
+import { useRouter } from "next/navigation";
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+
+>>>>>>> origin/suresh-2
 
 const addModule = () => {
   const router = useRouter()
@@ -75,8 +83,13 @@ const addModule = () => {
   }
   return (
     <ProtectedRouteWRap>
+<<<<<<< HEAD
       <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
         <span className="text-light-blue font-semibold text-lg">
+=======
+      <div className='col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3'>
+        <span className='text-light-blue font-semibold text-lg'>
+>>>>>>> origin/suresh-2
           Module Management
         </span>
 
@@ -209,7 +222,12 @@ const addModule = () => {
         </form>
       </div>
     </ProtectedRouteWRap>
+<<<<<<< HEAD
   )
 }
+=======
+  );
+};
+>>>>>>> origin/suresh-2
 
 export default addModule

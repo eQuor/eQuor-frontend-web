@@ -6,6 +6,8 @@ import DataTable from "@components/DataTable";
 import YearDropdown from "@components/YearDropdown";
 import MonthDropdown from "@components/MonthDropdown";
 import DateDropdown from "@components/DateDropdown";
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+
 
 const Home = () => {
   const data = [
@@ -95,7 +97,7 @@ const Home = () => {
   ];
 
   return (
-    <>
+    <ProtectedRouteWRap>
       <div className=" col-start-1 col-end-13  ">
         <TabsContainer />
       </div>
@@ -135,7 +137,7 @@ const Home = () => {
       <div className="col-start-1 col-end-13  px-4 pt-5">
         <DataTable columns={columns} data={data} />
       </div>
-    </>
+    </ProtectedRouteWRap>
   );
 };
 

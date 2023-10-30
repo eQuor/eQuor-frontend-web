@@ -1,13 +1,44 @@
 "use client";
 import Button from "@components/Button";
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { RiArrowLeftDoubleFill } from "react-icons/ri";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import TabsContainer from "@components/Tabscontent";
 import DataTable from "@components/DataTable";
+<<<<<<< HEAD
 import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
+=======
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+import { axiosGet } from "@common/basicAxios";
+import { PHASE_DEVELOPMENT_SERVER } from "next/dist/shared/lib/constants";
+>>>>>>> origin/suresh-2
 
 const Home = () => {
+  const [piechartdata, setData] = useState({
+    "allStudent": 0,
+    "attendStudent": 0
+  });
+  const getResponse = async () => {
+    const response = await axiosGet("/lecture/studentAttendSession/");
+    if (response.status == 200) {
+      console.log("axios wed");
+      let i = 1;
+      let resdata = response.data;
+      
+      setData(resdata);
+      console.log(resdata);
+    } else {
+      console.log("error while fetching API");
+    }
+    return response;
+  };
+  useEffect(() => {
+    console.log("useEffect is running");
+    const response = getResponse();
+
+  }, []);
+
+
   const data = [
     {
       id: 1,
@@ -95,8 +126,8 @@ const Home = () => {
   ];
 
   const datapie = [
-    { name: "present students", value: 500 },
-    { name: "abesent students", value: 300 },
+    { name: "present students", value:  piechartdata.attendStudent },
+    { name: "abesent students", value: piechartdata.allStudent-piechartdata.attendStudent },
   ];
   const COLORS = ["#012970", "#899BBD"];
 
@@ -196,11 +227,11 @@ const Home = () => {
       </div>
       <div className=" text-center  col-start-5 col-end-7 row-start-5 row-end-7 ">
         <h1 className="bg-[#012970] text-white rounded-[5px] w-[250px] h-[28px] ">
-          Total Present Students - 85
+          Total Present Students - {piechartdata.attendStudent}
         </h1>
 
         <h1 className="bg-[#989797] text-dark-blue rounded-[5px] w-[250px] h-[28px] mt-5 ">
-          Total Absent Students - 28
+          Total Absent Students - {piechartdata.allStudent-piechartdata.attendStudent}
         </h1>
       </div>
 

@@ -1,5 +1,10 @@
 "use client";
+<<<<<<< HEAD
 import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
+=======
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+
+>>>>>>> origin/suresh-2
 
 import React from "react";
 import {
@@ -217,7 +222,11 @@ const adminDashboard = () => {
           </PieChart>
         </ResponsiveContainer>
       </div>
+<<<<<<< HEAD
     </ProtectedRouteWRap>
+=======
+      </ProtectedRouteWRap>
+>>>>>>> origin/suresh-2
   );
 };
 

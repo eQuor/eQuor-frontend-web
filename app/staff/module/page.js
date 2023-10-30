@@ -6,10 +6,15 @@ import TabsContainer from "@components/Tabscontent";
 import axios from "axios";
 import Card from "@components/card";
 import Link from "next/link";
+<<<<<<< HEAD
 import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
 import { axiosGet } from '@common/basicAxios'
 import { useAuth } from '@contexts/authContext'
 import { useRouter } from 'next/navigation'
+=======
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+
+>>>>>>> origin/suresh-2
 
 const Home = () => {
 
@@ -51,7 +56,11 @@ useEffect(() => {
 
   return (
     <ProtectedRouteWRap>
+<<<<<<< HEAD
       <div className="col-start-1 col-end-13 ">
+=======
+      <div className='col-start-1 col-end-13 '>
+>>>>>>> origin/suresh-2
         <TabsContainer />
       </div>
       <div className="col-start-1 col-end-13 row-start-2 row-end-2  px-4 pt-5 mt-3">
@@ -106,7 +115,11 @@ useEffect(() => {
         <h1>Assigned Lecturers</h1>
       </div> */}
     </ProtectedRouteWRap>
+<<<<<<< HEAD
   )
+=======
+  );
+>>>>>>> origin/suresh-2
 };
 
 export default Home;

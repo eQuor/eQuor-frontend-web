@@ -6,6 +6,8 @@ import TabsContainer from "@components/Tabscontent";
 import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+
 
 const columns = [
   { Header: "#", accessor: "index" },
