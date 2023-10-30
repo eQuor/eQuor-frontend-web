@@ -21,24 +21,26 @@ const columns = [
 
 const Page = () => {
   const [data, setData] = useState([]);
-  useEffect(() => {
-    console.log("useEffect is running");
-
-    axios({
-      method: "get",
-      url: "http://localhost:3001/api/v1/apiRequests",
-      responseType: "json",
-    }).then(function (response) {
-      console.log("axios wed");
-      setData(response.data);
+  const getResponse = async () => {
+    const response = await axiosGet("/staff");
+    if (response.status == 200) {
       let i = 1;
-      response.data.forEach((element) => {
+      let resdata = response.data._embedded.staff;
+      resdata.forEach((element) => {
         element.action = 1;
         element.index = i;
         i++;
       });
-      console.log(data);
-    });
+      setData(resdata);
+      console.log(resdata);
+    } else {
+      console.log("error while fetching API");
+    }
+    return response;
+  };
+  useEffect(() => {
+    console.log("useEffect is running");
+    const response = getResponse();
   }, []);
 
   return (
