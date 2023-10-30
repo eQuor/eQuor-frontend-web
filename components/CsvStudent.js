@@ -73,7 +73,7 @@ const Csv = (props) => {
       })
       .catch((error) => {
         Swal.fire('Error!', "Couldn't save new module", 'error')
-        alert(response.status)
+        //alert(response.status)
       })
   }
 
