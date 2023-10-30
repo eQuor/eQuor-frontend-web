@@ -70,7 +70,7 @@ const Navbar = () => {
             <span
               // mr-4
               className='py-1 mr-0 pl-0'
-              onClick={() => setAuthUser(!isAuth)}
+              onClick={() => setIsAuth(!isAuth)}
             >
               {authUser.username}
             </span>
@@ -129,7 +129,7 @@ const Navbar = () => {
             )}
           </div>
         ) : (
-          <button onClick={() => {}} className='log-in mr-4'>
+          <button onClick={() => setIsAuth(!isAuth)} className='log-in mr-4'>
             Log in
           </button>
         )}
