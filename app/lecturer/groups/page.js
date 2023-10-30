@@ -130,8 +130,8 @@ const Page = () => {
           <Group />
         </div>
       </div>
-    </>
-  )
-}
+    </ProtectedRouteWRap>
+  );
+};
 
 export default Page;
