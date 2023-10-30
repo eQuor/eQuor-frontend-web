@@ -10,6 +10,7 @@ import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
 
 const Csv = (props) => {
+  const setRender = props.prop2
   console.log("Inside CSVLecturer.js")
   console.log(props.prop1);
   const module_name = props.prop1
@@ -70,6 +71,7 @@ const Csv = (props) => {
           
           if (response.status === 200) {
             Swal.fire('Saved!', 'New records have been saved.', 'success')
+            setRender(true)
             // router.push('/staff/module')
           }
           //  else {
