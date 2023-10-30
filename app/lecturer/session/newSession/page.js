@@ -104,11 +104,15 @@ const page = () => {
       {/* <div className="col-start-3 col-end-11 row-start-3 px-4 pt-0  ">
                 <div className="bg-white rounded shadow-lg px-4 py-3"></div>
             </div> */}
-      </ProtectedRouteWRap>
-    )
+<<<<<<<<< Temporary merge branch 1
+    </>
+  )
 }
 
-    
-
+export default page
+=========
+    </ProtectedRouteWRap>
+  );
+};
 
 export default page;

@@ -29,6 +29,7 @@ function Popup() {
   const [formData, setFormData] = useState({
     start_time: "",
     end_time: "",
+    session_date:"",
     requirement: 0,
     session_name: "",
     module_id: "",
@@ -105,6 +106,20 @@ function Popup() {
               ></input>
             </div>
           </div>
+          <div>
+              <label className=" mb-2 text-lg  text-dark-blue font-normal">
+                Session Date
+              </label>
+              <input
+                type="date"
+                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                onChange={(e) => {
+                  let newFormData = formData;
+                  newFormData.session_date = e.target.value;
+                  setFormData(newFormData);
+                }}
+              ></input>
+            </div>
           <div>
             <label className="mb-2 text-lg  text-dark-blue font-normal">
               Select Module

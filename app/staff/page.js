@@ -1,4 +1,5 @@
 "use client";
+import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
 
 import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 import React from "react";

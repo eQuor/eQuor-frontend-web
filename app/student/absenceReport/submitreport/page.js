@@ -1,12 +1,20 @@
 import React from 'react'
+<<<<<<< HEAD
 import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
+=======
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+>>>>>>> origin/suresh-2
 
 
 const medReport = () => {
   const subject = 'Absence Report'
 
   return (
+<<<<<<< HEAD
      <ProtectedRouteWRap>
+=======
+    <ProtectedRouteWRap>
+>>>>>>> origin/suresh-2
       <div className="col-start-1 col-end-9 row-start-1 row-end-1  px-4 pt-5">
         <span className="text-light-blue font-semibold text-lg">{subject}</span>
 
