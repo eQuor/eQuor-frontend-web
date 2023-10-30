@@ -5,6 +5,8 @@ import Search from "@components/Search";
 import TabsContainer from "@components/Tabscontent";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+
 
 const columns = [
   { Header: "#", accessor: "index" },
@@ -38,7 +40,7 @@ const Page = () => {
   }, []);
 
   return (
-    <>
+    <ProtectedRouteWRap>
       <div className='  col-start-1 col-end-13  pl-8  pt-5 '>
         <h1 className='text-xl font-normal text-[#4154F1] bg-#F0F4FB'>
           {" "}
@@ -61,7 +63,7 @@ const Page = () => {
       <div className='col-start-1 col-end-13 px-4 pt-5'>
         <DataTable columns={columns} data={data} />
       </div>
-    </>
+    </ProtectedRouteWRap>
   );
 };
 

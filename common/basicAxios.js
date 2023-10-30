@@ -2,6 +2,10 @@ import axios from "axios";
 import config from "@configuration/config";
 
 export async function axiosGet(endpoint, router, setIsAuth) {
+  if (localStorage.getItem("authUser") === null) {
+    console.log("aa");
+    return;
+  }
   const jwt_token = JSON.parse(localStorage.getItem("authUser")).jwtToken;
   const response = await axios.get(
     config.API_BASE_URL + config.API_VERSION + endpoint,

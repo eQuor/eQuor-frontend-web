@@ -4,6 +4,8 @@ import DataTable from "@components/DataTable";
 import Search from "@components/Search";
 import TabsContainer from "@components/Tabscontent";
 import React from "react";
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+
 
 const page = () => {
   const data = [
@@ -92,7 +94,7 @@ const page = () => {
     { Header: "Action", accessor: "age" },
   ];
   return (
-    <>
+    <ProtectedRouteWRap>
       <div className="  col-start-1 col-end-13  pl-8  pt-5 ">
         <h1 className="text-xl font-normal text-[#4154F1] bg-#F0F4FB">
           {" "}
@@ -117,7 +119,7 @@ const page = () => {
       <div className="col-start-1 col-end-13  px-4 pt-5">
         <DataTable columns={columns} data={data} />
       </div>
-    </>
+    </ProtectedRouteWRap>
   );
 };
 

@@ -5,10 +5,12 @@ import Search from '@components/Search'
 import TabsContainer from '@components/Tabscontent'
 import React from 'react'
 import Link from 'next/link'
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+
 
 const page = () => {
   return (
-    <>
+    <ProtectedRouteWRap>
       {/* <div className=" bg-white  col-start-1 col-end-13 row-start-1 row-end-2 pl-8  pt-5 ">
         <TabsContainer />
       </div> */}
@@ -151,7 +153,7 @@ const page = () => {
       {/* <div className=" font-semibold text-[#012970] text-3xl col-start-1 col-end-13  pl-12  pt-10 ">
         <h1>Current Staff members</h1>
       </div> */}
-    </>
+    </ProtectedRouteWRap>
   )
 }
 

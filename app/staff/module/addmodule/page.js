@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+
 
 const addModule = () => {
   const subject = "Module Management";
@@ -52,7 +54,7 @@ const addModule = () => {
     router.push("/staff/module");
   };
   return (
-    <>
+    <ProtectedRouteWRap>
       <div className='col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3'>
         <span className='text-light-blue font-semibold text-lg'>
           Module Management
@@ -154,7 +156,7 @@ const addModule = () => {
           </div>
         </form>
       </div>
-    </>
+    </ProtectedRouteWRap>
   );
 };
 

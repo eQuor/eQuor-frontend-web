@@ -1,6 +1,8 @@
 "use client"
 import React from 'react'
 import { useRouter } from 'next/navigation'
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+
 
 const page = () => {
 
@@ -10,7 +12,7 @@ const page = () => {
         router.push('/staff/student')
       }
   return (
-    <>
+    <ProtectedRouteWRap>
       <div className="col-start-1 col-end-12 row-start-1 row-end-1  px-4 pt-5 mt-3">
         <span className="text-light-blue font-semibold text-lg">
          Student Management
@@ -130,7 +132,7 @@ const page = () => {
           </div>
         </form>
       </div>
-    </>
+    </ProtectedRouteWRap>
   )
 }
 

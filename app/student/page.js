@@ -3,13 +3,15 @@ import Button from '@components/Button'
 import React from 'react'
 import Search from '@components/Search'
 import TabsContainer from '@components/Tabscontent'
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 
-import Card from '@components/Card'
+
+import Card from '@components/card'
 import Link from 'next/link'
 
 const Home = () => {
   return (
-    <>
+    <ProtectedRouteWRap>
       <div className="col-start-1 col-end-13 ">
         <TabsContainer />
       </div>
@@ -84,7 +86,7 @@ const Home = () => {
       {/* <div className=" font-semibold text-[#012970] text-lg col-start-1 col-end-13 row-start-3 row-end-4 pl-12  pt-10 ">
         <h1>Assigned students</h1>
       </div> */}
-    </>
+    </ProtectedRouteWRap>
   )
 }
 
