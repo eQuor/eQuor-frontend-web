@@ -9,8 +9,11 @@ import Papa from 'papaparse'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
 
-const Csv = ({ props }) => {
-  const module_name = props
+const Csv = (props) => {
+  console.log("Inside CSVLecturer.js")
+  console.log(props.prop1);
+  const module_name = props.prop1
+  
   const fileInput = useRef()
   const [csvData, setCsvData] = useState([])
   const router = useRouter()
@@ -76,7 +79,7 @@ const Csv = ({ props }) => {
       })
       .catch((error) => {
         Swal.fire('Error!', "Couldn't save new module", 'error')
-        alert(response.status)
+        //alert(response.status)
       })
   }
 

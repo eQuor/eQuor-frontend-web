@@ -50,8 +50,8 @@ return (
 
     <div className="col-start-1 col-end-13 row-start-2 px-4 pt-5 mt-3">
       <div className="grid grid-cols-1 grid-rows-1 md:grid-cols-2">
-        <CsvLecturer prop={data.name} />
-        <CsvStudent prop={data.name} />
+        <CsvLecturer prop1={data.name} />
+        <CsvStudent prop1={data.name} />
       </div>
     </div>
   </ProtectedRouteWRap>

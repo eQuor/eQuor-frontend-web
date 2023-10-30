@@ -9,8 +9,8 @@ import Papa from 'papaparse'
 import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
 
-const Csv = ({ props }) => {
-  const module_name = props
+const Csv = (props) => {
+  const module_name = props.prop1
   const fileInput = useRef()
   const [csvData, setCsvData] = useState([])
   const router = useRouter()
