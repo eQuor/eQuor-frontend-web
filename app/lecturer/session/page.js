@@ -3,13 +3,9 @@ import React, { useState } from 'react'
 import { AiFillPlaySquare } from 'react-icons/ai'
 import Sessioncard from './Sessioncard'
 import { useRouter } from 'next/navigation'
-<<<<<<< HEAD
-import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
-=======
 import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 
 
->>>>>>> origin/suresh-2
 
 const page = () => {
   const [isSessionActive, setSessionActive] = useState(true)

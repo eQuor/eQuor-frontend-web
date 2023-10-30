@@ -5,13 +5,9 @@ import { RiArrowLeftDoubleFill } from "react-icons/ri";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import TabsContainer from "@components/Tabscontent";
 import DataTable from "@components/DataTable";
-<<<<<<< HEAD
-import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
-=======
 import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 import { axiosGet } from "@common/basicAxios";
 import { PHASE_DEVELOPMENT_SERVER } from "next/dist/shared/lib/constants";
->>>>>>> origin/suresh-2
 
 const Home = () => {
   const [piechartdata, setData] = useState({
@@ -128,7 +124,12 @@ const Home = () => {
   const datapie = [
     { name: "present students", value:  piechartdata.attendStudent },
     { name: "abesent students", value: piechartdata.allStudent-piechartdata.attendStudent },
-  ];
+    // { name: 'present students', value: 200 },
+    // {
+    //   name: 'abesent students',
+    //   value:100,
+    // },
+  ]
   const COLORS = ["#012970", "#899BBD"];
 
   const RADIAN = Math.PI / 180;
