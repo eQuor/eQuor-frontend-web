@@ -6,18 +6,14 @@ import TabsContainer from '@components/Tabscontent'
 import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
 
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
-import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+
 
 import Card from '@components/Card'
 import Link from 'next/link'
 
 const page= () => {
   return (
-<<<<<<< HEAD
-     <ProtectedRouteWRap>
-=======
     <ProtectedRouteWRap>
->>>>>>> origin/suresh-2
       <div className="col-start-1 col-end-13 ">
         <TabsContainer />
       </div>
@@ -175,11 +171,7 @@ const page= () => {
           </table>
         </div>
       </div>
-<<<<<<< HEAD
-     </ProtectedRouteWRap>
-=======
     </ProtectedRouteWRap>
->>>>>>> origin/suresh-2
   )
 }
 
