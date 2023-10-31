@@ -177,7 +177,7 @@ const page = () => {
                 placeholder='New username'
                 onChange={(e) => {
                   let newFormData = formData;
-                  newFormData.username = e.target.value;
+                  newFormData.user_name = e.target.value;
                   setFormData(newFormData);
                 }}
               />

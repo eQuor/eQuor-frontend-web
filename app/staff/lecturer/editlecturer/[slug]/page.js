@@ -4,13 +4,17 @@ import { useRouter } from 'next/navigation'
 import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 
 
-const page = () => {
+const page = ({params}) => {
+  const router = useRouter();
+  const data = params.slug;
+  console.log(data);
 
-      const router = useRouter()
+console.log("Check")
+  const decodedData= decodeURI(data)
+  console.log(decodedData);
+  
 
-      const handleClick = () => {
-        router.push('/staff/lecturer')
-      }
+     
   return (
     <ProtectedRouteWRap>
       <div className="col-start-1 col-end-12 row-start-1 row-end-1  px-4 pt-5 mt-3">
@@ -25,12 +29,6 @@ const page = () => {
           </span>
         </p>
       </div>
-
-      {/* <div className="col-start-1 col-end-12 row-start-2   px-4 pt-5 mt-3">
-        <span className="text-dark-blue font-semibold text-2xl ">
-          API Request Details
-        </span>
-      </div> */}
 
       <div className="col-start-3 col-end-11 row-start-3 px-4 pt-0  ">
         <form className="bg-white rounded shadow-lg px-4 py-3">
@@ -52,6 +50,7 @@ const page = () => {
               id="name"
               className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               placeholder="20001258"
+              //value={parsedSelectedData.name}
             />
           </div>
 
@@ -119,7 +118,7 @@ const page = () => {
             <button
               type="submit"
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-7 py-2 text-center "
-              onClick={handleClick}
+              //onClick={handleClick}
             >
               Save
             </button>

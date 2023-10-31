@@ -4,7 +4,6 @@ import DataTable from "@components/DataTable";
 import Search from "@components/Search";
 import TabsContainer from "@components/Tabscontent";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { axiosGet } from "@common/basicAxios";
 import { useAuth } from "@contexts/authContext";
