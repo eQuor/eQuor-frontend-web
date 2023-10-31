@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Sessioncard from "../../[slug]/Sessioncard";
+import SessionCard from "@components/SessionCard";
 import Button from "@components/Button";
 import Swal from "sweetalert2";
 import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
@@ -110,7 +110,7 @@ const page = () => {
 
       <div className="col-start-1 col-end-13 row-start-7 px-4 pt-0">
         <span className="text-dark-blue font-semibold text-2xl">Past</span>
-        <Sessioncard />
+        <SessionCard />
       </div>
 
       {/* <div className="col-start-3 col-end-11 row-start-3 px-4 pt-0  ">
