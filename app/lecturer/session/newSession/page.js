@@ -2,12 +2,12 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Sessioncard from "../Sessioncard";
+import Sessioncard from "../../[slug]/Sessioncard";
 import Button from "@components/Button";
 import Swal from "sweetalert2";
 import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 import { renderToStaticMarkup } from "react-dom/server";
-import Card from "@components/card";
+import Card from "@components/Card";
 import Popup from "@components/Popup";
 import { useRouter } from "next/navigation";
 import { axiosGet } from "@common/basicAxios";
@@ -97,7 +97,7 @@ const page = () => {
         </Link>
         <div>
           <div className=" relative top-10 right-40 col-start-7 col-end-10">
-          <button
+            <button
               className="bg-light-blue w-[210px] h-[50px] rounded-[5px]"
               onClick={handlewithoutattendance}
               name={"With Attendance"}

@@ -8,7 +8,7 @@ import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
 import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 
-import Card from '@components/card'
+import Card from '@components/Card'
 import Link from 'next/link'
 
 const page= () => {
