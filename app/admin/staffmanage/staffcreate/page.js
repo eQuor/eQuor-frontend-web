@@ -122,7 +122,7 @@ const page = () => {
               htmlFor='email'
               className='block mb-2 text-sm font-medium text-gray-900 '
             >
-              Your email
+              Email
             </label>
             <input
               type='email'

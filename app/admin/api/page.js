@@ -5,26 +5,21 @@ import Search from "@components/Search";
 import TabsContainer from "@components/Tabscontent";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import { axiosGet } from "@common/basicAxios";
+import { useAuth } from "@contexts/authContext";
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 
-const columns = [
-  { Header: "#", accessor: "index" },
-  { Header: "Full Name", accessor: "full_name" },
-  { Header: "Email", accessor: "email" },
-  { Header: "Address", accessor: "address" },
-  { Header: "Action", accessor: "action" },
-];
+
 
 const Page = () => {
+  const { authUser, setAuthUser } = useAuth();
+  const router = useRouter();
   const [data, setData] = useState([]);
-  useEffect(() => {
-    console.log("useEffect is running");
 
-    axios({
-      method: "get",
-      url: "http://localhost:3001/api/v1/apiRequests",
-      responseType: "json",
-    }).then(function (response) {
-      console.log("axios wed");
+  const getResponse = async () => {
+    const response = await axiosGet("/apiRequests");
+    if (response.status == 200) {
       let i = 1;
       let resdata = response.data._embedded.apiRequests;
       resdata.forEach((element) => {
@@ -34,11 +29,26 @@ const Page = () => {
       });
       setData(resdata);
       console.log(resdata);
-    });
+    } else {
+      console.log("error while fetching API");
+    }
+    return response;
+  };
+  useEffect(() => {
+    console.log("useEffect is running");
+    const response = getResponse();
   }, []);
 
+
+  const columns = [
+    { Header: "#", accessor: "index" },
+    { Header: "Full Name", accessor: "full_name" },
+    { Header: "Email", accessor: "full_name" },
+    { Header: "Address", accessor: "address" },
+    { Header: "Action", accessor: "action" },
+  ];
   return (
-    <>
+    <ProtectedRouteWRap>
       <div className='  col-start-1 col-end-13  pl-8  pt-5 '>
         <h1 className='text-xl font-normal text-[#4154F1] bg-#F0F4FB'>
           {" "}
@@ -61,7 +71,8 @@ const Page = () => {
       <div className='col-start-1 col-end-13 px-4 pt-5'>
         <DataTable columns={columns} data={data} />
       </div>
-    </>
+      </ProtectedRouteWRap>
+   
   );
 };
 

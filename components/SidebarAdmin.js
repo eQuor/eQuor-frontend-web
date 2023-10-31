@@ -39,7 +39,7 @@ function SidebarAdmin({ open }) {
         {
           title: 'Api Requests',
           icon: <BsBuildingFillLock />,
-          url: '/admin/api',
+          url: '/admin/apirequest',
         },
       ],
     },
