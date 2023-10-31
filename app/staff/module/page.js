@@ -1,11 +1,10 @@
-<<<<<<< HEAD
 'use client'
 import Button from '@components/Button'
 import React, { useEffect, useState } from 'react'
 import Search from '@components/Search'
 import TabsContainer from '@components/Tabscontent'
 import axios from 'axios'
-import Card from '@components/card'
+import Card from '@components/Card'
 import Link from 'next/link'
 import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
 import { axiosGet } from '@common/basicAxios'
@@ -41,50 +40,6 @@ const Home = () => {
     const response = getResponse()
     console.log(response)
   }, [])
-=======
-"use client";
-import Button from "@components/Button";
-import React, { useEffect, useState } from "react";
-import Search from "@components/Search";
-import TabsContainer from "@components/Tabscontent";
-import axios from "axios";
-import Card from "@components/Card";
-import Link from "next/link";
-import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
-import { axiosGet } from "@common/basicAxios";
-import { useAuth } from "@contexts/authContext";
-import { useRouter } from "next/navigation";
-
-const Home = () => {
-  const { authUser, setAuthUser } = useAuth();
-  const router = useRouter();
-  const [data, setData] = useState([]);
-
-  const getResponse = async () => {
-    const response = await axiosGet("/module");
-
-    if (response.status == 200) {
-      console.log("axios wed");
-      let i = 1;
-      let resdata = response.data._embedded.module;
-      resdata.forEach((element) => {
-        element.action = 1;
-        element.index = i;
-        i++;
-      });
-      setData(resdata);
-      console.log(resdata);
-    } else {
-      console.log("error while fetching API");
-    }
-    return response;
-  };
-  useEffect(() => {
-    console.log("useEffect is running");
-    const response = getResponse();
-    console.log(response);
-  }, []);
->>>>>>> suresh
 
   return (
     <ProtectedRouteWRap>
@@ -123,11 +78,7 @@ const Home = () => {
                   <Card name={module.name} semester={module.semester} />
                 </Link>
               </div>
-<<<<<<< HEAD
             )
-=======
-            );
->>>>>>> suresh
           })}
         </div>
       </div>
@@ -146,12 +97,7 @@ const Home = () => {
         <h1>Assigned Lecturers</h1>
       </div> */}
     </ProtectedRouteWRap>
-<<<<<<< HEAD
   )
 }
-=======
-  );
-};
->>>>>>> suresh
 
 export default Home
