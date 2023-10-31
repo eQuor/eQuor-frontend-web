@@ -3,10 +3,10 @@ import Button from "@components/Button";
 import DataTable from "@components/DataTable";
 import Search from "@components/Search";
 import TabsContainer from "@components/Tabscontent";
+import { axiosGet } from "@common/basicAxios";
 import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 
 
 const columns = [
@@ -19,15 +19,9 @@ const columns = [
 
 const Page = () => {
   const [data, setData] = useState([]);
-  useEffect(() => {
-    console.log("useEffect is running");
-
-    axios({
-      method: "get",
-      url: "http://localhost:3001/api/v1/apiRequests",
-      responseType: "json",
-    }).then(function (response) {
-      console.log("axios wed");
+  const getResponse = async () => {
+    const response = await axiosGet("/apiRequests");
+    if (response.status == 200) {
       let i = 1;
       let resdata = response.data._embedded.apiRequests;
       resdata.forEach((element) => {
@@ -37,7 +31,14 @@ const Page = () => {
       });
       setData(resdata);
       console.log(resdata);
-    });
+    } else {
+      console.log("error while fetching API");
+    }
+    return response;
+  };
+  useEffect(() => {
+    console.log("useEffect is running");
+    const response = getResponse();
   }, []);
 
   return (
@@ -54,7 +55,7 @@ const Page = () => {
         <Search />
       </div>
       <div className=' col-start-4 col-end-7'>
-        <Button title={"Revoked API Requests"} />
+        <Button title={"Revoked API Requests"} url={"/admin/api/revokedapi"}/>
       </div>
 
       <div className=' font-semibold text-[#012970] text-3xl col-start-1 col-end-13  pl-12  pt-4 '>

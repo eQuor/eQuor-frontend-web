@@ -22,10 +22,10 @@ const columns = [
 const Page = () => {
   const [data, setData] = useState([]);
   const getResponse = async () => {
-    const response = await axiosGet("/staff");
+    const response = await axiosGet("/apiRequests");
     if (response.status == 200) {
       let i = 1;
-      let resdata = response.data._embedded.staff;
+      let resdata = response.data._embedded.apiRequests;
       resdata.forEach((element) => {
         element.action = 1;
         element.index = i;

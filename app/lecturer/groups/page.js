@@ -1,4 +1,3 @@
-
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
@@ -11,7 +10,7 @@ const Page = () => {
 
   useEffect(() => {
     // Replace 'YOUR_ACCESS_TOKEN' with your actual access token or authentication method
-    const accessToken = 'YOUR_ACCESS_TOKEN';
+    const accessToken = "YOUR_ACCESS_TOKEN";
 
     axios({
       method: "get",
@@ -79,10 +78,12 @@ const Page = () => {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-dark-blue truncate">
-                        {item.name} {/* Assuming item.name exists in your data */}
+                        {item.name}{" "}
+                        {/* Assuming item.name exists in your data */}
                       </p>
                       <p className="text-sm text-gray-500 truncate">
-                        {item.email} {/* Assuming item.email exists in your data */}
+                        {item.email}{" "}
+                        {/* Assuming item.email exists in your data */}
                       </p>
                     </div>
                   </div>
