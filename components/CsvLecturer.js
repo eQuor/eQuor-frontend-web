@@ -72,6 +72,7 @@ const Csv = (props) => {
           if (response.status === 200) {
             Swal.fire('Saved!', 'New records have been saved.', 'success')
             setRender(true)
+            //window.location.reload()
             // router.push('/staff/module')
           }
           //  else {
