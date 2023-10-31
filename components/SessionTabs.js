@@ -1,10 +1,12 @@
 // TabsContainer.js
+import SessionDetails from "./SessionDetails";
 import TabContent from "./Tabcontent";
+import Chat from "./chat";
 
 import React, { useState } from "react";
 
 
-const TabsContainer = () => {
+const SessionTabs = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTabClick = (index) => {
@@ -12,10 +14,10 @@ const TabsContainer = () => {
   };
 
   const tabs = [
-    { title: "1st Year", content: ""   },
-    { title: "2nd Year", content: "" },
-    { title: "3rd Year", content: "" },
-    { title: "4th Year", content: "" },
+    { title: "Session Details", content: <SessionDetails></SessionDetails>   },
+    { title: "Polls", content: "" },
+    { title: "Chat", content: <Chat></Chat> },
+    
   ];
 
   return (
@@ -43,4 +45,4 @@ const TabsContainer = () => {
   );
 };
 
-export default TabsContainer;
+export default SessionTabs;

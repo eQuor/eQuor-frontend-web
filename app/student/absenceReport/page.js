@@ -6,7 +6,7 @@ import TabsContainer from '@components/Tabscontent'
 import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
 import React from 'react'
 import Link from 'next/link'
-import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+
 
 
 const page = () => {

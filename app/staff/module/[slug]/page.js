@@ -11,13 +11,22 @@ import Swal from 'sweetalert2'
 import { useRouter } from 'next/navigation'
 import CsvLecturer from '@components/CsvLecturer'
 import CsvStudent from '@components/CsvStudent'
+import CsvLecGroup from '@components/CsvLecGroup'
+import CsvStudentGroup from '@components/CsvStudentGroup'
 
 const page = ({ params }) => {
+  //Rerender page
+  const [render, setRender] = useState(false)
+
+
+
   //Show moudle name from the backend
   const [data, setResponse] = useState('')
+  const [slug, setSlug] = useState('')
 
   const getResponse = async () => {
     const slug = params.slug
+    setSlug(slug)
     console.log(slug)
     const response = await axiosGet(`/staff/getUserById/${slug}`)
 
@@ -36,6 +45,8 @@ const page = ({ params }) => {
     getResponse()
   }, [])
 
+
+
  
 return (
   <ProtectedRouteWRap>
@@ -50,8 +61,13 @@ return (
 
     <div className="col-start-1 col-end-13 row-start-2 px-4 pt-5 mt-3">
       <div className="grid grid-cols-1 grid-rows-1 md:grid-cols-2">
-        <CsvLecturer prop1={data.name} />
+        <CsvLecturer prop1={data.name} prop2={setRender} prop3={render} />
         <CsvStudent prop1={data.name} />
+      </div>
+      <div className="grid grid-cols-1 grid-rows-1 md:grid-cols-2 mt-2">
+        <CsvLecGroup prop1={params.slug} />
+        <CsvStudentGroup prop1={params.slug} />
+        {/* <CsvGroup /> */}
       </div>
     </div>
   </ProtectedRouteWRap>

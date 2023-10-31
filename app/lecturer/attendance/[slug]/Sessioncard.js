@@ -1,6 +1,7 @@
 import React from 'react'
 import { AiFillPlaySquare, } from 'react-icons/ai'
 import { sessionData } from './data'
+import { useRouter } from 'next/navigation'
 
 
 const Sessioncard = () => {
@@ -9,6 +10,7 @@ const Sessioncard = () => {
   console.log(data.lecturer)
 ))
 
+const router=useRouter();
 
   return (
     <div className="overflow-x-auto mt-3 rounded-md">
@@ -26,8 +28,10 @@ const Sessioncard = () => {
                 </th>
                 <td className="px-6 py-4 ">{time}</td>
                 <td className="px-6 py-4">{lecturer}</td>
-                <td className="px-6 py-4 text-gray-350 text-2xl cursor-pointer">
-                  <AiFillPlaySquare />
+                <td className="px-6 py-4  cursor-pointer">
+                  <button onClick={()=>{
+                    router.push(`lecturer/forlate/${data.id}`)
+                  }} className='bg-light-blue  w-[150px] h-[40px] rounded-[50px] text-white text-center text-sm'>View Attendance</button>
                 </td>
               </tr>
             )
