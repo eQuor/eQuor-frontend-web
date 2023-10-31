@@ -8,13 +8,15 @@ import Card from "@components/Card";
 import Link from "next/link";
 import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 import { axiosGet } from "@common/basicAxios";
+import axios from "axios";
 
 const Home = () => {
   const [data, setData] = useState([]);
   const [cards, setCards] = useState([]);
 
   const getResponse = async () => {
-    const response = await axiosGet("/lecture/getModules");
+   const response = await axiosGet("/lecture/getModules");
+   //const response = await axios.get("/lecture/getModules");
 
     if (response.status == 200) {
       console.log("axios wed");

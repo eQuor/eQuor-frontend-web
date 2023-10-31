@@ -1,122 +1,145 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { AiFillPlaySquare } from 'react-icons/ai'
-import Sessioncard from './Sessioncard'
 import { useRouter } from 'next/navigation'
-import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
+import { axiosGet, axiosPost } from '@common/basicAxios'
+import SessionCard from '@components/SessionCard'
+import Link from 'next/link'
 
 
+const page = ({ params }) => {
+  //Show moudle name from the backend
+  const [data, setResponse] = useState('')
 
-const page = () => {
-  const [isSessionActive, setSessionActive] = useState(true)
-  const router = useRouter()
+  //get all sessions given by the id
+  const [sessions, setSessions] = useState([])
 
-  const handleClick = () => {
-    router.push('/lecturer/session/newSession')
+  const getResponse = async () => {
+    const slug = params.slug
+
+    console.log(slug)
+    const response = await axiosGet(`/lecture/getModuleDetailsById/${slug}`)
+
+    if (response.status === 200) {
+      console.log('axios worked')
+      console.log(response.data)
+      setResponse(response.data)
+    } else {
+      console.log('Error while fetching API')
+    }
+    return response
   }
 
-  const subject = 'SCS1101 Database Management'
+  useEffect(() => {
+    console.log('useEffect is running')
+    getResponse()
+  }, [])
+
+  //get all sessions given by the id
+
+  const getSessions = async () => {
+    const slug = params.slug
+
+    console.log(slug)
+    const sessionResponse = await axiosGet(
+      `/lecture/getAllSessionsDetailsByModuleId/${slug}`
+    )
+
+    if (sessionResponse.status === 200) {
+      console.log('axios worked')
+      console.log(sessionResponse.data)
+      setSessions(sessionResponse.data)
+    } else {
+      console.log('Error while fetching API')
+    }
+    return sessionResponse
+  }
+
+  useEffect(() => {
+    console.log('useEffect is running')
+    getSessions()
+  }, [])
+
+
+  const activeSessions = sessions.filter(
+    (session) => session.is_active === true
+  )
+  const inactiveSessions = sessions.filter(
+    (session) => session.is_active === false
+  )
+
+  console.log('Active Sessions:', activeSessions)
+  console.log('Inactive Sessions:', inactiveSessions)
+console.log(activeSessions.length)
+
   return (
     <ProtectedRouteWRap>
       <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
-        <span className="text-light-blue font-semibold text-lg">{subject}</span>
+        <span className="text-light-blue font-semibold text-lg">
+          {data.name}
+        </span>
 
         <p className="text-link-ash font-semibold text-sm">
           Home / Modules /{' '}
-          <span className="text-black font-semibold text-sm">{subject}</span>
+          <span className="text-black font-semibold text-sm">{data.name}</span>
         </p>
       </div>
 
-      {isSessionActive ? (
-        <>
-          <div className="col-start-1 col-end-13 row-start-2 px-4 pt-5">
-            <span className="text-dark-blue font-semibold text-2xl ">
-              Active
-            </span>
-            <div className="overflow-x-auto mt-3 rounded-md">
-              <table className="w-full text-sm text-left text-gray-400">
-                <tbody>
-                  <tr className="bg-white border-b border-gray-400">
-                    <th
-                      scope="row"
-                      className="px-6 py-4  font-medium text-gray-400 whitespace-nowrap"
-                    >
-                      2023 / 07 / 30
-                    </th>
-                    <td className="px-6 py-4 ">8.00-10.00</td>
-                    <td className="px-6 py-4">Mr.Kavinda Atapattu</td>
-                    <td className="px-6 py-4 text-gray-350 text-2xl cursor-pointer">
-                      <AiFillPlaySquare />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div className="col-start-1 col-end-13 row-start-4 row-end-5  px-4 pt-0">
-            <span className="text-dark-blue font-semibold text-2xl">Past</span>
-            <Sessioncard />
-            {/* <Sessioncard />
-            <Sessioncard /> */}
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="col-start-1 col-end-3 row-start-2  px-4 pt-5">
-            <span className="text-dark-blue font-semibold text-2xl ">Past</span>
-          </div>
-          <div className="col-start-11 col-end-13 row-start-2 px-4 pt-5">
-            {/* <span className="text-dark-blue font-semibold text-2xl ml-0 px-0  flex justify-end ">
-              Create
-            </span> */}
-            <div className="mb-3  flex justify-end">
-              <button
-                type="submit"
-                className="text-white bg-light-blue hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-7 py-2 text-center  "
-                onClick={handleClick}
-              >
-                New Session
-              </button>
-            </div>
-          </div>
-          <div className="col-start-1 col-end-13 row-start-3   px-4 pt-0">
-            <Sessioncard />
-          </div>
-          {/* <div className="col-start-1 col-end-13 row-start-2 row-end-3  px-4 pt-5">
-            <div>
-              <div className="justify-end">
-                <span className="text-dark-blue font-semibold text-2xl ">
-                  Past
-                </span>
-              </div>
-              <div></div>
-            </div>
-
-            <Sessioncard />
-          </div> */}
-        </>
-      )}
-
-      {/* <div className="col-start-1 col-end-13 row-start-2 row-end-3  px-4 pt-5">
-        {isSessionActive ? (
-          <>
-            <span className="text-dark-blue font-semibold text-2xl ">
-              Active
-            </span>
-            <span className="text-dark-blue font-semibold text-2xl"></span>
-            <Sessioncard />
-            <span className="text-dark-blue font-semibold text-2xl">Past</span>
-            <Sessioncard />
-            <Sessioncard />
-          </>
+      <div className="col-start-1 col-end-13 row-start-2 px-4 pt-5">
+        <span className="text-dark-blue font-semibold text-2xl ">Active</span>
+        {activeSessions.length > 0 ? (
+          activeSessions.map((session) => (
+            <Link href={`/lecturer/${params.slug}/${session.id}`}>
+              <SessionCard
+                //key={session.id}
+                id={session.id}
+                date={session.session_date}
+                start_time={session.start_time}
+                end_time={session.end_time}
+                name={session.session_name}
+                is_active={session.is_active}
+              />
+            </Link>
+          ))
         ) : (
-          <>
-            <Sessioncard />
-          </>
+          <div className="w-full text-sm text-left text-gray-400 mt-1">
+            <div className="bg-white border-b border-gray-400 p-3">
+              <p>There aren't any active sessions at the moment.</p>
+            </div>
+          </div>
         )}
-      </div> */}
+        {/* <div className="overflow-x-auto mt-3 rounded-md"></div> */}
+      </div>
+      <div className="col-start-1 col-end-13  px-4 pt-5 mt-3">
+        <span className="text-dark-blue font-semibold text-2xl ">Past</span>
+        {inactiveSessions.length > 0 ? (
+          inactiveSessions.map((session) => (
+            <Link href={`/lecturer/${params.slug}/${session.id}`}>
+              <SessionCard
+                //key={session.id}
+                id={session.id}
+                date={session.session_date}
+                start_time={session.start_time}
+                end_time={session.end_time}
+                name={session.session_name}
+                is_active={session.is_active}
+              />
+            </Link>
+          ))
+        ) : (
+          <div className="w-full text-sm text-left text-gray-400 mt-1">
+            <div className="bg-white border-b border-gray-400 p-3">
+              <p>There aren't any past sessions at the moment.</p>
+            </div>
+          </div>
+        )}
+
+        {/* <Sessioncard /> */}
+      </div>
     </ProtectedRouteWRap>
   )
+
 }
 
 export default page
