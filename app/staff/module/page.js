@@ -4,50 +4,42 @@ import React, { useEffect, useState } from "react";
 import Search from "@components/Search";
 import TabsContainer from "@components/Tabscontent";
 import axios from "axios";
-import Card from "@components/card";
+import Card from "@components/Card";
 import Link from "next/link";
-import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
-import { axiosGet } from '@common/basicAxios'
-import { useAuth } from '@contexts/authContext'
-import { useRouter } from 'next/navigation'
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+import { axiosGet } from "@common/basicAxios";
+import { useAuth } from "@contexts/authContext";
+import { useRouter } from "next/navigation";
 
 const Home = () => {
+  const { authUser, setAuthUser } = useAuth();
+  const router = useRouter();
+  const [data, setData] = useState([]);
 
-const { authUser, setAuthUser } = useAuth()
-const router = useRouter()
-const [data, setData] = useState([])
+  const getResponse = async () => {
+    const response = await axiosGet("/module");
 
-const getResponse = async () => {
-  const response = await axiosGet('/module')
- 
-  if (response.status == 200) {
-    console.log('axios wed')
-    let i = 1
-    let resdata = response.data._embedded.module
-    resdata.forEach((element) => {
-      element.action = 1
-      element.index = i
-      i++
-    })
-    setData(resdata)
-   console.log(resdata)
-  } else {
-    console.log('error while fetching API')
-  }
-  return response
-}
-useEffect(() => {
-  console.log('useEffect is running')
-  const response = getResponse()
-  console.log(response)
-}, [])
-
-
-
-
-
-
-
+    if (response.status == 200) {
+      console.log("axios wed");
+      let i = 1;
+      let resdata = response.data._embedded.module;
+      resdata.forEach((element) => {
+        element.action = 1;
+        element.index = i;
+        i++;
+      });
+      setData(resdata);
+      console.log(resdata);
+    } else {
+      console.log("error while fetching API");
+    }
+    return response;
+  };
+  useEffect(() => {
+    console.log("useEffect is running");
+    const response = getResponse();
+    console.log(response);
+  }, []);
 
   return (
     <ProtectedRouteWRap>
@@ -60,7 +52,7 @@ useEffect(() => {
         </span>
 
         <p className="text-link-ash font-semibold text-sm">
-          Home /{' '}
+          Home /{" "}
           <span className="text-black font-semibold text-sm">Modules</span>
         </p>
       </div>
@@ -70,26 +62,25 @@ useEffect(() => {
         </div>
 
         <div className="ml-3">
-          <Button title={'Add Module'} url={'/staff/module/addmodule'} />
+          <Button title={"Add Module"} url={"/staff/module/addmodule"} />
         </div>
       </div>
       <div className=" col-start-1 col-end-13 flex px-4 mt-4">
-        <div className="flex gap-5 flex-wrap">{data.map((module,index) => {
+        <div className="flex gap-5 flex-wrap">
+          {data.map((module, index) => {
+            //const { name, semester } = data
 
-          //const { name, semester } = data
-          
-          // return <Card name={module.name} semester = {module.semester} />
+            // return <Card name={module.name} semester = {module.semester} />
 
-          return (
-            <div key={index}>
-              <Link href={`/staff/module/${module.id}`}>
-                
-                <Card name={module.name} semester={module.semester} />
-              </Link>
-            </div>
-          )
-          
-        })}</div>
+            return (
+              <div key={index}>
+                <Link href={`/staff/module/${module.id}`}>
+                  <Card name={module.name} semester={module.semester} />
+                </Link>
+              </div>
+            );
+          })}
+        </div>
       </div>
       {/* 
       <div className=" text-white text-center text-sm col-start-10 col-end-11 row-start-2 row-end-4 ">
@@ -106,7 +97,7 @@ useEffect(() => {
         <h1>Assigned Lecturers</h1>
       </div> */}
     </ProtectedRouteWRap>
-  )
+  );
 };
 
 export default Home;

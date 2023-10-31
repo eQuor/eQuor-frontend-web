@@ -2,12 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Group from '@components/Group'
-<<<<<<< HEAD
 import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
-=======
-import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
-
->>>>>>> origin/suresh-2
 
 const page = () => {
   return (

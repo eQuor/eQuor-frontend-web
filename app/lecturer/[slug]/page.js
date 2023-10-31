@@ -1,26 +1,28 @@
-"use client";
-import React, { useState } from "react";
-import { AiFillPlaySquare } from "react-icons/ai";
-import Sessioncard from "../[slug]/Sessioncard";
-import { useRouter } from "next/navigation";
+'use client'
+import React, { useState } from 'react'
+import { AiFillPlaySquare } from 'react-icons/ai'
+import Sessioncard from './Sessioncard'
+import { useRouter } from 'next/navigation'
 import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 
+
+
 const page = () => {
-  const [isSessionActive, setSessionActive] = useState(true);
-  const router = useRouter();
+  const [isSessionActive, setSessionActive] = useState(true)
+  const router = useRouter()
 
   const handleClick = () => {
-    router.push("/lecturer/session/newSession");
-  };
+    router.push('/lecturer/session/newSession')
+  }
 
-  const subject = "SCS1101 Database Management";
+  const subject = 'SCS1101 Database Management'
   return (
     <ProtectedRouteWRap>
       <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
         <span className="text-light-blue font-semibold text-lg">{subject}</span>
 
         <p className="text-link-ash font-semibold text-sm">
-          Home / Modules /{" "}
+          Home / Modules /{' '}
           <span className="text-black font-semibold text-sm">{subject}</span>
         </p>
       </div>
@@ -53,7 +55,7 @@ const page = () => {
           </div>
           <div className="col-start-1 col-end-13 row-start-4 row-end-5  px-4 pt-0">
             <span className="text-dark-blue font-semibold text-2xl">Past</span>
-            <Sessioncard  />
+            <Sessioncard />
             {/* <Sessioncard />
             <Sessioncard /> */}
           </div>
@@ -114,7 +116,7 @@ const page = () => {
         )}
       </div> */}
     </ProtectedRouteWRap>
-  );
-};
+  )
+}
 
-export default page;
+export default page
