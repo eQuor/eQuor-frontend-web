@@ -108,7 +108,7 @@ const adminDashboard = () => {
 
       {/* .................cards........................... */}
       <div className="col-start-2 col-end-12 row-start-2 row-end-4 container mx-auto mt-4 flex gap-4 ">
-        <div className="flex-1 transition duration-300 transform hover:scale-105">
+        <div className="flex-1 transition duration-300">
           <div className="bg-white p-6 rounded shadow-md">
             <h1 className="text-lg font-medium text-light-blue">
               Total staff Members
@@ -126,7 +126,7 @@ const adminDashboard = () => {
           </div>
         </div>
 
-        <div className="flex-1 transition duration-300 transform hover:scale-105">
+        <div className="flex-1 transition duration-300 ">
           <div className=" bg-white p-6 rounded shadow-md">
             <h1 className="text-lg font-medium text-light-blue">
               Total Lecturers
@@ -144,7 +144,7 @@ const adminDashboard = () => {
           </div>
         </div>
 
-        <div className="flex-1 transition duration-300 transform hover:scale-105">
+        <div className="flex-1 transition duration-300 ">
           <div className=" bg-white p-6 rounded shadow-md">
             <h1 className="text-lg font-medium text-light-blue">
               Total Students
@@ -164,7 +164,7 @@ const adminDashboard = () => {
       </div>
       {/* .................cards end here .......................  */}
 
-      <div className="col-start-2 col-end-7 row-start-4 row-end-7 h-[280px] text-center  mt-10 bg-white">
+      <div className="col-start-2 col-end-7 row-start-4 row-end-7 h-[280px] text-center  mt-10">
         <p className="text-lg font-medium text-dark-blue ">
           Attendance Growth This Month
         </p>
@@ -172,7 +172,6 @@ const adminDashboard = () => {
           <AreaChart
             width={500}
             height={400}
-            //data={datare}
             margin={{
               top: 0,
               right: 30,

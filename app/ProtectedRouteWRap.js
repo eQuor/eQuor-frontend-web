@@ -31,7 +31,7 @@ function ProtectedRouteWRap({ children }) {
         </header>
 
         <aside
-          className={`bg-white h-[100%] p-3 pt-8 ${
+          className={`bg-white h-[100%] p-3 pt-8 z-10 ${
             open ? "w-[300px] absolute" : "w-[100%] min-w-[80px]"
           } duration-300 absolute`}
         >

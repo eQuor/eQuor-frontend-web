@@ -1,77 +1,95 @@
-'use client'
-import React, { useState, useEffect } from 'react'
-import { AiFillPlaySquare } from 'react-icons/ai'
-import { useRouter } from 'next/navigation'
-import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
-import { axiosGet, axiosPost } from '@common/basicAxios'
-import SessionCard from '@components/SessionCard'
-import Link from 'next/link'
-
+"use client";
+import React, { useState, useEffect } from "react";
+import { AiFillPlaySquare } from "react-icons/ai";
+import { useRouter } from "next/navigation";
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+import { axiosGet, axiosPost } from "@common/basicAxios";
+import SessionCard from "@components/SessionCard";
+import Link from "next/link";
 
 const page = ({ params }) => {
   //Show moudle name from the backend
-  const [data, setResponse] = useState('')
+  const [data, setResponse] = useState("");
+  const [attendance,setAttendance]=useState({})
 
   //get all sessions given by the id
-  const [sessions, setSessions] = useState([])
+  const [sessions, setSessions] = useState([]);
 
   const getResponse = async () => {
-    const slug = params.slug
-
-    console.log(slug)
-    const response = await axiosGet(`/lecture/getModuleDetailsById/${slug}`)
-
+    const slug = params.slug;
+    console.log(slug);
+    const response = await axiosGet(`/lecture/getModuleDetailsById/${slug}`);
     if (response.status === 200) {
-      console.log('axios worked')
-      console.log(response.data)
-      setResponse(response.data)
+      console.log("axios worked");
+      console.log(response.data);
+      setResponse(response.data);
     } else {
-      console.log('Error while fetching API')
+      console.log("Error while fetching API");
     }
-    return response
-  }
+    return response;
+  };
 
   useEffect(() => {
-    console.log('useEffect is running')
-    getResponse()
-  }, [])
+    console.log("useEffect is running");
+    getResponse();
+  }, []);
 
   //get all sessions given by the id
 
   const getSessions = async () => {
-    const slug = params.slug
-
-    console.log(slug)
+    const slug = params.slug;
+    console.log(slug);
     const sessionResponse = await axiosGet(
       `/lecture/getAllSessionsDetailsByModuleId/${slug}`
-    )
-
+    );
     if (sessionResponse.status === 200) {
-      console.log('axios worked')
-      console.log(sessionResponse.data)
-      setSessions(sessionResponse.data)
+      console.log("axios worked");
+      console.log(sessionResponse.data);
+      setSessions(sessionResponse.data);
     } else {
-      console.log('Error while fetching API')
+      console.log("Error while fetching API");
     }
-    return sessionResponse
-  }
-
+    return sessionResponse;
+  };
   useEffect(() => {
-    console.log('useEffect is running')
-    getSessions()
-  }, [])
+    console.log("useEffect is running");
+    getSessions();
+  }, []);
 
+  
+ 
 
   const activeSessions = sessions.filter(
     (session) => session.is_active === true
-  )
+  );
   const inactiveSessions = sessions.filter(
     (session) => session.is_active === false
-  )
+  );
 
-  console.log('Active Sessions:', activeSessions)
-  console.log('Inactive Sessions:', inactiveSessions)
-console.log(activeSessions.length)
+  console.log("Active Sessions:", activeSessions);
+  console.log("Inactive Sessions:", inactiveSessions);
+  console.log(activeSessions.length);
+
+  const getAttendance = async () => {
+      const slug = params.slug;
+      console.log(slug);
+      const attendanceResponse = await axiosGet(
+        `/student/getStudentAttendanceStat?module_id=${slug}`
+      );
+      if (attendanceResponse.status === 200) {
+        console.log("axios worked");
+        console.log(attendanceResponse.data);
+        setAttendance(attendanceResponse.data)
+      } else {
+        console.log("Error while fetching API");
+      }
+      return attendanceResponse;
+    };
+    useEffect(() => {
+      console.log("useEffect is running");
+      getAttendance();
+    }, []);
+  
 
   return (
     <ProtectedRouteWRap>
@@ -81,25 +99,65 @@ console.log(activeSessions.length)
         </span>
 
         <p className="text-link-ash font-semibold text-sm">
-          Home / Modules /{' '}
+          Home / Modules /{" "}
           <span className="text-black font-semibold text-sm">{data.name}</span>
         </p>
       </div>
+      <div className="col-start-2 col-end-12 row-start-2 row-end-4 container mt-4 flex gap-4 ">
+        <div className=" transition duration-300">
+          <div className="bg-white p-6 rounded shadow-md">
+            <h1 className="text-lg font-medium text-light-blue">
+              Total Number of Sessions Conducted
+            </h1>
+            <br></br>
+            <div className="flex gap-4">
+              <div className="w-10 h-10 bg-blue-500 rounded-full"></div>
+              <div>
+                <h1 className="text-4xl font-bold text-light-blue">
+                  {attendance.totalSessionsForModule}
+                </h1>
+              </div>
+              <br></br>
+            </div>
+          </div>
+        </div>
 
-      <div className="col-start-1 col-end-13 row-start-2 px-4 pt-5">
+        <div className="transition duration-300">
+          <div className=" bg-white p-6 rounded shadow-md">
+            <h1 className="text-lg font-medium text-light-blue">
+            Number of Sessions You Attend
+            </h1>
+            <br></br>
+            <div className="flex gap-4">
+              <div className="w-10 h-10 bg-blue-500 rounded-full"></div>
+              <div>
+                <h1 className="text-4xl font-bold text-light-blue">
+                {attendance.totalAttendedSessions}
+                </h1>
+              </div>
+              <br></br>
+            </div>
+          </div>
+        </div>
+
+       
+      </div>
+      
+
+      <div className="col-start-1 col-end-13 row-start-4 px-4 pt-5">
         <span className="text-dark-blue font-semibold text-2xl ">Active</span>
         {activeSessions.length > 0 ? (
           activeSessions.map((session) => (
             // <Link href={`/lecturer/${params.slug}/${session.id}`}>
-              <SessionCard
-                //key={session.id}
-                id={session.id}
-                date={session.session_date}
-                start_time={session.start_time}
-                end_time={session.end_time}
-                name={session.session_name}
-                is_active={session.is_active}
-              />
+            <SessionCard
+              //key={session.id}
+              id={session.id}
+              date={session.session_date}
+              start_time={session.start_time}
+              end_time={session.end_time}
+              name={session.session_name}
+              is_active={session.is_active}
+            />
             // </Link>
           ))
         ) : (
@@ -116,15 +174,15 @@ console.log(activeSessions.length)
         {inactiveSessions.length > 0 ? (
           inactiveSessions.map((session) => (
             // <Link href={`/lecturer/${params.slug}/${session.id}`}>
-              <SessionCard
-                //key={session.id}
-                id={session.id}
-                date={session.session_date}
-                start_time={session.start_time}
-                end_time={session.end_time}
-                name={session.session_name}
-                is_active={session.is_active}
-              />
+            <SessionCard
+              //key={session.id}
+              id={session.id}
+              date={session.session_date}
+              start_time={session.start_time}
+              end_time={session.end_time}
+              name={session.session_name}
+              is_active={session.is_active}
+            />
             // </Link>
           ))
         ) : (
@@ -138,8 +196,7 @@ console.log(activeSessions.length)
         {/* <Sessioncard /> */}
       </div>
     </ProtectedRouteWRap>
-  )
+  );
+};
 
-}
-
-export default page
+export default page;
