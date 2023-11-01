@@ -1,11 +1,21 @@
-'use client'
+"use client";
 import React from 'react'
-import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+import SessionTabs from '@components/SessionTabs';
 
-const page = () => {
+
+
+
+
+function page({ params }) {
+  const slug = params.slugId
+  console.log(slug)
   return (
     <ProtectedRouteWRap>
-      <div>page</div>
+      <div>
+        {/* <SessionTabs></SessionTabs> */}
+        <SessionTabs prop1={slug} />
+      </div>
     </ProtectedRouteWRap>
   )
 }

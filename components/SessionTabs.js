@@ -1,12 +1,16 @@
 // TabsContainer.js
 import SessionDetails from "./SessionDetails";
 import TabContent from "./Tabcontent";
-import Chat from "./chat";
+import Chat from "./Chat";
 
 import React, { useState } from "react";
 
 
-const SessionTabs = () => {
+const SessionTabs = (props) => {
+  const slug = props.prop1
+  console.log("Inside SessionTabs.js")
+  console.log(slug)
+  console.log('Inside SessionTabs.js')
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTabClick = (index) => {
@@ -14,11 +18,10 @@ const SessionTabs = () => {
   };
 
   const tabs = [
-    { title: "Session Details", content: <SessionDetails></SessionDetails>   },
-    { title: "Polls", content: "" },
-    { title: "Chat", content: <Chat></Chat> },
-    
-  ];
+    { title: 'Session Details', content: <SessionDetails prop1={slug} /> },
+    { title: 'Polls', content: '' },
+    { title: 'Chat', content: <Chat></Chat> },
+  ]
 
   return (
     <div>
