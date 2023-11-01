@@ -32,6 +32,7 @@ function Popup() {
     requirement: 0,
     session_name: "",
     module_id: "",
+    isactive: true,
   });
 
   const handleSubmit = async (e) => {

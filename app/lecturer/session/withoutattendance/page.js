@@ -27,13 +27,14 @@ function Popup() {
 
   const router = useRouter();
   const [formData, setFormData] = useState({
-    start_time: "",
-    end_time: "",
-    session_date:"",
+    start_time: '',
+    end_time: '',
+    session_date: '',
     requirement: 1,
-    session_name: "",
-    module_id: "",
-  });
+    session_name: '',
+    module_id: '',
+    isactive: true,
+  })
 
   const handleSubmit = async (e) => {
     e.preventDefault();

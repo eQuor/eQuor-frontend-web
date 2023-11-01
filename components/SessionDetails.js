@@ -2,16 +2,19 @@
 import React from 'react'
 import Button from './Button'
 import Swal from 'sweetalert2'
-
+import { useRouter } from 'next/navigation'
 import DataTable from '@components/DataTable'
 import { axiosGet, axiosPost } from '@common/basicAxios'
 import { useEffect, useState, useRef } from 'react'
-import QRCodeComponent from '@components/QrcodeComponent'
+import QRCodeComponent from '@components/QRCodeComponent'
 import ReactDOMServer from 'react-dom/server'
 import withReactContent from 'sweetalert2-react-content'
 //import { renderToString } from 'react-dom/server'
 
 function SessionDetails(props) {
+  console.log('aaaaaaa')
+
+  console.log('aaaaaaa')
   const slug = props.prop1
 
   const [qrCode, setQrCode] = useState([])
@@ -36,83 +39,6 @@ function SessionDetails(props) {
     console.log('useEffect is running')
     getQrCode()
   }, []) // Add dependencies if any
-
-  const data = [
-    {
-      id: 1,
-      name: 'Manag Lama',
-      reg: '2020/IS/027',
-      ind: 20020279,
-      email: 'maan@gmail.com',
-      age: 23,
-    },
-    {
-      id: 1,
-      name: 'Manag Lama',
-      reg: '2020/IS/027',
-      ind: 20020279,
-      email: 'maan@gmail.com',
-      age: 23,
-    },
-    {
-      id: 1,
-      name: 'Manag Lama',
-      reg: '2020/IS/027',
-      ind: 20020279,
-      email: 'maan@gmail.com',
-      age: 23,
-    },
-    {
-      id: 1,
-      name: 'Manag Lama',
-      reg: '2020/IS/027',
-      ind: 20020279,
-      email: 'maan@gmail.com',
-      age: 23,
-    },
-    {
-      id: 1,
-      name: 'Manag Lama',
-      reg: '2020/IS/027',
-      ind: 20020279,
-      email: 'maan@gmail.com',
-      age: 23,
-    },
-    {
-      id: 1,
-      name: 'Manag Lama',
-      reg: '2020/IS/027',
-      ind: 20020279,
-      email: 'maan@gmail.com',
-      age: 23,
-    },
-    {
-      id: 1,
-      name: 'Manag Lama',
-      reg: '2020/IS/027',
-      ind: 20020279,
-      email: 'maan@gmail.com',
-      age: 23,
-    },
-    {
-      id: 1,
-      name: 'Manag Lama',
-      reg: '2020/IS/027',
-      ind: 20020279,
-      email: 'maan@gmail.com',
-      age: 23,
-    },
-    {
-      id: 1,
-      name: 'Manag Lama',
-      reg: '2020/IS/027',
-      ind: 20020279,
-      email: 'maan@gmail.com',
-      age: 23,
-    },
-
-    // Add more data as needed
-  ]
 
   const columns = [
     { Header: '#', accessor: 'id' },
@@ -140,76 +66,25 @@ function SessionDetails(props) {
     })
   }
 
-    //QR CODE WITH DEFINED ARRAY
-  //   const MySwal = withReactContent(Swal)
-  //   const values = [
-  //     'value1',
-  //     'value2',
-  //     'value3',
-  //     'value4',
-  //     'value5',
-  //     'value6',
-  //     'value7',
-  //     'value8',
-  //     'value9',
-  //     'value10',
-  //   ]
+  //QR CODE WITH DEFINED ARRAY
+  //getQrCode()
+  const MySwal = withReactContent(Swal)
 
-  //   const generateQRCode = (value) => {
-  //     return ReactDOMServer.renderToString(
-  //       <div className="flex justify-center">
-  //         <QRCodeComponent value={value} />
-  //       </div>
-  //     )
-  //   }
-
-  // const showAlertQr = async () => {
-  //   await MySwal.fire({
-  //     title: `QR Code 1`,
-  //     html: generateQRCode(values[0]),
-  //     timer: 3000 * values.length,
-  //     timerProgressBar: true,
-  //     width: '800px',
-  //     //  height:800,
-  //     didOpen: () => {
-  //       Swal.showLoading()
-  //       let i = 1
-  //       const intervalId = setInterval(() => {
-  //         if (i < values.length) {
-  //           const htmlContainer = Swal.getHtmlContainer()
-  //           if (htmlContainer) {
-  //             // Check if the popup is still open
-  //             Swal.update({ title: `QR Code ${i + 1}` }) // Update the title
-  //             htmlContainer.innerHTML = generateQRCode(values[i])
-  //             i++
-  //           } else {
-  //             clearInterval(intervalId)
-  //           }
-  //         } else {
-  //           clearInterval(intervalId)
-  //         }
-  //       }, 2000)
-  //     },
-  //   })
-  // }
-
-    //QR CODE WITH DEFINED ARRAY
-    const MySwal = withReactContent(Swal)
-  
-
-    const generateQRCode = (qrCode) => {
-      return ReactDOMServer.renderToString(
-        <div className="flex justify-center">
-          <QRCodeComponent value={String(qrCode)} />
-        </div>
-      )
-    }
+  const generateQRCode = (qrCode) => {
+    
+    return ReactDOMServer.renderToString(
+      <div className="flex justify-center">
+        <QRCodeComponent value={String(qrCode)} />
+      </div>
+    )
+  }
 
   const showAlertQr = async () => {
+    
     await MySwal.fire({
       title: `QR Code 1`,
       html: generateQRCode(qrCode[0]),
-      timer: 3000 * qrCode.length,
+      timer: 2000 * qrCode.length,
       timerProgressBar: true,
       width: '800px',
       //  height:800,
@@ -235,22 +110,90 @@ function SessionDetails(props) {
     })
   }
 
+  //Get Session Details
+  const [sessionDetails, setSessionDetails] = useState([])
+
+  const getSessionDetails = async () => {
+  //  const slug = props.prop1 // Assuming 'slug' comes from props
+    try {
+      const response = await axiosGet(`/lecture/getSessionDetailsBySessionId/${slug}`)
+      //getSessionDetailsBySessionId / 9
+      if (response.status === 200) {
+        console.log('axios worked')
+        console.log(response.data)
+        setSessionDetails(response.data)
+      } else {
+        throw new Error('Error while fetching API')
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  useEffect(() => {
+    console.log('useEffect is running')
+    getSessionDetails()
+  }, [])
+
+
+
+  
+  const moduleId = sessionDetails.module_id
+  const router = useRouter()
+
+  //End Session
+  const endSession = async () => {
+   // e.preventDefault()
+
+     Swal.fire({
+       title: 'Are you sure?',
+       text: 'This will save the module details!',
+       icon: 'warning',
+       showCancelButton: true,
+       confirmButtonColor: '#4154F1',
+       cancelButtonColor: '#d33',
+       confirmButtonText: 'Yes, Save it!',
+     })
+       .then(async (result) => {
+         if (result.isConfirmed) {
+           const response = await axiosPost(`/lecture/setSessionToEnd/${slug}`)
+           if (response.status === 200) {
+             Swal.fire('Saved!', 'New module has been saved.', 'success')
+             router.push(`/lecturer/${moduleId}`)
+           } else
+             Swal.fire('Error!', "Couldn't save new staff member.", 'success')
+         }
+       })
+       .catch((error) => {
+         Swal.fire('Error!', "Couldn't save new module", 'error')
+       })
+   
+  }
+
+  console.log('module id')
+  console.log(sessionDetails.module_id)
+  console.log('module id')
+
+
   return (
     <>
       <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
         <span className="text-light-blue font-semibold text-lg">
-          Session Name
+          {sessionDetails.session_name}
         </span>
 
         <p className="text-link-ash font-semibold text-sm">
-          Home /{' '}
-          <span className="text-black font-semibold text-sm">Your Device</span>
+          Session /{' '}
+          <span className="text-black font-semibold text-sm">
+            {' '}
+            {sessionDetails.session_name}
+          </span>
         </p>
       </div>
 
-      <div className="col-start-3 col-end-13 px-4  pt-5">
+      <div className="col-start-3 col-end-13 px-4   pt-5">
         <div className="flex">
-          <div className="p-20 bg-white border flex flex-col items-center justify-center border-gray-200 rounded-lg shadow">
+          <div className="p-20 bg-white border flex flex-col items-center justify-center border-gray-200 rounded-lg shadow  mr-16">
             <p className="mb-3 items-center text-dark-blue text-3xl font-semibold ">
               Session ID
             </p>
@@ -262,7 +205,7 @@ function SessionDetails(props) {
               View Session ID
             </button>
           </div>
-          <div className="p-20 bg-white flex flex-col items-center justify-center border border-gray-200 rounded-lg shadow ml-5">
+          <div className="p-20 bg-white flex flex-col items-center justify-center border border-gray-200 rounded-lg shadow ml-16 mr-16">
             <p className="mb-3 items-center text-dark-blue text-3xl font-semibold ">
               Session QR
             </p>
@@ -272,6 +215,18 @@ function SessionDetails(props) {
               className="bg-light-blue w-[200px] h-[40px] rounded-[5px] text-white text-center text-sm "
             >
               View Session QR
+            </button>
+          </div>
+          <div className="p-20 bg-white flex flex-col items-center justify-center border border-gray-200 rounded-lg shadow ml-16 ">
+            <p className="mb-3 items-center text-dark-blue text-3xl font-semibold ">
+              End Session
+            </p>
+            {/* <Button title="View Session ID"></Button> */}
+            <button
+              onClick={endSession}
+              className="bg-light-blue w-[200px] h-[40px] rounded-[5px] text-white text-center text-sm "
+            >
+              End Session
             </button>
           </div>
           {/* <QRCodeComponent value={5} /> */}

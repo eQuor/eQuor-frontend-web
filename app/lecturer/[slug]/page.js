@@ -12,6 +12,8 @@ const page = ({ params }) => {
   //Show moudle name from the backend
   const [data, setResponse] = useState('')
 
+  
+
   //get all sessions given by the id
   const [sessions, setSessions] = useState([])
 
@@ -63,10 +65,11 @@ const page = ({ params }) => {
 
 
   const activeSessions = sessions.filter(
-    (session) => session.is_active === true
+  
+    (session) => session.isactive === true
   )
   const inactiveSessions = sessions.filter(
-    (session) => session.is_active === false
+    (session) => session.isactive === false
   )
 
   console.log('Active Sessions:', activeSessions)
@@ -110,12 +113,11 @@ console.log(activeSessions.length)
           </div>
         )}
         {/* <div className="overflow-x-auto mt-3 rounded-md"></div> */}
-      </div>
-      <div className="col-start-1 col-end-13  px-4 pt-5 mt-3">
-        <span className="text-dark-blue font-semibold text-2xl ">Past</span>
-        {inactiveSessions.length > 0 ? (
-          inactiveSessions.map((session) => (
-            // <Link href={`/lecturer/${params.slug}/${session.id}`}>
+        <div className="col-start-1 col-end-13   mt-3">
+          <span className="text-dark-blue font-semibold text-2xl ">Past</span>
+          {inactiveSessions.length > 0 ? (
+            inactiveSessions.map((session) => (
+              // <Link href={`/lecturer/${params.slug}/${session.id}`}>
               <SessionCard
                 //key={session.id}
                 id={session.id}
@@ -125,17 +127,18 @@ console.log(activeSessions.length)
                 name={session.session_name}
                 is_active={session.is_active}
               />
-            // </Link>
-          ))
-        ) : (
-          <div className="w-full text-sm text-left text-gray-400 mt-1">
-            <div className="bg-white border-b border-gray-400 p-3">
-              <p>There aren't any past sessions at the moment.</p>
+              // </Link>
+            ))
+          ) : (
+            <div className="w-full text-sm text-left text-gray-400 mt-1">
+              <div className="bg-white border-b border-gray-400 p-3">
+                <p>There aren't any past sessions at the moment.</p>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* <Sessioncard /> */}
+          {/* <Sessioncard /> */}
+        </div>
       </div>
     </ProtectedRouteWRap>
   )
