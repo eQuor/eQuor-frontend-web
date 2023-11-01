@@ -115,7 +115,7 @@ console.log(activeSessions.length)
         <span className="text-dark-blue font-semibold text-2xl ">Past</span>
         {inactiveSessions.length > 0 ? (
           inactiveSessions.map((session) => (
-            <Link href={`/lecturer/${params.slug}/${session.id}`}>
+            // <Link href={`/lecturer/${params.slug}/${session.id}`}>
               <SessionCard
                 //key={session.id}
                 id={session.id}
@@ -125,7 +125,7 @@ console.log(activeSessions.length)
                 name={session.session_name}
                 is_active={session.is_active}
               />
-            </Link>
+            // </Link>
           ))
         ) : (
           <div className="w-full text-sm text-left text-gray-400 mt-1">

@@ -7,16 +7,15 @@ import SessionTabs from '@components/SessionTabs';
 
 
 
-function page() {
+function page({ params }) {
+  const slug = params.slugId
+  console.log(slug)
   return (
     <ProtectedRouteWRap>
-
-    <div>
-       <SessionTabs></SessionTabs>
-
-       
-      
-    </div>
+      <div>
+        {/* <SessionTabs></SessionTabs> */}
+        <SessionTabs prop1={slug} />
+      </div>
     </ProtectedRouteWRap>
   )
 }
