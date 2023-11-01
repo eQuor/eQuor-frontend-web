@@ -172,7 +172,7 @@ const adminDashboard = () => {
           <AreaChart
             width={500}
             height={400}
-            data={datare}
+            //data={datare}
             margin={{
               top: 0,
               right: 30,
