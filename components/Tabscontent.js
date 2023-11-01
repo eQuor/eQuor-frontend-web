@@ -1,4 +1,4 @@
-// TabsContainer.js
+"use client"
 import TabContent from "./Tabcontent";
 
 import React, { useState } from "react";

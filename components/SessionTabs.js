@@ -1,4 +1,4 @@
-// TabsContainer.js
+"use client"
 import SessionDetails from "./SessionDetails";
 import TabContent from "./Tabcontent";
 import Chat from "./Chat";
