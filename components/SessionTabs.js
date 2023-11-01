@@ -1,7 +1,7 @@
 // TabsContainer.js
 import SessionDetails from "./SessionDetails";
 import TabContent from "./Tabcontent";
-import Chat from "./chat";
+import Chat from "./Chat";
 
 import React, { useState } from "react";
 

@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { AiFillPlaySquare } from 'react-icons/ai'
-import Sessioncard from './Sessioncard'
+import SessionCard from '@components/SessionCard'
 import { useRouter } from 'next/navigation'
 import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
 
@@ -53,7 +53,7 @@ const page = () => {
           </div>
           <div className="col-start-1 col-end-13 row-start-4 row-end-5  px-4 pt-0">
             <span className="text-dark-blue font-semibold text-2xl">Past</span>
-            <Sessioncard  />
+            <SessionCard />
             {/* <Sessioncard />
             <Sessioncard /> */}
           </div>
@@ -78,7 +78,7 @@ const page = () => {
             </div>
           </div>
           <div className="col-start-1 col-end-13 row-start-3   px-4 pt-0">
-            <Sessioncard />
+          <SessionCard/>
           </div>
           {/* <div className="col-start-1 col-end-13 row-start-2 row-end-3  px-4 pt-5">
             <div>
