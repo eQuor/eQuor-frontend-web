@@ -21,24 +21,6 @@ import { useAuth } from "@contexts/authContext";
 import { useRouter } from "next/navigation";
 
 const staffDashboard = () => {
-  
-  const [piechartdata, setData] = useState({
-    allStudent: 0,
-    attendStudent: 0,
-  });
-  const getAttendance = async () => {
-    const response = await axiosGet("/lecture/studentAttendSession/");
-    if (response.status == 200) {
-      console.log("axios wed");
-      let i = 1;
-      let resdata = response.data;
-
-      setData(resdata);
-      console.log(resdata);
-    } else {
-      console.log("error while fetching API");
-    }
-
   const router = useRouter();
   const { authUser, setAuthUser } = useAuth();
   // const subject = "Dashboard";
@@ -74,13 +56,11 @@ const staffDashboard = () => {
 
       
       return response;
-      }
     }
   };
   useEffect(() => {
     console.log("useEffect is running");
     const response = getResponse();
-    const response2 = getAttendance();
   }, []);
 
 

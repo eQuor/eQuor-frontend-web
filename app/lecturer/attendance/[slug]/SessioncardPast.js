@@ -27,7 +27,8 @@ const SessioncardPast = ({
             <td className="px-6 py-4">{`End Time-${end_time}`}</td>
             <td className="px-6 py-4">{name}</td>
             <td className="px-6 py-4 text-gray-350 text-2xl cursor-pointer">
-              <AiFillPlaySquare />
+            <button 
+              className='bg-light-blue  w-[150px] h-[40px] rounded-[50px] text-white text-center text-sm'>View Attendance</button>
             </td>
           </tr>
         </tbody>
