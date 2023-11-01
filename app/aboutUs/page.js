@@ -20,7 +20,7 @@ const aboutUs = () => {
           <h1 className="text-3xl font-bold mb-4">About Us</h1>
           <p>
             "eQuor” is an academic management system which provides accurate
-            attendance recording and better lecturer student interaction within
+            attendance recording through QR code scanning and better lecturer student interaction within
             lectures.
             <div className="pt-6"><h1>What we offer.</h1></div>
             <div className="pl-8">
