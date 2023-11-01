@@ -1,55 +1,78 @@
 import React from "react";
 import Image from "next/image";
-import call from "../../public/call.png";
-import mail from "../../public/mail.png";
-import linkedin from "../../public/linkedin.png";
-import aboutus from "../../public/aboutus.jpg";
+import tick from "../../public/login.png";
 
-const aboutUs = () => {
+const regForm = () => {
   return (
-    <>
-      <div className="bg-gray-100 min-h-screen flex items-center ">
-      {/* <div className="bg-green-400 w-[600] h-[740px] z-20"> </div>
-      <div className="mt-[10px] ml-[10px]"><Image src={aboutus} alt='aboutus' className='w-[650px] h-[700px] z-10' /></div> */}
-
-<div class="relative w-[600] h-[740px]">
-  <div class="bg-light-blue w-[600] h-[740px] absolute bottom-0 z-10"></div>
-    <div class=" w-[650px] h-[720px] absolute top-[150px] left-5 z-20"><Image src={aboutus} alt='aboutus' className='w-[644px] h-[419px] z-10' /></div>
-</div>
-
-        <div className="ml-[200px] bg-white p-8 rounded-lg shadow-md max-w-md w-full">
-          <h1 className="text-3xl font-bold mb-4">About Us</h1>
-          <p>
-            "eQuor” is an academic management system which provides accurate
-            attendance recording and better lecturer student interaction within
-            lectures.
-            <div className="pt-6"><h1>What we offer.</h1></div>
-            <div className="pl-8">
-            <ul className="list-disc">
-              <li>Mark attendence via QR code scanning.</li>
-              <li>Ask questions</li>
-              <li>Polls</li>
-              <li>Student grouping facility</li>
-              <li>Submitting medical forms</li>
-            </ul>
-            </div>
-            <div className="flex gap-6 pt-6">
-                <div>50+ Institutions</div>
-                <div>10000+ Students</div>
-                <div>1000+ Lecturers</div>
-            </div>
-            <div className="flex gap-6 pt-6">
-                <div><Image src={call} alt='call' className='w-[20px] h-[20px]' /></div>
-                <div><Image src={mail} alt='mail' className='w-[20px] h-[20px]' /></div>
-                <div><Image src={linkedin} alt='linkedin' className='w-[20px] h-[20px]' /></div>
-            </div>
-
-          </p>
-        </div>
-
+    <div className='col-start-3 col-end-10 mt-[100px] ml-7 grid grid-cols-2 gap-[150px] '>
+      <div className='w-[730px] h-[540px] flex justify-self-center '>
+        <Image src={tick} alt='tick' className='w-[630px] h-[540px]' />
       </div>
-    </>
+      <div className=' p-[100px] sm:px-6 lg:px-8 w-[530px] h-[540px] tems-center justify-center bg-white rounded-lg shadow-lg '>
+        <form action=''>
+          <div>
+            <h1 className='text-center  text-light-blue text-6xl font-bold font-sans bg-gray-100'>
+              Log In
+            </h1>
+          </div>
+          <div>
+            <div className=' bg-white'>
+              <label>Username</label>
+              <input
+                type='text'
+                autoComplete='none'
+                required
+                className='appearance-none rounded-none static vlock w-full px-3 py-2 border border-CED4DA placeholder-gray-500
+                        text-gray-900 rounded-t-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-white '
+                placeholder='Username'
+              />
+            </div>
+            <div className=' bg-white'>
+              <label>Password</label>
+              <input
+                type='password'
+                autoComplete='none'
+                required
+                className='appearance-none rounded-none static vlock w-full px-3 py-2 border border-gray-300 placeholder-gray-500
+                        text-gray-900 rounded-t-md mb-2 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm bg-white'
+                placeholder='Password'
+              />
+            </div>
+          </div>
+          <br></br>
+          <div className='flex items-center justify-between bg-white'>
+            <div className='flrx items-center bg-white'>
+              <label className='ml-2 block text-sm text-gray-900 bg-white'>
+                <input
+                  type='checkbox'
+                  className='h-4 w-4 text-light-blue focus:ring-light-blue border-gray-300 rounded '
+                />
+                Remember me
+              </label>
+            </div>
+          </div>
+          <br></br>
+          <div>
+            <button
+              className='group static w-full flex justify-center py-2 px-4 border border-transparent text-sm font-regular rounded-md text-white bg-light-blue hover:bg-indigo-700
+                    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+            >
+              Sign in
+            </button>
+          </div>
+          <br></br>
+          <div className='textt-sm bg-white'>
+            <a
+              href='#'
+              className='  hover:text-light-blue text-gray-400  bg-white'
+            >
+              Forgot password?
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 
-export default aboutUs;
+export default regForm;
