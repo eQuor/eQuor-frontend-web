@@ -1,21 +1,22 @@
-"use client";
-import React from 'react'
-import Link from 'next/link'
-import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+import React from "react";
+import Image from "next/image";
+import call from "../../public/call.png";
+import mail from "../../public/mail.png";
+import linkedin from "../../public/linkedin.png";
+import eQuor from "../../public/eQuor.svg";
 
 
-const page = () => {
+const aboutUs = () => {
   return (
-    <ProtectedRouteWRap>
-
     <>
       <div className="bg-gray-100 min-h-screen flex items-center ">
-     <div class="relative w-[600] h-[740px]">
+
+<div class="relative w-[600] h-[740px]">
   <div class="bg-light-blue w-[600] h-[740px] absolute bottom-0 z-10"></div>
-    <div class=" w-[650px] h-[720px] absolute top-[150px] left-5 z-20"><Image src={aboutus} alt='aboutus' className='w-[644px] h-[419px] z-10' /></div>
+    <div class=" w-[650px] h-[720px] absolute top-[150px] left-5 z-20"><Image src={eQuor} alt='aboutus' className='w-[644px] h-[419px] z-10' /></div>
 </div>
-<div>
-<div className="ml-[200px] bg-white p-8 rounded-lg shadow-md max-w-md w-full">
+
+        <div className="ml-[200px] bg-white p-8 rounded-lg shadow-md max-w-md w-full">
           <h1 className="text-3xl font-bold mb-4">About Us</h1>
           <p>
             "eQuor” is an academic management system which provides accurate
@@ -46,14 +47,8 @@ const page = () => {
         </div>
 
       </div>
-         
-
-      </div>
     </>
-  
-export default aboutUs;
-    </ProtectedRouteWRap>
-  )
-}
+  );
+};
 
-export default page
+export default aboutUs;
