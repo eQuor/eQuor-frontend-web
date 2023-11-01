@@ -1,5 +1,5 @@
-'use client'
-import React from 'react'
+"use client";
+import React from "react";
 // import { BsSearch } from 'react-icons/bs'
 
 const Search = () => {
@@ -7,13 +7,13 @@ const Search = () => {
     <>
       <form>
         <label
-          htmlFor="default-search"
-          className="mb-2 text-sm font-medium text-gray-900 sr-only"
+          htmlFor='default-search'
+          className='mb-2 text-sm font-medium text-gray-900 sr-only'
         >
           Search
         </label>
         <div>
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <div className='absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none'>
             {/* <svg
               className="w-4 h-4 text-gray-500"
               aria-hidden="true"
@@ -31,10 +31,10 @@ const Search = () => {
             </svg> */}
           </div>
           <input
-            type="search"
-            id="default-search"
-            className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Search here.."
+            type='search'
+            id='default-search'
+            className='block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500'
+            placeholder='Search here..'
             required
           />
           {/* <button
@@ -46,7 +46,7 @@ const Search = () => {
         </div>
       </form>
     </>
-  )
-}
+  );
+};
 
-export default Search
+export default Search;

@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-
 import Button from "@components/Button";
 
 import Search from "@components/Search";
@@ -11,7 +10,6 @@ import { axiosGet } from "@common/basicAxios";
 
 import Card from "@components/Card";
 import Link from "next/link";
-
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -44,32 +42,32 @@ const Home = () => {
   }, []);
   return (
     <ProtectedRouteWRap>
-      <div className="col-start-1 col-end-13 ">
+      <div className='col-start-1 col-end-13 '>
         <TabsContainer />
       </div>
 
-      <div className="col-start-1 col-end-13 row-start-2 row-end-2  px-4 pt-5 mt-3">
-        <span className="text-light-blue font-semibold text-lg">Dashboard</span>
+      <div className='col-start-1 col-end-13 row-start-2 row-end-2  px-4 pt-5 mt-3'>
+        <span className='text-light-blue font-semibold text-lg'>Dashboard</span>
 
-        <p className="text-link-ash font-semibold text-sm">
+        <p className='text-link-ash font-semibold text-sm'>
           Home /{" "}
-          <span className="text-black font-semibold text-sm">Modules</span>
+          <span className='text-black font-semibold text-sm'>Modules</span>
         </p>
       </div>
 
-      <div className="col-start-1 col-end-13 px-4 pt-5 flex">
-        <div className="w-[1200px] overflow-x-auto">
+      <div className='col-start-1 col-end-13 px-4 pt-5 flex'>
+        <div className='w-[1200px] overflow-x-auto'>
           <Search />
         </div>
 
-        <div className="ml-3">
+        <div className='ml-3'>
           <Button title={"Search"} url={"/lecturer"} />
         </div>
       </div>
 
-      <div className=" col-start-1 col-end-13 flex px-4 mt-4">
-        <div className="flex gap-5 flex-wrap">
-          <div className="flex gap-5 flex-wrap">
+      <div className=' col-start-1 col-end-13 flex px-4 mt-4'>
+        <div className='flex gap-5 flex-wrap'>
+          <div className='flex gap-5 flex-wrap'>
             {data.map((data, index) => {
               //const { name, semester } = data
 
