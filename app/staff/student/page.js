@@ -21,7 +21,6 @@ const Page = () => {
       let i = 1;
       let resdata = response.data._embedded.student;
       resdata.forEach((element) => {
-        element.action = <Button/>;
         element.index = i;
         i++;
       });
@@ -49,7 +48,6 @@ const Page = () => {
     { Header: "Member ID", accessor: "id" },
     { Header: "Email", accessor: "email" },
     { Header: "Address", accessor: "address" },
-    { Header: "Action", accessor: "action" },
   ];
 
   return (
@@ -70,8 +68,8 @@ const Page = () => {
       </div>
       <div className=' col-start-4 col-end-7'>
         <Button
-          title={"Add New Lecturer"}
-          url={"/staff/lecturer/addlecturer"}
+          title={"Add New Student"}
+          url={"/staff/student/addstudent"}
         />
       </div>
 
