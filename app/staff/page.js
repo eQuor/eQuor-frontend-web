@@ -1,6 +1,7 @@
 "use client";
-import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { axiosGet } from "@common/basicAxios";
+
 import {
   PieChart,
   Pie,
@@ -13,54 +14,56 @@ import {
   CartesianGrid,
   Tooltip,
 } from "recharts";
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+import axios from "axios";
+import config from "@configuration/config";
+import { useAuth } from "@contexts/authContext";
+import { useRouter } from "next/navigation";
 
-const adminDashboard = () => {
-  const subject = "Dashboard";
+const staffDashboard = () => {
+  const router = useRouter();
+  const { authUser, setAuthUser } = useAuth();
+  // const subject = "Dashboard";
+  const [memberData, setData] = useState({
+    totalLecture: 0,
+    totalStaff: 0,
+    totalStudent: 0,
+  });
+  const getResponse = async () => {
+    if (authUser === null) {
+      router.push("/auth/signin");
+    } else {
+      const jwt_token = authUser.jwtToken;
+      const response = await axios.get(
+        config.API_BASE_URL + config.API_VERSION + "/admin/adminDashboard/",
+        {
+          headers: {
+            Authorization: `Bearer ${jwt_token}`,
+          },
+        }
+      );
+      // const response = await axiosGet("/admin/adminDashboard/");
+      if (response.status == 200) {
+        console.log("axios wed");
+        let i = 1;
+        let resdata = response.data;
 
-  const datare = [
-    {
-      name: "Page A",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: "Page B",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: "Page C",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: "Page D",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: "Page E",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: "Page G",
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
+        setData(resdata);
+        console.log(resdata);
+      } else {
+        console.log("error while fetching API");
+      }
+
+      
+      return response;
+    }
+  };
+  useEffect(() => {
+    console.log("useEffect is running");
+    const response = getResponse();
+  }, []);
+
+
 
   const datapie = [
     { name: "present students", value: 500 },
@@ -97,13 +100,12 @@ const adminDashboard = () => {
 
   return (
     <ProtectedRouteWRap>
-      <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5">
-        <span className="text-light-blue font-semibold text-lg">{subject}</span>
-
-        <p className="text-link-ash font-semibold text-sm">
-          Home /{" "}
-          <span className="text-black font-semibold text-sm">{subject}</span>
-        </p>
+      <div className="  col-start-1 col-end-13  pl-8  pt-5 ">
+        <h1 className="text-xl font-normal text-[#4154F1] bg-#F0F4FB">
+          {" "}
+          Dashboard
+        </h1>
+        <p className=" text-xs font-normal">Home / Dashboard</p>
       </div>
 
       {/* .................cards........................... */}
@@ -117,7 +119,9 @@ const adminDashboard = () => {
             <div className="flex gap-4">
               <div className="w-10 h-10 bg-blue-500 rounded-full"></div>
               <div>
-                <h1 className="text-4xl font-bold text-light-blue">100</h1>
+                <h1 className="text-4xl font-bold text-light-blue">
+                  {memberData.totalStaff}
+                </h1>
               </div>
               <br></br>
             </div>
@@ -133,7 +137,9 @@ const adminDashboard = () => {
             <div className="flex gap-4">
               <div className="w-10 h-10 bg-blue-500 rounded-full"></div>
               <div>
-                <h1 className="text-4xl font-bold text-light-blue">145</h1>
+                <h1 className="text-4xl font-bold text-light-blue">
+                  {memberData.totalLecture}
+                </h1>
               </div>
               <br></br>
             </div>
@@ -149,7 +155,9 @@ const adminDashboard = () => {
             <div className="flex gap-4">
               <div className="w-10 h-10 bg-blue-500 rounded-full"></div>
               <div>
-                <h1 className="text-4xl font-bold text-light-blue">320</h1>
+                <h1 className="text-4xl font-bold text-light-blue">
+                  {memberData.totalStudent}
+                </h1>
               </div>
               <br></br>
             </div>
@@ -158,37 +166,9 @@ const adminDashboard = () => {
       </div>
       {/* .................cards end here .......................  */}
 
-      <div className="col-start-2 col-end-7 row-start-4 row-end-7 h-[280px] text-center  mt-10 bg-white">
-        <p className="text-lg font-medium text-dark-blue ">
-          Attendance Growth This Month
-        </p>
-        <ResponsiveContainer width="100%" height="100%">
-          <AreaChart
-            width={500}
-            height={400}
-            data={datare}
-            margin={{
-              top: 0,
-              right: 30,
-              left: 0,
-              bottom: 0,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Area
-              type="monotone"
-              dataKey="uv"
-              stroke="#8884d8"
-              fill="#8884d8"
-            />
-          </AreaChart>
-        </ResponsiveContainer>
-      </div>
+      
 
-      <div className="col-start-8 col-end-12 row-start-4 row-end-7  h-[280px] text-center mt-10 bg-white  ">
+      <div className="col-start-2 col-end-6 row-start-4 row-end-7  h-[280px] text-center mt-10 bg-white  ">
         <p className="text-lg font-medium text-dark-blue ">
           Total Attendance for this month
         </p>
@@ -216,8 +196,19 @@ const adminDashboard = () => {
           </PieChart>
         </ResponsiveContainer>
       </div>
+      <div className=" text-center felx items-center col-start-7 col-end-13 pt-10 row-start-5 row-end-8 ">
+        <h1 className="bg-[#012970] text-white rounded-[10px] w-[420px] h-[40px] ">
+          Total this month Present Students - {}
+        </h1>
+
+        <h1 className="bg-[#989797] text-dark-blue rounded-[10px] w-[420px] h-[40px] mt-5 ">
+          Total this month Absent Students - {}
+        </h1>
+      </div>
     </ProtectedRouteWRap>
   );
 };
 
-export default adminDashboard;
+export default staffDashboard;
+
+
