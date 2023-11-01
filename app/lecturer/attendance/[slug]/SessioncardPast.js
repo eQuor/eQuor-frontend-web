@@ -16,17 +16,17 @@ const SessioncardPast = ({
     <>
          <table className="w-full text-sm text-left text-gray-400">
         <tbody>
-          <tr className="bg-white px-6 py-4 border-b border-gray-400">
+          <tr className="bg-white border-b-2 h-16">
             <th
               scope="row"
-              className="px-6 py-4  font-medium text-gray-400 whitespace-nowrap"
+              className="w-1/4 px-4 py-2 font-medium text-gray-500 whitespace-nowrap"
             >
               {date}
             </th>
-            <td className="px-6 py-4">{`Start Time-${start_time}`}</td>
-            <td className="px-6 py-4">{`End Time-${end_time}`}</td>
-            <td className="px-6 py-4">{name}</td>
-            <td className="px-6 py-4 text-gray-350 text-2xl cursor-pointer">
+            <td className="w-1/4 px-4 py-2 truncate">{`Start Time-${start_time}`}</td>
+            <td className="w-1/4 px-4 py-2 truncate">{`End Time-${end_time}`}</td>
+            <td className="w-1/4 px-4 py-2 truncate">{name}</td>
+            <td className="w-1/4 px-8 py-2cursor-pointer">
             <button 
               className='bg-light-blue  w-[150px] h-[40px] rounded-[50px] text-white text-center text-sm'>View Attendance</button>
             </td>
@@ -38,3 +38,4 @@ const SessioncardPast = ({
 };
 
 export default SessioncardPast;
+

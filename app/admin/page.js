@@ -168,30 +168,7 @@ const adminDashboard = () => {
         <p className="text-lg font-medium text-dark-blue ">
           Attendance Growth This Month
         </p>
-        <ResponsiveContainer width="100%" height="100%">
-          <AreaChart
-            width={500}
-            height={400}
-            data={datare}
-            margin={{
-              top: 0,
-              right: 30,
-              left: 0,
-              bottom: 0,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Area
-              type="monotone"
-              dataKey="uv"
-              stroke="#8884d8"
-              fill="#8884d8"
-            />
-          </AreaChart>
-        </ResponsiveContainer>
+        
       </div>
 
       <div className="col-start-8 col-end-12 row-start-4 row-end-7  h-[280px] text-center mt-10 bg-white  ">

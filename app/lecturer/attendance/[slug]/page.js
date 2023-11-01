@@ -4,8 +4,8 @@ import { AiFillPlaySquare } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 import { axiosGet, axiosPost } from "@common/basicAxios";
-import SessioncardPast from "./SessioncardPast";
 
+import SessionCardPast from "./SessioncardPast";
 import Link from "next/link";
 
 const page = ({ params }) => {
@@ -89,8 +89,8 @@ const page = ({ params }) => {
         <span className="text-dark-blue font-semibold text-2xl ">Past</span>
         {inactiveSessions.length > 0 ? (
           inactiveSessions.map((session) => (
-            <Link href={`/lecturer/forlate/${session.id}`}>
-              <SessioncardPast
+            <Link href={`/lecturer/forlate${params.slug}/${session.id}`}>
+              <SessionCardPast
                 //key={session.id}
                 id={session.id}
                 date={session.session_date}
