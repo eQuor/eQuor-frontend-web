@@ -1,11 +1,22 @@
-'use client'
+"use client";
 import React from 'react'
-import ProtectedRouteWRap from '@app/ProtectedRouteWRap'
+import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+import SessionTabs from '@components/SessionTabs';
 
-const page = () => {
+
+
+
+
+function page() {
   return (
     <ProtectedRouteWRap>
-      <div>page</div>
+
+    <div>
+       <SessionTabs></SessionTabs>
+
+       
+      
+    </div>
     </ProtectedRouteWRap>
   )
 }
