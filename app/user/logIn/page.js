@@ -1,17 +1,17 @@
 import React from "react";
 import Image from "next/image";
-import tick from "../../../public/login.png";
+import tick from "../../public/login.png";
 
 const regForm = () => {
   return (
-    <div className='col-start-3 col-end-10 row-start-1 mt-10 ml-7 grid grid-cols-2 gap-[150px] '>
+    <div className='col-start-3 col-end-10 mt-[100px] ml-7 grid grid-cols-2 gap-[150px] '>
       <div className='w-[730px] h-[540px] flex justify-self-center '>
         <Image src={tick} alt='tick' className='w-[630px] h-[540px]' />
       </div>
       <div className=' p-[100px] sm:px-6 lg:px-8 w-[530px] h-[540px] tems-center justify-center bg-white rounded-lg shadow-lg '>
         <form action=''>
           <div>
-            <h1 className='text-center  text-light-blue text-6xl font-bold font-sans bg-white'>
+            <h1 className='text-center  text-light-blue text-6xl font-bold font-sans bg-gray-100'>
               Log In
             </h1>
           </div>
