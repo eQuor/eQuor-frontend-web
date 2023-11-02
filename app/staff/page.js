@@ -98,8 +98,7 @@ const staffDashboard = () => {
         textAnchor={x > cx ? "start" : "end"}
         dominantBaseline="central"
       >
-        asfawf
-        {/* {`${(percent * 100).toFixed(0)}%`} */}
+        {`${(percent * 100).toFixed(0)}%`}
       </text>
     );
   };
@@ -179,9 +178,9 @@ const staffDashboard = () => {
           Total Attendance for this month
         </p>
 
-        {/* <ResponsiveContainer width="100%" height="100%" className="">
-          {/* <PieChart className=" -top-3" width={300} height={300}> */}
-            {/* <Pie
+        <ResponsiveContainer width="100%" height="100%" className="">
+          <PieChart className=" -top-3" width={300} height={300}>
+            <Pie
               className=" static !important "
               data={datapie}
               // cx="15%"
@@ -194,13 +193,13 @@ const staffDashboard = () => {
             >
               {datapie.map((entry, index) => (
                 <Cell
-                  key={cell-${index}}
+                  key={`cell-${index}`}
                   fill={COLORS[index % COLORS.length]}
                 />
               ))}
             </Pie>
-          </PieChart> */}
-        {/* </ResponsiveContainer> */} 
+          </PieChart>
+        </ResponsiveContainer>
       </div>
       <div className="col-start-8 w-[310px] mt-20  row-start-4 row-end-7  "><Image src={staffdash} alt='staff' className=' ' /></div>
     
@@ -208,4 +207,4 @@ const staffDashboard = () => {
   );
 };
 
-export default staffDashboard;
+export default staffDashboard;

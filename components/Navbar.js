@@ -93,9 +93,11 @@ const Navbar = () => {
             )}
           </div>
         ) : (
+          <Link href="/auth/signin">
           <button onClick={() => setIsAuth(!isAuth)} className="log-in mr-4">
             Log in
           </button>
+          </Link>
         )}
       </div>
       {/* Mobile Nevigation */}

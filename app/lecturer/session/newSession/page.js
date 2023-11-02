@@ -20,7 +20,7 @@ const page = () => {
   const getResponse = async () => {
     const response = await axiosGet("/module");
     if (response.status == 200) {
-      setData(resdata);
+     // setData(resdata);
       // console.log(resdata);
     } else {
       console.log("error while fetching API");

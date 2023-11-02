@@ -6,9 +6,7 @@ import { axiosPost, axiosGet } from "@common/basicAxios";
 import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 import { useAuth } from "@contexts/authContext";
 
-
 function Popup() {
-
   const { authUser, setAuthUser } = useAuth();
   // console.log(authUser);
   const [data, setData] = useState([]);
@@ -47,7 +45,7 @@ function Popup() {
 
     Swal.fire({
       title: "Are you sure?",
-      text: "This will save the staff member details!",
+      text: "This will create a new session!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#4154F1",
@@ -57,39 +55,39 @@ function Popup() {
       .then(async (result) => {
         if (result.isConfirmed) {
           console.log(formData);
-          const response = await axiosPost("/session", formData);
+          const response = await axiosPost("/lecture/createSession", formData);
           if (response.status === 201) {
-            Swal.fire("Saved!", "New staff member has been saved.", "success");
+            Swal.fire("Saved!", "New session has been created.", "success");
             router.push("/lecturer/session/newSession");
           } else
-            Swal.fire("Error!", "Couldn't save new staff member.", "success");
+            Swal.fire("Saved!", "New session has been created.", "success");
         }
       })
       .catch((error) => {
-        Swal.fire("Error!", "Couldn't save new staff member.", "error");
+        Swal.fire("Error!", "Couldn't save new session.", "error");
       });
   };
 
   return (
     <ProtectedRouteWRap>
-      <div className=' col-start-2 col-end-10 row-start-2   px-4 pt-5 mt-3 '>
+      <div className=" col-start-2 col-end-10 row-start-2   px-4 pt-5 mt-3 ">
         <form
           onSubmit={(e) => {
             handleSubmit(e);
           }}
-          className='  bg-white rounded shadow-lg px-4 py-3 '
+          className="  bg-white rounded shadow-lg px-4 py-3 "
         >
-          <span className='text-dark-blue font-semibold text-2xl  '>
+          <span className="text-dark-blue font-semibold text-2xl  ">
             When do you want to use this session?
           </span>
-          <div className='  '>
-            <div className=''>
-              <label className='  mb-2 text-lg  text-dark-blue font-normal'>
+          <div className="  ">
+            <div className="">
+              <label className="  mb-2 text-lg  text-dark-blue font-normal">
                 Start Time
               </label>
               <input
-                type='time'
-                className='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 '
+                type="time"
+                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 onChange={(e) => {
                   let newFormData = formData;
                   newFormData.start_time = e.target.value;
@@ -97,12 +95,12 @@ function Popup() {
                 }}
               ></input>
               <div>
-                <label className=' mb-2 text-lg  text-dark-blue font-normal'>
+                <label className=" mb-2 text-lg  text-dark-blue font-normal">
                   End Time
                 </label>
                 <input
-                  type='time'
-                  className='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 '
+                  type="time"
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                   onChange={(e) => {
                     let newFormData = formData;
                     newFormData.end_time = e.target.value;
@@ -112,12 +110,12 @@ function Popup() {
               </div>
             </div>
             <div>
-              <label className=' mb-2 text-lg  text-dark-blue font-normal'>
+              <label className=" mb-2 text-lg  text-dark-blue font-normal">
                 Session Date
               </label>
               <input
-                type='date'
-                className='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 '
+                type="date"
+                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 onChange={(e) => {
                   let newFormData = formData;
                   newFormData.session_date = e.target.value;
@@ -126,7 +124,7 @@ function Popup() {
               ></input>
             </div>
             <div>
-              <label className='mb-2 text-lg  text-dark-blue font-normal'>
+              <label className="mb-2 text-lg  text-dark-blue font-normal">
                 Select Module
               </label>
               <select
@@ -135,7 +133,7 @@ function Popup() {
                   newFormData.module_id = e.target.value;
                   setFormData(newFormData);
                 }}
-                className='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 '
+                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               >
                 {data.map((option) => (
                   <option key={option.id} value={option.id}>
@@ -143,7 +141,7 @@ function Popup() {
                   </option>
                 ))}
               </select>
-              <label className='mb-2 text-lg  text-dark-blue font-normal'>
+              <label className="mb-2 text-lg  text-dark-blue font-normal">
                 Session Name
               </label>
               <input
@@ -152,13 +150,13 @@ function Popup() {
                   newFormData.session_name = e.target.value;
                   setFormData(newFormData);
                 }}
-                className=' shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 '
+                className=" shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               ></input>
             </div>
-            <div className='flex justify-self-end gap-4 pt-5 '>
+            <div className="flex justify-self-end gap-4 pt-5 ">
               <button
-                className='group relative w-26 flex justify-self-end py-2 px-4 border border-transparent font-regular rounded-md text-white bg-indigo-600 hover:bg-indigo-700
-                    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-base'
+                className="group relative w-26 flex justify-self-end py-2 px-4 border border-transparent font-regular rounded-md text-white bg-indigo-600 hover:bg-indigo-700
+                    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-base"
               >
                 Create
               </button>

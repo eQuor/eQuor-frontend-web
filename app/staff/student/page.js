@@ -58,9 +58,9 @@ const Page = () => {
       <div className='  col-start-1 col-end-13 row-start-2 row-end-3 pl-8  pt-5 '>
         <h1 className='text-xl font-normal text-[#4154F1] bg-#F0F4FB'>
           {" "}
-          Lecturer Management
+          Student Management
         </h1>
-        <p className=' text-xs font-normal'>Home / Staff Member/Lecturer</p>
+        <p className=' text-xs font-normal'>Home / Staff Member/Student</p>
       </div>
 
       <div className='w-[950px] pl-10 '>
@@ -74,7 +74,7 @@ const Page = () => {
       </div>
 
       <div className=' font-semibold text-[#012970] text-3xl col-start-1 col-end-13  pl-12  pt-10 '>
-        <h1>Current Lecturer</h1>
+        <h1>Current Students</h1>
       </div>
 
       <div className='col-start-1 col-end-13 row-start-5 px-4 pt-5'>
