@@ -33,7 +33,7 @@ const aboutUs = () => {
             </ul>
             </div>
             <div className="flex gap-6 pt-6">
-                <div>50+ Institutions</div>
+                <div>5+ Institutions</div>
                 <div>10000+ Students</div>
                 <div>1000+ Lecturers</div>
             </div>

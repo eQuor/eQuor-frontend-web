@@ -34,8 +34,8 @@ const DataTable = ({ columns, data, onRowClick }) => {
                 return (
                   <tr
                     {...row.getRowProps()}
-                    onClick={() => onRowClick(row.original)} // Added onClick handler
-                    className="cursor-pointer hover:bg-gray-200" // Add hover effect
+                    onClick={() => onRowClick(row.original)} 
+                    className="cursor-pointer hover:bg-gray-200" 
                   >
                     {row.cells.map((cell) => (
                       <td
