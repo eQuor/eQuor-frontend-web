@@ -93,7 +93,8 @@ const staffDashboard = () => {
         textAnchor={x > cx ? "start" : "end"}
         dominantBaseline="central"
       >
-        {`${(percent * 100).toFixed(0)}%`}
+        asfawf
+        {/* {`${(percent * 100).toFixed(0)}%`} */}
       </text>
     );
   };
@@ -173,9 +174,9 @@ const staffDashboard = () => {
           Total Attendance for this month
         </p>
 
-        <ResponsiveContainer width="100%" height="100%" className="">
-          <PieChart className=" -top-3" width={300} height={300}>
-            <Pie
+        {/* <ResponsiveContainer width="100%" height="100%" className="">
+          {/* <PieChart className=" -top-3" width={300} height={300}> */}
+            {/* <Pie
               className=" static !important "
               data={datapie}
               // cx="15%"
@@ -188,13 +189,13 @@ const staffDashboard = () => {
             >
               {datapie.map((entry, index) => (
                 <Cell
-                  key={`cell-${index}`}
+                  key={cell-${index}}
                   fill={COLORS[index % COLORS.length]}
                 />
               ))}
             </Pie>
-          </PieChart>
-        </ResponsiveContainer>
+          </PieChart> */}
+        {/* </ResponsiveContainer> */} 
       </div>
       <div className=" text-center felx items-center col-start-7 col-end-13 pt-10 row-start-5 row-end-8 ">
         <h1 className="bg-[#012970] text-white rounded-[10px] w-[420px] h-[40px] ">
@@ -210,5 +211,3 @@ const staffDashboard = () => {
 };
 
 export default staffDashboard;
-
-
