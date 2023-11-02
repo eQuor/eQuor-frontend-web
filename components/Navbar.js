@@ -15,13 +15,13 @@ const Navbar = () => {
   const [toggleDropDown, setToggleDropdown] = useState(false);
   const dropdownRef = useRef();
 
-  const handleLogOut = () => {
-    if (typeof window !== "undefined") {
-      localStorage.removeItem("authUser");
-      setAuthUser(null);
-      router.push("/auth/signin");
-    }
-  };
+const handleLogOut = () => {
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem('authUser')
+    setAuthUser(null)
+    router.push('http://localhost:3000')
+  }
+}
 
   useEffect(() => {
     const handleClickOutside = (event) => {
