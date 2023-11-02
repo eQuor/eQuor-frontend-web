@@ -33,9 +33,9 @@ const page = () => {
           <Search />
         </div>
 
-        <div className="ml-3">
+        {/* <div className="ml-3">
           <Button title={'Submit New Report'} url={'/student/absenceReport/submitreport'} />
-        </div>
+        </div> */}
       </div>
 
       <div className="col-start-1 col-end-13 px-4 pt-5">

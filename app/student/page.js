@@ -44,11 +44,11 @@ const Home = () => {
   }, []);
   return (
     <ProtectedRouteWRap>
-      <div className="col-start-1 col-end-13 ">
+      {/* <div className="col-start-1 col-end-13 ">
         <TabsContainer />
-      </div>
+      </div> */}
 
-      <div className="col-start-1 col-end-13 row-start-2 row-end-2  px-4 pt-5 mt-3">
+      <div className="col-start-1 col-end-13 row-start-1 row-end-2  px-4 pt-5 mt-3">
         <span className="text-light-blue font-semibold text-lg">Dashboard</span>
 
         <p className="text-link-ash font-semibold text-sm">
@@ -58,16 +58,16 @@ const Home = () => {
       </div>
 
       <div className="col-start-1 col-end-13 px-4 pt-5 flex">
-        <div className="w-[1200px] overflow-x-auto">
+        {/* <div className="w-[1200px] overflow-x-auto">
           <Search />
         </div>
 
         <div className="ml-3">
           <Button title={"Search"} url={"/lecturer"} />
-        </div>
+        </div> */}
       </div>
 
-      <div className=" col-start-1 col-end-13 flex px-4 mt-4">
+      <div className=" col-start-1 row-start-2 col-end-13 flex px-4 mt-4">
         <div className="flex gap-5 flex-wrap">
           <div className="flex gap-5 flex-wrap">
             {data.map((data, index) => {

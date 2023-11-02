@@ -1,6 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { axiosGet } from "@common/basicAxios";
+import admindashbord from "../../public/admindashbord.svg";
+import Image from "next/image";
 
 import {
   PieChart,
@@ -64,10 +66,11 @@ const adminDashboard = () => {
 
 
   const datapie = [
-    { name: "present students", value: 500 },
-    { name: "abesent students", value: 300 },
+    { name: "present students", value: memberData.totalStaff },
+    { name: "abesent students", value: memberData.totalLecture },
+    { name: "abesent students", value: memberData.totalStudent },
   ];
-  const COLORS = ["#012970", "#899BBD"];
+  const COLORS = ["#012970", "#899BBD","#4154F1"];
 
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({
@@ -82,11 +85,13 @@ const adminDashboard = () => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
+    const z = cy + radius * Math.sin(-midAngle * RADIAN);
 
     return (
       <text
         x={x}
         y={y}
+        z={z}
         fill="white"
         textAnchor={x > cx ? "start" : "end"}
         dominantBaseline="central"
@@ -115,7 +120,7 @@ const adminDashboard = () => {
             </h1>
             <br></br>
             <div className="flex gap-4">
-              <div className="w-10 h-10 bg-blue-500 rounded-full"></div>
+              <div className="w-10 h-10 bg-[#012970] rounded-full"></div>
               <div>
                 <h1 className="text-4xl font-bold text-light-blue">
                   {memberData.totalStaff}
@@ -133,7 +138,7 @@ const adminDashboard = () => {
             </h1>
             <br></br>
             <div className="flex gap-4">
-              <div className="w-10 h-10 bg-blue-500 rounded-full"></div>
+              <div className="w-10 h-10 bg-[#899BBD] rounded-full"></div>
               <div>
                 <h1 className="text-4xl font-bold text-light-blue">
                   {memberData.totalLecture}
@@ -151,7 +156,7 @@ const adminDashboard = () => {
             </h1>
             <br></br>
             <div className="flex gap-4">
-              <div className="w-10 h-10 bg-blue-500 rounded-full"></div>
+              <div className="w-10 h-10 bg-[#4154F1] rounded-full"></div>
               <div>
                 <h1 className="text-4xl font-bold text-light-blue">
                   {memberData.totalStudent}
@@ -162,18 +167,20 @@ const adminDashboard = () => {
           </div>
         </div>
       </div>
+        
+      
       {/* .................cards end here .......................  */}
 
-      <div className="col-start-2 col-end-7 row-start-4 row-end-7 h-[280px] text-center  mt-10 bg-white">
+      {/* <div className="col-start-2 col-end-7 row-start-4 row-end-7 h-[280px] text-center  mt-10 bg-white">
         <p className="text-lg font-medium text-dark-blue ">
           Attendance Growth This Month
         </p>
         
-      </div>
+      </div> */}
 
-      <div className="col-start-8 col-end-12 row-start-4 row-end-7  h-[280px] text-center mt-10 bg-white  ">
+      <div className="col-start-2 col-end-7 row-start-4 row-end-7  h-[280px] text-center mt-10 bg-white  ">
         <p className="text-lg font-medium text-dark-blue ">
-          Total Attendance for this month
+          Total Members
         </p>
 
         <ResponsiveContainer width="100%" height="100%" className="">
@@ -198,7 +205,10 @@ const adminDashboard = () => {
             </Pie>
           </PieChart>
         </ResponsiveContainer>
+
+        
       </div>
+      <div className="col-start-9 w-[350px] mt-20  row-start-4 row-end-7  "><Image src={admindashbord} alt='admindashbord' className=' ' /></div>
     </ProtectedRouteWRap>
   );
 };

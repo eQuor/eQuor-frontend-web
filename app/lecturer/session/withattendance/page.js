@@ -4,14 +4,21 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { axiosPost, axiosGet } from "@common/basicAxios";
 import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
+import { useAuth } from "@contexts/authContext";
+
 
 function Popup() {
+
+  const { authUser, setAuthUser } = useAuth();
+  // console.log(authUser);
   const [data, setData] = useState([]);
+  // const id=authUser.userId;
+  // console.log(authUser);
   const getResponse = async () => {
-    const response = await axiosGet("/module");
+    const response = await axiosGet(`/lecture/lectureByModuleDetails`);
     if (response.status == 200) {
       console.log("axios wed");
-      let resdata = response.data._embedded.module;
+      let resdata = response.data;
       setData(resdata);
       console.log(resdata);
     } else {
@@ -32,6 +39,7 @@ function Popup() {
     requirement: 0,
     session_name: "",
     module_id: "",
+    
   });
 
   const handleSubmit = async (e) => {

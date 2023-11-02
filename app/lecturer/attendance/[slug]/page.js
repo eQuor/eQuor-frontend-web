@@ -89,7 +89,8 @@ const page = ({ params }) => {
         <span className="text-dark-blue font-semibold text-2xl ">Past</span>
         {inactiveSessions.length > 0 ? (
           inactiveSessions.map((session) => (
-            <Link href={`/lecturer/forlate${params.slug}/${session.id}`}>
+            <Link href={{pathname:`/lecturer/forlate/${session.id}`,query:`${session.id}`}} >
+              {/* {`/lecturer/forlate/${session.id}`} */}
               <SessionCardPast
                 //key={session.id}
                 id={session.id}

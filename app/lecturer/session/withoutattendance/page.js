@@ -9,10 +9,10 @@ import ProtectedRouteWRap from "@app/ProtectedRouteWRap";
 function Popup() {
   const [data, setData] = useState([]);
   const getResponse = async () => {
-    const response = await axiosGet("/module");
+    const response = await axiosGet("/lecture/lectureByModuleDetails");
     if (response.status == 200) {
       console.log("axios wed");
-      let resdata = response.data._embedded.module;
+      let resdata = response.data;
       setData(resdata);
       console.log(resdata);
     } else {
