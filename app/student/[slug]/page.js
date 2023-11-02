@@ -10,7 +10,7 @@ import Link from "next/link";
 const page = ({ params }) => {
   //Show moudle name from the backend
   const [data, setResponse] = useState("");
-  const [attendance,setAttendance]=useState({})
+  const [attendance, setAttendance] = useState({});
 
   //get all sessions given by the id
   const [sessions, setSessions] = useState([]);
@@ -56,14 +56,11 @@ const page = ({ params }) => {
     getSessions();
   }, []);
 
-  
- 
-
   const activeSessions = sessions.filter(
-    (session) => session.is_active === true
+    (session) => session.isactive === true
   );
   const inactiveSessions = sessions.filter(
-    (session) => session.is_active === false
+    (session) => session.isactive === false
   );
 
   console.log("Active Sessions:", activeSessions);
@@ -71,49 +68,48 @@ const page = ({ params }) => {
   console.log(activeSessions.length);
 
   const getAttendance = async () => {
-      const slug = params.slug;
-      console.log(slug);
-      const attendanceResponse = await axiosGet(
-        `/student/getStudentAttendanceStat?module_id=${slug}`
-      );
-      if (attendanceResponse.status === 200) {
-        console.log("axios worked");
-        console.log(attendanceResponse.data);
-        setAttendance(attendanceResponse.data)
-      } else {
-        console.log("Error while fetching API");
-      }
-      return attendanceResponse;
-    };
-    useEffect(() => {
-      console.log("useEffect is running");
-      getAttendance();
-    }, []);
-  
+    const slug = params.slug;
+    console.log(slug);
+    const attendanceResponse = await axiosGet(
+      `/student/getStudentAttendanceStat?module_id=${slug}`
+    );
+    if (attendanceResponse.status === 200) {
+      console.log("axios worked");
+      console.log(attendanceResponse.data);
+      setAttendance(attendanceResponse.data);
+    } else {
+      console.log("Error while fetching API");
+    }
+    return attendanceResponse;
+  };
+  useEffect(() => {
+    console.log("useEffect is running");
+    getAttendance();
+  }, []);
 
   return (
     <ProtectedRouteWRap>
-      <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
-        <span className="text-light-blue font-semibold text-lg">
+      <div className='col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3'>
+        <span className='text-light-blue font-semibold text-lg'>
           {data.name}
         </span>
 
-        <p className="text-link-ash font-semibold text-sm">
+        <p className='text-link-ash font-semibold text-sm'>
           Home / Modules /{" "}
-          <span className="text-black font-semibold text-sm">{data.name}</span>
+          <span className='text-black font-semibold text-sm'>{data.name}</span>
         </p>
       </div>
-      <div className="col-start-2 col-end-12 row-start-2 row-end-4 container mt-4 flex gap-4 ">
-        <div className=" transition duration-300">
-          <div className="bg-white p-6 rounded shadow-md">
-            <h1 className="text-lg font-medium text-light-blue">
+      <div className='col-start-2 col-end-12 row-start-2 row-end-4 container mt-4 flex gap-4 '>
+        <div className=' transition duration-300'>
+          <div className='bg-white p-6 rounded shadow-md'>
+            <h1 className='text-lg font-medium text-light-blue'>
               Total Number of Sessions Conducted
             </h1>
             <br></br>
-            <div className="flex gap-4">
-              <div className="w-10 h-10 bg-blue-500 rounded-full"></div>
+            <div className='flex gap-4'>
+              <div className='w-10 h-10 bg-blue-500 rounded-full'></div>
               <div>
-                <h1 className="text-4xl font-bold text-light-blue">
+                <h1 className='text-4xl font-bold text-light-blue'>
                   {attendance.totalSessionsForModule}
                 </h1>
               </div>
@@ -122,78 +118,79 @@ const page = ({ params }) => {
           </div>
         </div>
 
-        <div className="transition duration-300">
-          <div className=" bg-white p-6 rounded shadow-md">
-            <h1 className="text-lg font-medium text-light-blue">
-            Number of Sessions You Attend
+        <div className='transition duration-300'>
+          <div className=' bg-white p-6 rounded shadow-md'>
+            <h1 className='text-lg font-medium text-light-blue'>
+              Number of Sessions You Attend
             </h1>
             <br></br>
-            <div className="flex gap-4">
-              <div className="w-10 h-10 bg-blue-500 rounded-full"></div>
+            <div className='flex gap-4'>
+              <div className='w-10 h-10 bg-blue-500 rounded-full'></div>
               <div>
-                <h1 className="text-4xl font-bold text-light-blue">
-                {attendance.totalAttendedSessions}
+                <h1 className='text-4xl font-bold text-light-blue'>
+                  {attendance.totalAttendedSessions}
                 </h1>
               </div>
               <br></br>
             </div>
           </div>
         </div>
-
-       
       </div>
-      
 
-      <div className="col-start-1 col-end-13 row-start-4 px-4 pt-5">
-        <span className="text-dark-blue font-semibold text-2xl ">Active</span>
+      <div className='col-start-1 col-end-13 px-4 pt-5'>
+        <span className='text-dark-blue font-semibold text-2xl '>
+          Upcomming
+        </span>
         {activeSessions.length > 0 ? (
           activeSessions.map((session) => (
-            // <Link href={`/lecturer/${params.slug}/${session.id}`}>
-            <SessionCard
-              //key={session.id}
-              id={session.id}
-              date={session.session_date}
-              start_time={session.start_time}
-              end_time={session.end_time}
-              name={session.session_name}
-              is_active={session.is_active}
-            />
-            // </Link>
+            <Link href={`/lecturer/${params.slug}/${session.id}`}>
+              <SessionCard
+                //key={session.id}
+                id={session.id}
+                date={session.session_date}
+                start_time={session.start_time}
+                end_time={session.end_time}
+                name={session.session_name}
+                is_active={session.is_active}
+              />
+            </Link>
           ))
         ) : (
-          <div className="w-full text-sm text-left text-gray-400 mt-1">
-            <div className="bg-white border-b border-gray-400 p-3">
+          <div className='w-full text-sm text-left text-gray-400 mt-1'>
+            <div className='bg-white border-b border-gray-400 p-3'>
               <p>There aren't any active sessions at the moment.</p>
             </div>
           </div>
         )}
         {/* <div className="overflow-x-auto mt-3 rounded-md"></div> */}
-      </div>
-      <div className="col-start-1 col-end-13  px-4 pt-5 mt-3">
-        <span className="text-dark-blue font-semibold text-2xl ">Past</span>
-        {inactiveSessions.length > 0 ? (
-          inactiveSessions.map((session) => (
-            // <Link href={`/lecturer/${params.slug}/${session.id}`}>
-            <SessionCard
-              //key={session.id}
-              id={session.id}
-              date={session.session_date}
-              start_time={session.start_time}
-              end_time={session.end_time}
-              name={session.session_name}
-              is_active={session.is_active}
-            />
-            // </Link>
-          ))
-        ) : (
-          <div className="w-full text-sm text-left text-gray-400 mt-1">
-            <div className="bg-white border-b border-gray-400 p-3">
-              <p>There aren't any past sessions at the moment.</p>
+        <div className='col-start-1 col-end-13   mt-3'>
+          <span className='text-dark-blue font-semibold text-2xl '>
+            Attended
+          </span>
+          {inactiveSessions.length > 0 ? (
+            inactiveSessions.map((session) => (
+              // <Link href={`/lecturer/${params.slug}/${session.id}`}>
+              <SessionCard
+                //key={session.id}
+                id={session.id}
+                date={session.session_date}
+                start_time={session.start_time}
+                end_time={session.end_time}
+                name={session.session_name}
+                is_active={session.is_active}
+              />
+              // </Link>
+            ))
+          ) : (
+            <div className='w-full text-sm text-left text-gray-400 mt-1'>
+              <div className='bg-white border-b border-gray-400 p-3'>
+                <p>There aren't any past sessions at the moment.</p>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* <Sessioncard /> */}
+          {/* <Sessioncard /> */}
+        </div>
       </div>
     </ProtectedRouteWRap>
   );

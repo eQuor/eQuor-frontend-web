@@ -62,10 +62,10 @@ const page = ({ params }) => {
   }, []);
 
   const activeSessions = sessions.filter(
-    (session) => session.is_active === true
+    (session) => session.isactive === true
   );
   const inactiveSessions = sessions.filter(
-    (session) => session.is_active === false
+    (session) => session.isactive === false
   );
 
   console.log("Active Sessions:", activeSessions);
@@ -74,22 +74,27 @@ const page = ({ params }) => {
 
   return (
     <ProtectedRouteWRap>
-      <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
-        <span className="text-light-blue font-semibold text-lg">
+      <div className='col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3'>
+        <span className='text-light-blue font-semibold text-lg'>
           {data.name}
         </span>
 
-        <p className="text-link-ash font-semibold text-sm">
+        <p className='text-link-ash font-semibold text-sm'>
           Home / Modules /{" "}
-          <span className="text-black font-semibold text-sm">{data.name}</span>
+          <span className='text-black font-semibold text-sm'>{data.name}</span>
         </p>
       </div>
 
-      <div className="col-start-1 col-end-13  px-4 pt-5 mt-3">
-        <span className="text-dark-blue font-semibold text-2xl ">Past</span>
+      <div className='col-start-1 col-end-13  px-4 pt-5 mt-3'>
+        <span className='text-dark-blue font-semibold text-2xl '>Past</span>
         {inactiveSessions.length > 0 ? (
           inactiveSessions.map((session) => (
-            <Link href={{pathname:`/lecturer/forlate/${session.id}`,query:`${session.id}`}} >
+            <Link
+              href={{
+                pathname: `/lecturer/forlate/${session.id}`,
+                query: `${session.id}`,
+              }}
+            >
               {/* {`/lecturer/forlate/${session.id}`} */}
               <SessionCardPast
                 //key={session.id}
@@ -103,8 +108,8 @@ const page = ({ params }) => {
             </Link>
           ))
         ) : (
-          <div className="w-full text-sm text-left text-gray-400 mt-1">
-            <div className="bg-white border-b border-gray-400 p-3">
+          <div className='w-full text-sm text-left text-gray-400 mt-1'>
+            <div className='bg-white border-b border-gray-400 p-3'>
               <p>There aren't any past sessions at the moment.</p>
             </div>
           </div>
