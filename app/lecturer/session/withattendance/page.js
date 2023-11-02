@@ -39,11 +39,7 @@ function Popup() {
     requirement: 0,
     session_name: "",
     module_id: "",
-<<<<<<< HEAD
     isactive: true,
-=======
-    
->>>>>>> suresh-last-night
   });
 
   const handleSubmit = async (e) => {

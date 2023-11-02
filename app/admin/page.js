@@ -171,7 +171,6 @@ const adminDashboard = () => {
       
       {/* .................cards end here .......................  */}
 
-<<<<<<< HEAD
       <div className="col-start-2 col-end-7 row-start-4 row-end-7 h-[280px] text-center  mt-10">
         <p className="text-lg font-medium text-dark-blue ">
           Attendance Growth This Month
@@ -200,14 +199,6 @@ const adminDashboard = () => {
           </AreaChart> */}
         {/* </ResponsiveContainer> */}
       </div>
-=======
-      {/* <div className="col-start-2 col-end-7 row-start-4 row-end-7 h-[280px] text-center  mt-10 bg-white">
-        <p className="text-lg font-medium text-dark-blue ">
-          Attendance Growth This Month
-        </p>
-        
-      </div> */}
->>>>>>> suresh-last-night
 
       <div className="col-start-2 col-end-7 row-start-4 row-end-7  h-[280px] text-center mt-10 bg-white  ">
         <p className="text-lg font-medium text-dark-blue ">
