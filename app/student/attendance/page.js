@@ -14,11 +14,11 @@ import Link from 'next/link'
 const page= () => {
   return (
     <ProtectedRouteWRap>
-      <div className="col-start-1 col-end-13 ">
+      {/* <div className="col-start-1 col-end-13 ">
         <TabsContainer />
-      </div>
+      </div> */}
 
-      <div className="col-start-1 col-end-13 row-start-2 row-end-2  px-4 pt-5 mt-3">
+      <div className="col-start-1 col-end-13 row-start-1 row-end-2  px-4 pt-5 mt-3">
         <span className="text-light-blue font-semibold text-lg">
           Attendance
         </span>
@@ -30,16 +30,16 @@ const page= () => {
       </div>
 
       <div className="col-start-1 col-end-13 px-4 pt-5 flex">
-        <div className="w-[1200px] overflow-x-auto">
+        {/* <div className="w-[1200px] overflow-x-auto">
           <Search />
         </div>
 
         <div className="ml-3">
           <Button title={'Search'} url={'/student/attendance'} />
-        </div>
+        </div> */}
       </div>
 
-      <div className="col-start-1 col-end-13 px-4 pt-5">
+      <div className="col-start-1 row-start-2 col-end-13 px-4 pt-5">
         <span className="text-dark-blue font-semibold text-2xl ">
           Marked Attendance
         </span>

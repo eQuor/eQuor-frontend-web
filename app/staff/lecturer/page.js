@@ -90,9 +90,9 @@ const Page = () => {
 
   return (
     <ProtectedRouteWRap>
-      <div className='col-start-1 col-end-13 '>
+      {/* <div className='col-start-1 col-end-13 '>
         <TabsContainer />
-      </div>
+      </div> */}
       <div className='  col-start-1 col-end-13 row-start-2 row-end-3 pl-8  pt-5 '>
         <h1 className='text-xl font-normal text-[#4154F1] bg-#F0F4FB'>
           {" "}
@@ -101,7 +101,7 @@ const Page = () => {
         <p className=' text-xs font-normal'>Home / Staff Member/Lecturer</p>
       </div>
 
-      <div className='w-[950px] pl-10 '>
+      {/* <div className='w-[950px] pl-10 '>
         <Search />
       </div>
       <div className=' col-start-4 col-end-7'>
@@ -109,13 +109,13 @@ const Page = () => {
           title={"Add New Lecturer"}
           url={"/staff/lecturer/addlecturer"}
         />
-      </div>
+      </div> */}
 
       <div className=' font-semibold text-[#012970] text-3xl col-start-1 col-end-13  pl-12  pt-10 '>
         <h1>Current Lecturer</h1>
       </div>
 
-      <div className='col-start-1 col-end-13 row-start-5 px-4 pt-5'>
+      <div className='col-start-1 col-end-13 row-start-3 px-4 pt-5'>
         <DataTable columns={columns} data={data} onRowClick={handleRowClick}/>
       </div>
     </ProtectedRouteWRap>

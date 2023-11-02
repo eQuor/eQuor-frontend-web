@@ -1,5 +1,4 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import SessionCard from "@components/SessionCard";
@@ -11,14 +10,17 @@ import Card from "@components/Card";
 import Popup from "@components/Popup";
 import { useRouter } from "next/navigation";
 import { axiosGet } from "@common/basicAxios";
+import React, { useEffect, useState } from "react";
+
 // import SessionCard from "@components/SessionCard";
 
 const page = () => {
+  
   const navigator = useRouter();
   const getResponse = async () => {
     const response = await axiosGet("/module");
     if (response.status == 200) {
-      // setData(resdata);
+      setData(resdata);
       // console.log(resdata);
     } else {
       console.log("error while fetching API");
@@ -34,42 +36,24 @@ const page = () => {
   const subject = "SCS1101 Database Management";
   const handlewithattendance = () => {
     navigator.push("/lecturer/session/withattendance");
-    // Swal.fire({
-    //   html: ${cardhtml},
-    //   showCloseButton: false,
-    //   showCancelButton: false,
-    //   focusConfirm: false,
-    //   confirmButtonText: '<i class="fa fa-thumbs-up"></i> Confirm',
-    //   confirmButtonAriaLabel: "Thumbs up, great!",
-    //   cancelButtonText: '<i class="fa fa-thumbs-down"></ i> Cancel',
-    //   cancelButtonAriaLabel: "Thumbs down",
-    // });
+ 
   };
   const handlewithoutattendance = () => {
     navigator.push("/lecturer/session/withoutattendance");
-    // Swal.fire({
-    //   html: ${cardhtml},
-    //   showCloseButton: false,
-    //   showCancelButton: false,
-    //   focusConfirm: false,
-    //   confirmButtonText: '<i class="fa fa-thumbs-up"></i> Confirm',
-    //   confirmButtonAriaLabel: "Thumbs up, great!",
-    //   cancelButtonText: '<i class="fa fa-thumbs-down"></ i> Cancel',
-    //   cancelButtonAriaLabel: "Thumbs down",
-    // });
+  
   };
   return (
     <ProtectedRouteWRap>
       <div className="col-start-1 col-end-13 row-start-1 row-end-1  px-4 pt-5 mt-3">
-        <span className="text-light-blue font-semibold text-lg">{subject}</span>
+        <span className="text-light-blue font-semibold text-lg">Create New Session</span>
 
         <p className="text-link-ash font-semibold text-sm">
-          Home / Modules /SCS1101 Database Management/{" "}
+          Home / Modules /{" "}
           <span className="text-black font-semibold text-sm">New Session</span>
         </p>
       </div>
 
-      <div className="col-start-1 col-end-13 row-start-2   px-4 pt-5 mt-3 mx-5 bg-white">
+      <div className="col-start-1 col-end-13 row-start-3   px-4 pt-5 mt-3 mx-5 bg-white">
         <span className="text-dark-blue font-semibold text-2xl ">
           Create New Session
         </span>
