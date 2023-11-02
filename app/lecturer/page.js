@@ -16,7 +16,7 @@ const Home = () => {
 
   const getResponse = async () => {
    const response = await axiosGet("/lecture/getModules");
-   //const response = await axios.get("/lecture/getModules");
+  // const response = await axios.get("/lecture/getModules");
 
     if (response.status == 200) {
       console.log("axios wed");
