@@ -17,23 +17,7 @@ const Page = () => {
   const [data, setData] = useState([]);
   const [selectedRow, setSelectedRow] = useState(null);
   
-  
-  // function encodeJSONToURL(jsonObj) {
-  //   const encodedPairs = [];
-    
-  //   for (const key in jsonObj) {
-  //     if (jsonObj.hasOwnProperty(key)) {
-  //       const encodedKey = encodeURIComponent(key);
-  //       const encodedValue = encodeURIComponent(jsonObj[key]);
-  //       encodedPairs.push(`${encodedKey}=${encodedValue}`);
-  //     }
-  //   }
-  
-  //   return encodedPairs.join('&');
-  // }
-  
-  
-
+ 
   const getResponse = async () => {
     const response = await axiosGet("/lecturer");
     if (response.status == 200) {
